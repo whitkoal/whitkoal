@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">ArrayList | Bruce</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bruce";
+  mashiro_option.author_name = "";
+  mashiro_option.site_url = "http://brucy.cn";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/505/505-bigskin-1.jpg,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/169/169-bigskin-5.jpg,https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture,https://api.ixiaowai.cn/gqapi/gqapi.php,https://api.ixiaowai.cn/api/api.php,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/506/506-bigskin-1.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big145016.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big121011.jpg,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp,/images/66.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <!-- 下面这个div是一个位于首页中间的圆形头像 -->
+      <!-- <div class="header-tou">
+        <a href="http://brucy.cn">
+          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+        </a>
+      </div> -->
+      <h1 class="center-text glitch is-glitching Ubuntu-font" data-text='"Hello Word"'>
+        "Hello Word"
+      </h1>
+      <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://v1.jinrishici.com/all.txt');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            var gushici = document.getElementById('gushici');
+            gushici.innerText = xhr.responseText;
+          }
+        };
+        xhr.send();
+      </script>
+      
+      <div class="header-info">
+        <p id='gushici'> 驽马十驾功在不舍</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bruce</span>
+            <span class="shironeko"></span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    学习资源
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书籍
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+                    专题
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">ArrayList</h1>
+            <p class="entry-census">&nbsp;·&nbsp;2019-10-21&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h2 id="一、ArrayList-介绍"><a href="#一、ArrayList-介绍" class="headerlink" title="一、ArrayList 介绍"></a>一、ArrayList 介绍</h2><h3 id="1-1、概述"><a href="#1-1、概述" class="headerlink" title="1.1、概述"></a>1.1、概述</h3><ul>
+<li>ArrayList 是一种变长集合，基于定长<strong>数组</strong>实现。</li>
+<li>ArrayList 允许所有元素，包括<strong>null</strong>和重复元素。</li>
+<li>ArrayList 类还提供了一些方法来操作数组的大小，每个ArrayList实例都有一个<strong>容量</strong>值。当往 ArrayList 中添加的元素数量大于其底层数组容量时，其会通过扩容机制对数组进行扩容。</li>
+<li>ArrayList中size、isEmpty、get、set、iterator和listIterator操作在常数时间内运行。插入删除元素的时间复杂度为O（n）。所有其他操作基本都在线性时间内运行。</li>
+<li>ArrayList 中的操作<strong>不是线程安全的！</strong></li>
+</ul>
+<h3 id="1-2、ArrayList-数据结构"><a href="#1-2、ArrayList-数据结构" class="headerlink" title="1.2、ArrayList 数据结构"></a>1.2、ArrayList 数据结构</h3><p>ArrayList 的底层是数组队列，相当于动态数组。与 Java 中的数组相比，它的容量能动态增长。在添加大量元素前，应用程序可以使用ensureCapacity操作来增加 ArrayList 实例的容量。这可以减少递增式再分配的数量。</p>
+<pre><code>    // 由此构造方法可知 ArrayList 底层实现为数组
+    public ArrayList(int initialCapacity) {
+        if (initialCapacity &gt; 0) {
+            this.elementData = new Object[initialCapacity];
+        } else if (initialCapacity == 0) {
+            this.elementData = EMPTY_ELEMENTDATA;
+        } else {
+            throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+  initialCapacity);
+        }
+    }</code></pre><h3 id="1-3、继承关系"><a href="#1-3、继承关系" class="headerlink" title="1.3、继承关系"></a>1.3、继承关系</h3><ul>
+<li>ArrayList 继承了AbstractList，实现了List。它是一个数组队列，提供了相关的添加、删除、修改、遍历等功能。</li>
+<li>ArrayList 实现了RandomAccess <strong>接口</strong>， RandomAccess 是一个标志接口，表明实现这个接口的 List 集合是支持<strong>快速随机访问</strong>的。在 ArrayList 中，我们即可以通过元素的序号快速获取元素对象，这就是快速随机访问。</li>
+<li>　ArrayList 实现了Cloneable <strong>接口</strong>，即覆盖了函数 clone()，能被<strong>克隆</strong>。</li>
+<li>ArrayList 实现java.io.Serializable <strong>接口</strong>，这意味着ArrayList<strong>支持序列化</strong>，<strong>能通过序列化去传输</strong>。<br><img src="/img/%E5%86%85%E5%AE%B9%E5%9B%BE%E7%89%87/ArrayList/ArrayList%E7%BB%A7%E6%89%BF%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="ArrayList继承结构图"></li>
+</ul>
+<h2 id="二、ArrayList-源码详解"><a href="#二、ArrayList-源码详解" class="headerlink" title="二、ArrayList 源码详解"></a>二、ArrayList 源码详解</h2><h3 id="2-1、ArrayList-中的属性"><a href="#2-1、ArrayList-中的属性" class="headerlink" title="2.1、ArrayList 中的属性"></a>2.1、ArrayList 中的属性</h3><ul>
+<li>serialVersionUID 用于实例的序列化，为了保持版本的兼容性。</li>
+</ul>
+<pre><code>private static final long serialVersionUID = 8683452581122892189L;</code></pre><ul>
+<li>DEFAULT_CAPACITY  <strong>默认初始容量为 10</strong></li>
+</ul>
+<pre><code>private static final int DEFAULT_CAPACITY = 10;</code></pre><ul>
+<li>EMPTY_ELEMENTDATA  <strong>用于空实例的共享空数组实例</strong>，当执行无参构造方法后，并未给 ArrayList 实例开辟存储空间，而是引用此空数组。<pre><code> private static final Object[] EMPTY_ELEMENTDATA = {};</code></pre></li>
+<li>DEFAULTCAPACITY_EMPTY_ELEMENTDATA <strong>用于默认大小的空实例的共享空数组实例</strong>，new 一个ArrayList 时会默认返回此数组，若ArrayList 被指定容量为 0 会返回EMPTY_ELEMENTDATA</li>
+</ul>
+<pre><code>    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};</code></pre><ul>
+<li>elementData <strong>存储ArrayList元素的数组缓冲区</strong>，该方法为非私有以此简化嵌套类访问</li>
+</ul>
+<pre><code>    transient Object[] elementData; // 非私有以简化嵌套类访问</code></pre><ul>
+<li>size 数组的大小（包含元素的个数）</li>
+</ul>
+<pre><code>    private int size;</code></pre><h3 id="2-2、构造方法"><a href="#2-2、构造方法" class="headerlink" title="2.2、构造方法"></a>2.2、构造方法</h3><ul>
+<li>构造具有指定初始容量的空列表。 如果初始容量为 0 ，将返回 EMPTY_ELEMENTDATA<pre><code>  public ArrayList(int initialCapacity) {
+      if (initialCapacity &gt; 0) {
+          this.elementData = new Object[initialCapacity];
+      } else if (initialCapacity == 0) {
+          this.elementData = EMPTY_ELEMENTDATA; 
+      } else {
+          throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                             initialCapacity);
+      }
+  }</code></pre></li>
+<li>构造一个初始容量为10的空列表。在没有元素真正存入ArrayList时，并没有为ArrayList开辟10个存储空间<pre><code>  public ArrayList() {
+      this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+  }</code></pre></li>
+<li>构造一个包含指定集合的元素的列表，按照它们由集合的迭代器返回的顺序。<pre><code>  public ArrayList(Collection&lt;? extends E&gt; c) {
+      elementData = c.toArray();
+      if ((size = elementData.length) != 0) {
+          // c.toArray 可能返回的不是Object类型的数组所以加上下面的语句用于判断
+          //这里用到了反射里面的getClass()方法
+          if (elementData.getClass() != Object[].class)
+              elementData = Arrays.copyOf(elementData, size, Object[].class);
+      } else {
+          // 若数组为空，用 EMPTY_ELEMENTDATA 替换
+          this.elementData = EMPTY_ELEMENTDATA;
+      }
+  }</code></pre></li>
+</ul>
+<h3 id="2-3、常用API"><a href="#2-3、常用API" class="headerlink" title="2.3、常用API"></a>2.3、常用API</h3><h4 id="2-3-1、容量调整"><a href="#2-3-1、容量调整" class="headerlink" title="2.3.1、容量调整"></a>2.3.1、容量调整</h4><blockquote>
+<p>modCount 表示从结构上修改此列表的次数。注意并不是改变容器内部存储的值，而是改变结构。在迭代器遍历元素时会校验迭代器中存储的modCount 是否与ArrayList 实例中的modCount相等，如果不相等就表示已经有其他线程修改了会抛出异常。</p>
+</blockquote>
+<ul>
+<li>修改这个ArrayList实例的容量为列表的当前大小。使用此操作来最小化ArrayList实例的存储。 <pre><code>  public void trimToSize() {
+      modCount++;
+      if (size &lt; elementData.length) {
+          elementData = (size == 0)
+            ? EMPTY_ELEMENTDATA
+            : Arrays.copyOf(elementData, size);
+      }
+  }</code></pre></li>
+<li>判断是否需要扩容。如有必要，增加此ArrayList实例的容量，以确保它至少能容纳元素的数量<pre><code>public void ensureCapacity(int minCapacity) {
+      if (minCapacity &gt; elementData.length
+          &amp;&amp; !(elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
+               &amp;&amp; minCapacity &lt;= DEFAULT_CAPACITY)) {
+          modCount++;
+          grow(minCapacity); // grow 方法是真正用来扩容的方法
+      }
+  }</code></pre></li>
+<li>要分配的数组的最大大小。试图分配更大的数组可能会导致OutOfMemoryError:请求的数组大小超过VM限制，.Integer.MAX_VALUE = 2147483647 </li>
+</ul>
+<blockquote>
+<p>解释一下为什么要减8：在这 8 Byte的存储中保存了数组的一些头信息。这样做还可以避免内存溢出！</p>
+</blockquote>
+<pre><code>    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</code></pre><ul>
+<li><p>grow是用来扩容的方法，确保它至少可以容纳由最小容量参数指定的元素数量</p>
+<pre><code>  private Object[] grow(int minCapacity) {
+      return elementData = Arrays.copyOf(elementData,
+                                         newCapacity(minCapacity));
+  }
+
+  private Object[] grow() {
+      return grow(size + 1);
+  }</code></pre></li>
+<li><p>改变容量值，返回给grow 方法。</p>
+<pre><code>  private int newCapacity(int minCapacity) {
+      // overflow-conscious code
+      int oldCapacity = elementData.length;
+      // 扩容到原来容量的1.5倍
+      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); // 右移一位相当于除以2
+      if (newCapacity - minCapacity &lt;= 0) {
+          if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
+              return Math.max(DEFAULT_CAPACITY, minCapacity);
+          if (minCapacity &lt; 0) // 溢出
+              throw new OutOfMemoryError();
+          return minCapacity;
+      }
+      return (newCapacity - MAX_ARRAY_SIZE &lt;= 0)
+          ? newCapacity
+          : hugeCapacity(minCapacity);
+  }</code></pre></li>
+<li><p>扩容到最大容量</p>
+<pre><code>  private static int hugeCapacity(int minCapacity) {
+      if (minCapacity &lt; 0) // 溢出
+          throw new OutOfMemoryError();
+      return (minCapacity &gt; MAX_ARRAY_SIZE) ? Integer.MAX_VALUE : MAX_ARRAY_SIZE;
+  }</code></pre><p>在这里可以看到ArrayList 的容量最大值任然可以扩容到 MAX_ARRAY_SIZE ，那么数组的头信息到底是怎么存储的呢？ <a href="https://muzinuo.com/article/b43l5o2zf787.html" target="_blank" rel="noopener">在别人的博客中找到了解释</a></p>
+<blockquote>
+<p>1、存储 Headerwords(并不是在所有虚拟机中都这样，只是部分虚拟机在数组中保留了一些头信息)，因此该现象仅为部分存在；</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>2、避免内存溢出，减少出错几率；</p>
+</blockquote>
+<blockquote>
+<p>3、最大值其实还是为Integer.MAX_VALUE，并不是Integer.MAX_VALUE-8。(因为只是为了规避不同平台机器内存溢出的风险)</p>
+</blockquote>
+<h4 id="2-3-2、常用API"><a href="#2-3-2、常用API" class="headerlink" title="2.3.2、常用API"></a>2.3.2、常用API</h4><ul>
+<li>返回List 中元素的数量<pre><code>  public int size() {
+      return size;
+  }
+</code></pre></li>
+</ul>
+<pre><code>- 判断List 是否为空</code></pre><pre><code>public boolean isEmpty() {
+    return size == 0;
+}</code></pre><pre><code>- 判断List 中是否包含某个值</code></pre><pre><code>public boolean contains(Object o) {
+    return indexOf(o) &gt;= 0;
+}</code></pre><pre><code>- 返回元素在List 中第一次出现的位置，如果List 中没有此元素则返回 -1</code></pre><pre><code>public int indexOf(Object o) {
+    return indexOfRange(o, 0, size);
+}
+
+int indexOfRange(Object o, int start, int end) {
+    Object[] es = elementData;
+    if (o == null) {
+        for (int i = start; i &lt; end; i++) {
+            if (es[i] == null) {
+                return i;
+            }
+        }
+    } else {
+        for (int i = start; i &lt; end; i++) {
+            if (o.equals(es[i])) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}</code></pre><pre><code>- 返回元素在List 中最后一次出现的位置，如果List 中没有此元素则返回 -1 。lastIndexOfRange 与indexOfRange 方法相似，lastIndexOfRange 方法在倒着遍历。</code></pre><pre><code>public int lastIndexOf(Object o) {
+    return lastIndexOfRange(o, 0, size);
+}
+
+int lastIndexOfRange(Object o, int start, int end) {
+    Object[] es = elementData;
+    if (o == null) {
+        for (int i = end - 1; i &gt;= start; i--) {
+            if (es[i] == null) {
+                return i;
+            }
+        }
+    } else {
+        for (int i = end - 1; i &gt;= start; i--) {
+            if (o.equals(es[i])) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}</code></pre><pre><code>- 克隆ArrayList 调用了Object 类中的 clone() 方法。</code></pre><pre><code>public Object clone() {
+    try {
+        ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();
+        v.elementData = Arrays.copyOf(elementData, size);
+        v.modCount = 0;
+        return v;
+    } catch (CloneNotSupportedException e) {
+        throw new InternalError(e);
+    }
+}</code></pre><pre><code>- 返回一个数组</code></pre><pre><code>public Object[] toArray() {
+    return Arrays.copyOf(elementData, size);
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public &lt;T&gt; T[] toArray(T[] a) {
+    if (a.length &lt; size)
+        // Make a new array of a&#39;s runtime type, but my contents:
+        return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+    System.arraycopy(elementData, 0, a, 0, size);
+    if (a.length &gt; size)
+        a[size] = null;
+    return a;
+}</code></pre><pre><code>- 位置访问操作</code></pre><pre><code>@SuppressWarnings(&quot;unchecked&quot;)
+E elementData(int index) {
+    return (E) elementData[index];
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+static &lt;E&gt; E elementAt(Object[] es, int index) {
+    return (E) es[index];
+}</code></pre><pre><code>- 增删改查操作</code></pre><pre><code>public E get(int index) {
+    Objects.checkIndex(index, size);
+    return elementData(index);
+}
+
+public E set(int index, E element) {
+    Objects.checkIndex(index, size);
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void add(E e, Object[] elementData, int s) {
+    if (s == elementData.length)
+        elementData = grow();
+    elementData[s] = e;
+    size = s + 1;
+}
+
+public boolean add(E e) {
+    modCount++;
+    add(e, elementData, size);
+    return true;
+}
+
+public void add(int index, E element) {
+    rangeCheckForAdd(index);
+    modCount++;
+    final int s;
+    Object[] elementData;
+    if ((s = size) == (elementData = this.elementData).length)
+        elementData = grow();
+    System.arraycopy(elementData, index,
+                     elementData, index + 1,
+                     s - index);
+    elementData[index] = element;
+    size = s + 1;
+}
+
+public E remove(int index) {
+    Objects.checkIndex(index, size);
+    final Object[] es = elementData;
+
+    @SuppressWarnings(&quot;unchecked&quot;) E oldValue = (E) es[index];
+    fastRemove(es, index);
+
+    return oldValue;
+}
+ public boolean remove(Object o) {
+    final Object[] es = elementData;
+    final int size = this.size;
+    int i = 0;
+    found: {
+        if (o == null) {
+            for (; i &lt; size; i++)
+                if (es[i] == null)
+                    break found;
+        } else {
+            for (; i &lt; size; i++)
+                if (o.equals(es[i]))
+                    break found;
+        }
+        return false;
+    }
+    fastRemove(es, i);
+    return true;
+}
+
+// 此方法是真正的进行删除的方法，
+private void fastRemove(Object[] es, int i) {
+    modCount++;
+    final int newSize;
+    if ((newSize = size - 1) &gt; i)
+        System.arraycopy(es, i + 1, es, i, newSize - i);
+    es[size = newSize] = null;
+}
+
+public void clear() {
+    modCount++;
+    final Object[] es = elementData;
+    for (int to = size, i = size = 0; i &lt; to; i++)
+        es[i] = null;
+}
+
+public boolean addAll(Collection&lt;? extends E&gt; c) {
+    Object[] a = c.toArray();
+    modCount++;
+    int numNew = a.length;
+    if (numNew == 0)
+        return false;
+    Object[] elementData;
+    final int s;
+    if (numNew &gt; (elementData = this.elementData).length - (s = size))
+        elementData = grow(s + numNew);
+    System.arraycopy(a, 0, elementData, s, numNew);
+    size = s + numNew;
+    return true;
+}
+
+public boolean addAll(int index, Collection&lt;? extends E&gt; c) {
+    rangeCheckForAdd(index);
+
+    Object[] a = c.toArray();
+    modCount++;
+    int numNew = a.length;
+    if (numNew == 0)
+        return false;
+    Object[] elementData;
+    final int s;
+    if (numNew &gt; (elementData = this.elementData).length - (s = size))
+        elementData = grow(s + numNew);
+
+    int numMoved = s - index;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index,
+                         elementData, index + numNew,
+                         numMoved);
+    System.arraycopy(a, 0, elementData, index, numNew);
+    size = s + numNew;
+    return true;
+}</code></pre><pre><code>- 比较相关方法</code></pre><pre><code>public boolean equals(Object o) {
+    if (o == this) {
+        return true;
+    }
+
+    if (!(o instanceof List)) {
+        return false;
+    }
+
+    final int expectedModCount = modCount;
+    // ArrayList can be subclassed and given arbitrary behavior, but we can
+    // still deal with the common case where o is ArrayList precisely
+    boolean equal = (o.getClass() == ArrayList.class)
+        ? equalsArrayList((ArrayList&lt;?&gt;) o)
+        : equalsRange((List&lt;?&gt;) o, 0, size);
+
+    checkForComodification(expectedModCount);
+    return equal;
+}
+
+boolean equalsRange(List&lt;?&gt; other, int from, int to) {
+    final Object[] es = elementData;
+    if (to &gt; es.length) {
+        throw new ConcurrentModificationException();
+    }
+    var oit = other.iterator();
+    for (; from &lt; to; from++) {
+        if (!oit.hasNext() || !Objects.equals(es[from], oit.next())) {
+            return false;
+        }
+    }
+    return !oit.hasNext();
+}
+
+private boolean equalsArrayList(ArrayList&lt;?&gt; other) {
+    final int otherModCount = other.modCount;
+    final int s = size;
+    boolean equal;
+    if (equal = (s == other.size)) {
+        final Object[] otherEs = other.elementData;
+        final Object[] es = elementData;
+        if (s &gt; es.length || s &gt; otherEs.length) {
+            throw new ConcurrentModificationException();
+        }
+        for (int i = 0; i &lt; s; i++) {
+            if (!Objects.equals(es[i], otherEs[i])) {
+                equal = false;
+                break;
+            }
+        }
+    }
+    other.checkForComodification(otherModCount);
+    return equal;
+}</code></pre><pre><code>
+### 2.3.4、四个内部类###
+</code></pre><pre><code>private class Itr implements Iterator&lt;E&gt;  
+private class ListItr extends Itr implements ListIterator&lt;E&gt;  
+private class SubList extends AbstractList&lt;E&gt; implements RandomAccess  
+static final class ArrayListSpliterator&lt;E&gt; implements Spliterator&lt;E&gt;  </code></pre><pre><code>ArrayList有四个内部类，
+    其中的Itr是实现了Iterator接口，同时重写了里面的hasNext()， next()， remove() 等方法；
+    其中的ListItr 继承 Itr，实现了ListIterator接口，同时重写了hasPrevious()， nextIndex()， previousIndex()， previous()， set(E e)， add(E e) 等方法，所以这也可以看出了 Iterator和ListIterator的区别: ListIterator在Iterator的基础上增加了添加对象，修改对象，逆向遍历等方法，这些是Iterator不能实现的。
+
+## 三、ArrayList 经典 demo ##
+</code></pre><p>package list;<br>import java.util.ArrayList;<br>import java.util.Iterator;</p>
+<p>public class ArrayListDemo {</p>
+<pre><code>public static void main(String[] srgs){
+     ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
+
+     System.out.printf(&quot;Before add:arrayList.size() = %d\n&quot;,arrayList.size());
+
+     arrayList.add(1);
+     arrayList.add(3);
+     arrayList.add(5);
+     arrayList.add(7);
+     arrayList.add(9);
+     System.out.printf(&quot;After add:arrayList.size() = %d\n&quot;,arrayList.size());
+
+     System.out.println(&quot;Printing elements of arrayList&quot;);
+     // 三种遍历方式打印元素
+     // 第一种：通过迭代器遍历
+     System.out.print(&quot;通过迭代器遍历:&quot;);
+     Iterator&lt;Integer&gt; it = arrayList.iterator();
+     while(it.hasNext()){
+         System.out.print(it.next() + &quot; &quot;);
+     }
+     System.out.println();
+
+     // 第二种：通过索引值遍历
+     System.out.print(&quot;通过索引值遍历:&quot;);
+     for(int i = 0; i &lt; arrayList.size(); i++){
+         System.out.print(arrayList.get(i) + &quot; &quot;);
+     }
+     System.out.println();
+
+     // 第三种：for循环遍历
+     System.out.print(&quot;for循环遍历:&quot;);
+     for(Integer number : arrayList){
+         System.out.print(number + &quot; &quot;);
+     }
+
+     // toArray用法
+     // 第一种方式(最常用)
+     Integer[] integer = arrayList.toArray(new Integer[0]);
+
+     // 第二种方式(容易理解)
+     Integer[] integer1 = new Integer[arrayList.size()];
+     arrayList.toArray(integer1);
+
+     // 抛出异常，java不支持向下转型
+     //Integer[] integer2 = new Integer[arrayList.size()];
+     //integer2 = arrayList.toArray();
+     System.out.println();
+
+     // 在指定位置添加元素
+     arrayList.add(2,2);
+     // 删除指定位置上的元素
+     arrayList.remove(2);    
+     // 删除指定元素
+     arrayList.remove((Object)3);
+     // 判断arrayList是否包含5
+     System.out.println(&quot;ArrayList contains 5 is: &quot; + arrayList.contains(5));
+
+     // 清空ArrayList
+     arrayList.clear();
+     // 判断ArrayList是否为空
+     System.out.println(&quot;ArrayList is empty: &quot; + arrayList.isEmpty());
+}</code></pre><p>}</p>
+<pre><code>
+
+
+
+
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/10/26/hexo常用命令/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                hexo常用命令</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/10/19/hello-world/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Hello World</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Bruce<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bruce</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            学习资源
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书籍
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/categories/随想/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+            专题
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bruce</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://brucy.cn/"/>
+  <updated>2019-12-07T13:06:51.762Z</updated>
+  <id>http://brucy.cn/</id>
+  
+  <author>
+    <name>Bruce</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMQ基本概念介绍</title>
+    <link href="http://brucy.cn/2019/12/07/RabbitMQ%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://brucy.cn/2019/12/07/RabbitMQ基本概念介绍/</id>
+    <published>2019-12-07T12:28:18.000Z</published>
+    <updated>2019-12-07T13:06:51.762Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;RabbitMQ中涉及到的几个概念&quot;&gt;&lt;a href=&quot;#RabbitMQ中涉及到的几个概念&quot; class=&quot;headerlink&quot; title=&quot;RabbitMQ中涉及到的几个概念&quot;&gt;&lt;/a&gt;RabbitMQ中涉及到的几个概念&lt;/h3&gt;&lt;h4
+        
+      
+    
+    </summary>
+    
+    
+      <category term="RabbitMQ" scheme="http://brucy.cn/tags/RabbitMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB常用语句(一)</title>
+    <link href="http://brucy.cn/2019/12/03/MongoDB%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5(%E4%B8%80)/"/>
+    <id>http://brucy.cn/2019/12/03/MongoDB常用语句(一)/</id>
+    <published>2019-12-03T12:44:06.000Z</published>
+    <updated>2019-12-05T03:42:49.551Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;use-命令-创建-选择-数据库&quot;&gt;&lt;a href=&quot;#use-命令-创建-选择-数据库&quot; class=&quot;headerlink&quot; title=&quot;use 命令 创建/选择 数据库&quot;&gt;&lt;/a&gt;use 命令 创建/选择 数据库&lt;/h4&gt;&lt;p&gt;MongoDB使用
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB介绍</title>
+    <link href="http://brucy.cn/2019/12/03/MongoDB%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://brucy.cn/2019/12/03/MongoDB介绍/</id>
+    <published>2019-12-03T12:42:51.000Z</published>
+    <updated>2019-12-03T12:44:14.198Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;什么是MongoDB&quot;&gt;&lt;a href=&quot;#什么是MongoDB&quot; class=&quot;headerlink&quot; title=&quot;什么是MongoDB?&quot;&gt;&lt;/a&gt;什么是MongoDB?&lt;/h2&gt;&lt;p&gt;MongoDB是由MongoDB
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消息队列入门</title>
+    <link href="http://brucy.cn/2019/12/01/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%97%A8/"/>
+    <id>http://brucy.cn/2019/12/01/消息队列入门/</id>
+    <published>2019-12-01T13:42:36.000Z</published>
+    <updated>2019-12-07T13:08:04.063Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;MQ简介&quot;&gt;&lt;a href=&quot;#MQ简介&quot; class=&quot;headerlink&quot; title=&quot;MQ简介&quot;&gt;&lt;/a&gt;MQ简介&lt;/h3&gt;&lt;p&gt;在介绍RabbitMQ之前实现要介绍一下MQ，MQ是什么？&lt;/p&gt;
+&lt;p&gt;MQ全称是Message
+        
+      
+    
+    </summary>
+    
+    
+      <category term="消息队列" scheme="http://brucy.cn/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用volatile修饰基本数据内存不能保证原子性</title>
+    <link href="http://brucy.cn/2019/11/24/%E4%BD%BF%E7%94%A8volatile%E4%BF%AE%E9%A5%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%86%85%E5%AD%98%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7/"/>
+    <id>http://brucy.cn/2019/11/24/使用volatile修饰基本数据内存不能保证原子性/</id>
+    <published>2019-11-24T09:44:23.000Z</published>
+    <updated>2019-11-24T09:44:52.948Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;对synchronized-的探究&quot;&gt;&lt;a href=&quot;#对synchronized-的探究&quot; class=&quot;headerlink&quot; title=&quot;对synchronized 的探究&quot;&gt;&lt;/a&gt;对synchronized
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>volatile关键字解析</title>
+    <link href="http://brucy.cn/2019/11/23/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90/"/>
+    <id>http://brucy.cn/2019/11/23/volatile关键字解析/</id>
+    <published>2019-11-23T12:53:22.000Z</published>
+    <updated>2019-11-23T12:53:55.892Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;并发编程中的三个概念&quot;&gt;&lt;a href=&quot;#并发编程中的三个概念&quot; class=&quot;headerlink&quot; title=&quot;并发编程中的三个概念&quot;&gt;&lt;/a&gt;并发编程中的三个概念&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;原子性：即一个操作或者多个操作
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatis数据源与连接池</title>
+    <link href="http://brucy.cn/2019/11/18/MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
+    <id>http://brucy.cn/2019/11/18/MyBatis数据源与连接池/</id>
+    <published>2019-11-18T12:52:56.000Z</published>
+    <updated>2019-11-18T12:55:01.647Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;MyBatis-把数据源-DataSource-分为三种：&quot;&gt;&lt;a href=&quot;#MyBatis-把数据源-DataSource-分为三种：&quot; class=&quot;headerlink&quot; title=&quot;MyBatis 把数据源 DataSource
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MyBatis" scheme="http://brucy.cn/tags/MyBatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring注解驱动编程</title>
+    <link href="http://brucy.cn/2019/11/17/Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%BC%96%E7%A8%8B/"/>
+    <id>http://brucy.cn/2019/11/17/Spring注解驱动编程/</id>
+    <published>2019-11-17T02:41:25.000Z</published>
+    <updated>2019-11-17T03:24:28.935Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;注解的派生性&quot;&gt;&lt;a href=&quot;#注解的派生性&quot; class=&quot;headerlink&quot; title=&quot;注解的派生性&quot;&gt;&lt;/a&gt;注解的派生性&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;注解有派生性&lt;/strong&gt;：在SpringFramework 4.0
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>归并排序（递归）</title>
+    <link href="http://brucy.cn/2019/11/16/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89/"/>
+    <id>http://brucy.cn/2019/11/16/归并排序（递归）/</id>
+    <published>2019-11-16T05:03:54.000Z</published>
+    <updated>2019-11-16T05:09:22.889Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;p&gt;title: 归并排序&lt;br&gt;date: 2019-10-26 10:56:30&lt;br&gt;tags: 算法&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;归并排序&quot;&gt;&lt;a href=&quot;#归并排序&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TCP三次握手与四次挥手</title>
+    <link href="http://brucy.cn/2019/11/16/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
+    <id>http://brucy.cn/2019/11/16/TCP三次握手与四次挥手/</id>
+    <published>2019-11-16T04:59:17.000Z</published>
+    <updated>2019-11-16T05:00:59.299Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;TCP-概述&quot;&gt;&lt;a href=&quot;#TCP-概述&quot; class=&quot;headerlink&quot; title=&quot;TCP 概述&quot;&gt;&lt;/a&gt;TCP
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://brucy.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>类的执行过程</title>
+    <link href="http://brucy.cn/2019/11/16/%E7%B1%BB%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/"/>
+    <id>http://brucy.cn/2019/11/16/类的执行过程/</id>
+    <published>2019-11-16T04:58:25.000Z</published>
+    <updated>2019-11-16T04:58:25.311Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ArrayList源码详解</title>
+    <link href="http://brucy.cn/2019/11/13/ArrayList%E6%BA%90%E7%A0%81%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://brucy.cn/2019/11/13/ArrayList源码详解/</id>
+    <published>2019-11-13T13:18:41.000Z</published>
+    <updated>2019-11-13T13:18:42.032Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java8-Lambda表达式与函数式接口</title>
+    <link href="http://brucy.cn/2019/11/08/Java8-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/"/>
+    <id>http://brucy.cn/2019/11/08/Java8-Lambda表达式与函数式接口/</id>
+    <published>2019-11-08T06:47:20.000Z</published>
+    <updated>2019-11-08T06:47:49.392Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Lambda表达式&quot;&gt;&lt;a href=&quot;#Lambda表达式&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式&quot;&gt;&lt;/a&gt;Lambda表达式&lt;/h2&gt;&lt;p&gt;Lambda表达式（也叫做闭包）是Java
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式—-创建型模式</title>
+    <link href="http://brucy.cn/2019/11/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://brucy.cn/2019/11/06/设计模式—-创建型模式/</id>
+    <published>2019-11-06T07:26:46.000Z</published>
+    <updated>2019-11-06T07:27:31.347Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;创建型模式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;作用：主要用于创建对象，为类实例化对象提供指南&lt;/p&gt;
+&lt;p&gt;创建型模式，共五种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#FactoryMethord&quot;&gt;工厂方法模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://brucy.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式-设计模式的七大原则</title>
+    <link href="http://brucy.cn/2019/11/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
+    <id>http://brucy.cn/2019/11/06/设计模式-设计模式的七大原则/</id>
+    <published>2019-11-06T01:38:47.000Z</published>
+    <updated>2019-11-06T07:27:40.157Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;设计模式的七大原则&quot;&gt;&lt;a href=&quot;#设计模式的七大原则&quot; class=&quot;headerlink&quot; title=&quot;设计模式的七大原则&quot;&gt;&lt;/a&gt;设计模式的七大原则&lt;/h2&gt;&lt;h3 id=&quot;学习设计模式的建议&quot;&gt;&lt;a href=&quot;#学习设计模式的建议&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://brucy.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis</title>
+    <link href="http://brucy.cn/2019/11/03/Mybatis/"/>
+    <id>http://brucy.cn/2019/11/03/Mybatis/</id>
+    <published>2019-11-03T13:42:11.000Z</published>
+    <updated>2019-11-04T13:35:30.737Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;What-is-MyBatis&quot;&gt;&lt;a href=&quot;#What-is-MyBatis&quot; class=&quot;headerlink&quot; title=&quot;What is MyBatis?&quot;&gt;&lt;/a&gt;What is
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Object类</title>
+    <link href="http://brucy.cn/2019/10/31/Object%E7%B1%BB/"/>
+    <id>http://brucy.cn/2019/10/31/Object类/</id>
+    <published>2019-10-31T12:08:51.000Z</published>
+    <updated>2019-11-06T06:17:15.815Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Object&quot;&gt;&lt;a href=&quot;#Object&quot; class=&quot;headerlink&quot; title=&quot;Object&quot;&gt;&lt;/a&gt;Object&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;object的概述：
+   A、 object是所有的类父类
+   B、
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ClassLoader</title>
+    <link href="http://brucy.cn/2019/10/28/ClassLoader/"/>
+    <id>http://brucy.cn/2019/10/28/ClassLoader/</id>
+    <published>2019-10-28T02:51:51.000Z</published>
+    <updated>2019-10-29T13:20:55.102Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、ClassLoader-定义&quot;&gt;&lt;a href=&quot;#一、ClassLoader-定义&quot; class=&quot;headerlink&quot; title=&quot;一、ClassLoader 定义&quot;&gt;&lt;/a&gt;一、ClassLoader
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java-反射</title>
+    <link href="http://brucy.cn/2019/10/27/java-%E5%8F%8D%E5%B0%84/"/>
+    <id>http://brucy.cn/2019/10/27/java-反射/</id>
+    <published>2019-10-27T09:30:54.000Z</published>
+    <updated>2019-10-27T12:59:04.594Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、定义&quot;&gt;&lt;a href=&quot;#一、定义&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo常用命令</title>
+    <link href="http://brucy.cn/2019/10/26/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://brucy.cn/2019/10/26/hexo常用命令/</id>
+    <published>2019-10-26T02:57:22.000Z</published>
+    <updated>2019-10-26T04:16:33.898Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Hexo常用命令&quot;&gt;&lt;a href=&quot;#Hexo常用命令&quot; class=&quot;headerlink&quot; title=&quot;Hexo常用命令&quot;&gt;&lt;/a&gt;Hexo常用命令&lt;/h1&gt;&lt;h2 id=&quot;一、安装、升级&quot;&gt;&lt;a href=&quot;#一、安装、升级&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

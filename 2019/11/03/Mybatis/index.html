@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Mybatis | Bruce</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bruce";
+  mashiro_option.author_name = "";
+  mashiro_option.site_url = "http://brucy.cn";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/505/505-bigskin-1.jpg,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/169/169-bigskin-5.jpg,https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture,https://api.ixiaowai.cn/gqapi/gqapi.php,https://api.ixiaowai.cn/api/api.php,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/506/506-bigskin-1.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big145016.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big121011.jpg,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp,/images/66.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <!-- 下面这个div是一个位于首页中间的圆形头像 -->
+      <!-- <div class="header-tou">
+        <a href="http://brucy.cn">
+          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+        </a>
+      </div> -->
+      <h1 class="center-text glitch is-glitching Ubuntu-font" data-text='"Hello Word"'>
+        "Hello Word"
+      </h1>
+      <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://v1.jinrishici.com/all.txt');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            var gushici = document.getElementById('gushici');
+            gushici.innerText = xhr.responseText;
+          }
+        };
+        xhr.send();
+      </script>
+      
+      <div class="header-info">
+        <p id='gushici'> 驽马十驾功在不舍</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bruce</span>
+            <span class="shironeko"></span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    学习资源
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书籍
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+                    专题
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">Mybatis</h1>
+            <p class="entry-census">&nbsp;·&nbsp;2019-11-3&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h2 id="What-is-MyBatis"><a href="#What-is-MyBatis" class="headerlink" title="What is MyBatis?"></a>What is MyBatis?</h2><blockquote>
+<p>MyBatis is a first class persistence framework with support for custom SQL, stored procedures and advanced mappings. MyBatis eliminates almost all of the JDBC code and manual setting of parameters and retrieval of results. MyBatis can use simple XML or Annotations for configuration and map primitives, Map interfaces and Java POJOs (Plain Old Java Objects) to database records.</p>
+</blockquote>
+<blockquote>
+<p>MyBatis是一个一流的持久性框架，支持自定义SQL、存储过程和高级映射。<br>MyBatis消除了几乎所有的JDBC代码和手动设置参数和检索结果。<br>MyBatis可以使用简单的XML或注释进行配置，并将原语、映射接口和Java pojo(普通的旧Java对象)映射到数据库记录。</p>
+</blockquote>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title=" Configuration "></a><a id="Configuration"> Configuration </a></h2><p>MyBatis Configuration 包含对MyBatis行为有显著影响的设置和属性。 文档的层级结构如下：</p>
+<ul>
+<li><a href="#Configuration">configuration</a><ul>
+<li><a href="#properties">properties</a></li>
+<li><a href="#settings">settings</a></li>
+<li><a href="#typeAliases">typeAliases</a></li>
+<li><a href="#typeHandlers">typeHandlers</a></li>
+<li><a href="#objectFactory">objectFactory</a></li>
+<li><a href="#plugins">plugins</a></li>
+<li><a href="#environments">environments</a><ul>
+<li><a href="#environment">environment</a></li>
+<li><a href="#transactionManager">transactionManager</a></li>
+<li><a href="#dataSource">dataSource</a></li>
+</ul>
+</li>
+<li><a href="#databaseIdProvider">databaseIdProvider</a></li>
+<li><a href="#mappers">mappers</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="properties"><a href="#properties" class="headerlink" title=" properties "></a><a id="properties"> properties </a></h2><p>这些是可外部化的、可替换的属性，可以在典型的Java属性文件实例中配置，也可以通过properties元素的子元素传递。例如：</p>
+<pre><code>&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;
+  &lt;property name=&quot;username&quot; value=&quot;dev_user&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;F2Fa3!33TYyg&quot;/&gt;
+&lt;/properties&gt;</code></pre><p>然后可以在整个配置文件中使用这些属性来替换需要动态配置的值。例如：</p>
+<pre><code>&lt;dataSource type=&quot;POOLED&quot;&gt;
+  &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+  &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;
+&lt;/dataSource&gt;</code></pre><p>本例中的用户名和密码将被properties元素中设置的值替换。driver和url将被替换为在 config.properties 文件中设置的值。这为配置提供了许多选项。</p>
+<p>Properties 也可以传递给SqlSessionFactoryBuilder.build()方法，例如：</p>
+<pre><code>SqlSessionFactory factory =
+  sqlSessionFactoryBuilder.build(reader, props);
+
+// ... or ...
+
+SqlSessionFactory factory =
+  new SqlSessionFactoryBuilder.build(reader, environment, props);</code></pre><p>如果一个属性存在于这些位置中的一个以上，MyBatis将按以下顺序加载它们：</p>
+<ul>
+<li>首先读取 Properties 中指定的 properties 元素,    </li>
+<li>第二读取 Properties 从 classpath 加载的资源或url属性的 properties 元素,并覆盖任何已经指定的重复属性,</li>
+<li>最后读取作为方法参数传递的属性,并覆盖任何从 properties body 和 resource/url属性加载的 重复属性。</li>
+</ul>
+<p>因此，优先级最高的属性是那些作为<strong>方法参数传入的属性</strong>，然后是<strong>resource/url属性</strong>，最后是<strong>properties元素主体中指定的属性</strong>。</p>
+<p>在 MyBatis 3.4.2 之后，你可以在占位符中指定一个默认值，如下:</p>
+<pre><code>&lt;dataSource type=&quot;POOLED&quot;&gt;
+  &lt;!-- ... --&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${username:ut_user}&quot;/&gt; &lt;!-- 如果“username”属性不存在，用户名将变为“ut_user” --&gt;
+&lt;/dataSource&gt;</code></pre><p>此功能在默认情况下是禁用的。如果你在占位符中指定了一个默认值，你应该通过添加一个特殊的属性来启用这个特性，如下所示:</p>
+<pre><code>&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;
+  &lt;!-- ... --&gt;
+  &lt;property name=&quot;org.apache.ibatis.parsing.PropertyParser.enable-default-value&quot; value=&quot;true&quot;/&gt; &lt;!-- 启用这个特性 --&gt;
+&lt;/properties&gt;</code></pre><p><strong>注意</strong>，属性键中的“:”字符(例如db:username)和SQL语句中的三元运算符(例如${tableName  != null ? tableName : ‘global_constants’})将会与默认属性产生冲突。</p>
+<p>如果使用其中之一并希望使用默认属性值，则必须通过添加此特殊属性来更改默认值分隔符。</p>
+<pre><code>&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;
+  &lt;!-- ... --&gt;
+  &lt;property name=&quot;org.apache.ibatis.parsing.PropertyParser.default-value-separator&quot; value=&quot;?:&quot;/&gt; &lt;!-- 更改分隔符的默认值separator --&gt;
+&lt;/properties&gt;
+&lt;dataSource type=&quot;POOLED&quot;&gt;
+  &lt;!-- ... --&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${db:username?:ut_user}&quot;/&gt;
+&lt;/dataSource&gt;</code></pre><h2 id="settings"><a href="#settings" class="headerlink" title=" settings "></a><a id="settings"> settings </a></h2><p>Setting全局配置，它们修改了MyBatis在运行时的行为方式。下表描述了设置、它们的含义和默认值。</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>描述</th>
+<th>可选项</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cacheEnabled</td>
+<td>配置全局缓存</td>
+<td>true / false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>lazyLoadingEnabled</td>
+<td>延迟加载。对于特定关系，可以使用fetchType属性替换此值。</td>
+<td>true 、 false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<p>设置元素完全配置的一个例子如下:</p>
+<pre><code>&lt;settings&gt;
+  &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
+  &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;
+  &lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot;/&gt;
+  &lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot;/&gt;
+  &lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot;/&gt;
+  &lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot;/&gt;
+  &lt;setting name=&quot;autoMappingUnknownColumnBehavior&quot; value=&quot;WARNING&quot;/&gt;
+  &lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot;/&gt;
+  &lt;setting name=&quot;defaultStatementTimeout&quot; value=&quot;25&quot;/&gt;
+  &lt;setting name=&quot;defaultFetchSize&quot; value=&quot;100&quot;/&gt;
+  &lt;setting name=&quot;safeRowBoundsEnabled&quot; value=&quot;false&quot;/&gt;
+  &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;false&quot;/&gt;
+  &lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot;/&gt;
+  &lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;OTHER&quot;/&gt;
+  &lt;setting name=&quot;lazyLoadTriggerMethods&quot;
+    value=&quot;equals,clone,hashCode,toString&quot;/&gt;
+&lt;/settings&gt;</code></pre><h2 id="typeAliases"><a href="#typeAliases" class="headerlink" title=" typeAliases "></a><a id="typeAliases"> typeAliases </a></h2><p>类型别名是Java类型的短名称。它只与XML配置相关，它的存在只是为了减少完全限定类名的冗余类型化。 例如:</p>
+<pre><code>&lt;typeAliases&gt;
+  &lt;typeAlias alias=&quot;Author&quot; type=&quot;domain.blog.Author&quot;/&gt;
+  &lt;typeAlias alias=&quot;Blog&quot; type=&quot;domain.blog.Blog&quot;/&gt;
+  &lt;typeAlias alias=&quot;Comment&quot; type=&quot;domain.blog.Comment&quot;/&gt;
+  &lt;typeAlias alias=&quot;Post&quot; type=&quot;domain.blog.Post&quot;/&gt;
+  &lt;typeAlias alias=&quot;Section&quot; type=&quot;domain.blog.Section&quot;/&gt;
+  &lt;typeAlias alias=&quot;Tag&quot; type=&quot;domain.blog.Tag&quot;/&gt;
+&lt;/typeAliases&gt;</code></pre><p>别名可以全局使用。<br>您还可以指定一个包，MyBatis将在其中搜索bean。例如:</p>
+<pre><code>&lt;typeAliases&gt;
+  &lt;package name=&quot;domain.blog&quot;/&gt;
+&lt;/typeAliases&gt;</code></pre><p>在domain.blog中找到的任何bean，如果没有找到任何注解，将使用bean的非大写限定类名注册为别名。这是domain.blog。domain.blog.Author 将被注册为author。如果找到@Alias注释，它的值会用作别名。请看下面的例子:</p>
+<pre><code>@Alias(&quot;author&quot;)
+public class Author {
+    ...
+}</code></pre><p>常见Java类型有许多内置的类型别名。它们都不区分大小写，请注意由于重载名称而对原语的特殊处理。</p>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Mapped Type</th>
+<th>Alias</th>
+<th>Mapped Type</th>
+<th>Alias</th>
+<th>Mapped Type</th>
+<th>Alias</th>
+<th>Mapped Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_byte</td>
+<td>byte</td>
+<td>_long</td>
+<td>long</td>
+<td>_short</td>
+<td>short</td>
+<td>_int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>_integer</td>
+<td>int</td>
+<td>_double</td>
+<td>double</td>
+<td>_float</td>
+<td>float</td>
+<td>_boolean</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>string</td>
+<td>String</td>
+<td>byte</td>
+<td>Byte</td>
+<td>long</td>
+<td>Long</td>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+<td>integer</td>
+<td>Integer</td>
+<td>double</td>
+<td>Double</td>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+<td>date</td>
+<td>Date</td>
+<td>decimal</td>
+<td>BigDecimal</td>
+<td>bigdecimal</td>
+<td>BigDecimal</td>
+</tr>
+<tr>
+<td>object</td>
+<td>Object</td>
+<td>map</td>
+<td>Map</td>
+<td>hashmap</td>
+<td>HashMap</td>
+<td>list</td>
+<td>List</td>
+</tr>
+<tr>
+<td>arraylist</td>
+<td>ArrayList</td>
+<td>collection</td>
+<td>Collection</td>
+<td>iterator</td>
+<td>Iterator</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="typeHandlers"><a href="#typeHandlers" class="headerlink" title=" typeHandlers "></a><a id="typeHandlers"> typeHandlers </a></h2><p>每当MyBatis在PreparedStatement上设置一个参数或从ResultSet检索一个值时，都会使用一个<strong>类型处理器</strong>以适合Java类型的方式检索该值。Java类型与数据库类型之间的映射，即JavaType与jdbcType之间的映射。下表描述了默认的TypeHandlers。</p>
+<p>注意:从3.4.5版开始，MyBatis默认支持JSR-310(日期和时间API)。</p>
+<table>
+<thead>
+<tr>
+<th>Type Handler</th>
+<th>Java Types</th>
+<th>JDBC Types</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BooleanTypeHandler</td>
+<td>java.lang.Boolean, boolean</td>
+<td>Any compatible BOOLEAN</td>
+</tr>
+<tr>
+<td>ByteTypeHandler</td>
+<td>java.lang.Byte, byte</td>
+<td>Any compatible NUMERIC or BYTE</td>
+</tr>
+<tr>
+<td>ShortTypeHandler</td>
+<td>java.lang.Short, short</td>
+<td>Any compatible NUMERIC or SMALLINT</td>
+</tr>
+<tr>
+<td>IntegerTypeHandler</td>
+<td>java.lang.Integer, int</td>
+<td>Any compatible NUMERIC or INTEGER</td>
+</tr>
+<tr>
+<td>LongTypeHandler</td>
+<td>java.lang.Long, long</td>
+<td>Any compatible NUMERIC or BIGINT</td>
+</tr>
+<tr>
+<td>FloatTypeHandler</td>
+<td>java.lang.Float, float</td>
+<td>Any compatible NUMERIC or FLOAT</td>
+</tr>
+<tr>
+<td>DoubleTypeHandler</td>
+<td>java.lang.Double, double</td>
+<td>Any compatible NUMERIC or DOUBLE</td>
+</tr>
+<tr>
+<td>BigDecimalTypeHandler</td>
+<td>java.math.BigDecimal</td>
+<td>Any compatible NUMERIC or DECIMAL</td>
+</tr>
+<tr>
+<td>StringTypeHandler</td>
+<td>java.lang.String</td>
+<td>CHAR, VARCHAR</td>
+</tr>
+<tr>
+<td>ClobReaderTypeHandler</td>
+<td>java.io.Reader</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ClobTypeHandler</td>
+<td>java.lang.String</td>
+<td>CLOB, LONGVARCHAR</td>
+</tr>
+<tr>
+<td>NStringTypeHandler</td>
+<td>java.lang.String</td>
+<td>NVARCHAR, NCHAR</td>
+</tr>
+<tr>
+<td>NClobTypeHandler</td>
+<td>java.lang.String</td>
+<td>NCLOB</td>
+</tr>
+<tr>
+<td>BlobInputStreamTypeHandler</td>
+<td>java.io.InputStream</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ByteArrayTypeHandler</td>
+<td>byte[]</td>
+<td>Any compatible byte stream type</td>
+</tr>
+<tr>
+<td>BlobTypeHandler</td>
+<td>byte[]</td>
+<td>BLOB, LONGVARBINARY</td>
+</tr>
+<tr>
+<td>DateTypeHandler</td>
+<td>java.util.Date</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>DateOnlyTypeHandler</td>
+<td>java.util.Date</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>TimeOnlyTypeHandler</td>
+<td>java.util.Date</td>
+<td>mestamp</td>
+</tr>
+<tr>
+<td>SqlDateTypeHandler</td>
+<td>java.sql.Date</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>SqlTimeTypeHandler</td>
+<td>java.sql.Time</td>
+<td>TIME</td>
+</tr>
+<tr>
+<td>ObjectTypeHandler</td>
+<td>Any</td>
+<td>OTHER, or unspecified</td>
+</tr>
+<tr>
+<td>EnumTypeHandler</td>
+<td>Enumeration Type</td>
+<td>VARCHAR any string compatible type, as the code is stored (not index).</td>
+</tr>
+<tr>
+<td>EnumOrdinalTypeHandler</td>
+<td>Enumeration Type</td>
+<td>Any compatible NUMERIC or DOUBLE, as the position is stored (not the code itself).</td>
+</tr>
+<tr>
+<td>SqlxmlTypeHandler</td>
+<td>java.lang.String</td>
+<td>SQLXML</td>
+</tr>
+<tr>
+<td>InstantTypeHandler</td>
+<td>java.time.Instant</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>LocalDateTimeTypeHandler</td>
+<td>java.time.LocalDateTime</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>LocalDateTypeHandler</td>
+<td>java.time.LocalDate</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>LocalTimeTypeHandler</td>
+<td>java.time.LocalTime</td>
+<td>TIME</td>
+</tr>
+<tr>
+<td>OffsetDateTimeTypeHandler</td>
+<td>java.time.OffsetDateTime</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>OffsetTimeTypeHandler</td>
+<td>java.time.OffsetTime</td>
+<td>TIME</td>
+</tr>
+<tr>
+<td>ZonedDateTimeTypeHandler</td>
+<td>java.time.ZonedDateTime</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>YearTypeHandler</td>
+<td>java.time.Year</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MonthTypeHandler</td>
+<td>java.time.Month</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>YearMonthTypeHandler</td>
+<td>java.time.YearMonth</td>
+<td>VARCHAR or LONGVARCHAR</td>
+</tr>
+<tr>
+<td>JapaneseDateTypeHandler</td>
+<td>java.time.chrono.JapaneseDate</td>
+<td>DATE</td>
+</tr>
+</tbody></table>
+<p>您可以覆盖TypeHandler，也可以创建自己的TypeHandler来处理不受支持的或非标准的类型。为此，请<strong>实现接口org.apache.ibatis.type.TypeHandler</strong>或<strong>扩展类org.apache.ibatis.type.BaseTypeHandler</strong>并可选地将其映射到JDBC类型。例如:</p>
+<pre><code>// ExampleTypeHandler.java
+@MappedJdbcTypes(JdbcType.VARCHAR)
+public class ExampleTypeHandler extends BaseTypeHandler&lt;String&gt; {
+
+  @Override
+  public void setNonNullParameter(PreparedStatement ps, int i,
+    String parameter, JdbcType jdbcType) throws SQLException {
+    ps.setString(i, parameter);
+  }
+
+  @Override
+  public String getNullableResult(ResultSet rs, String columnName)
+    throws SQLException {
+    return rs.getString(columnName);
+  }
+
+  @Override
+  public String getNullableResult(ResultSet rs, int columnIndex)
+    throws SQLException {
+    return rs.getString(columnIndex);
+  }
+
+  @Override
+  public String getNullableResult(CallableStatement cs, int columnIndex)
+    throws SQLException {
+    return cs.getString(columnIndex);
+  }
+}</code></pre><pre><code>&lt;!-- mybatis-config.xml --&gt;
+&lt;typeHandlers&gt;
+  &lt;typeHandler handler=&quot;org.mybatis.example.ExampleTypeHandler&quot;/&gt;
+&lt;/typeHandlers&gt;</code></pre><p>使用这样的TypeHandler将覆盖现有的用于Java字符串属性、VARCHAR参数和查询结果的TypeHandler。<br>请注意，MyBatis不内省数据库元数据来确定类型，因此必须在参数和结果映射中指定VARCHAR字段，以便在正确的类型处理程序中进行hook。这是因为在执行语句之前MyBatis并不知道数据类型。<br>Using such a TypeHandler would override the existing type handler for Java String properties and VARCHAR parameters and results.</p>
+<p>Note that MyBatis does not introspect upon the database metadata to determine the type, so you must specify that it’s a VARCHAR field in the parameter and result mappings to hook in the correct type handler. This is due to the fact that MyBatis is unaware of the data type until the statement is executed.</p>
+<p>MyBatis将通过自省它的泛型类型来知道你想用这个类型处理器处理的Java类型，但是你可以通过两种方式来覆盖这个行为:<br>MyBatis will know the Java type that you want to handle with this TypeHandler by introspecting its generic type, but you can override this behavior by two means:</p>
+<ul>
+<li>向typeHandler元素添加javaType属性(例如:javaType=”String”)</li>
+<li>向TypeHandler类添加<strong>@MappedTypes</strong>注解，以指定与其关联的Java类型列表。如果已经指定了javaType属性，则该注释将被忽略。</li>
+</ul>
+<p>关联的JDBC类型可以通过两种方式指定:</p>
+<ul>
+<li>向typeHandler元素添加jdbcType属性（例如：jdbcType =“ VARCHAR”）。</li>
+<li>将<strong>@MappedJdbcTypes</strong>注解添加到TypeHandler类中，以指定与其关联的JDBC类型列表。如果已经指定了jdbcType属性，则将忽略此注解</li>
+</ul>
+<p>在决定要在ResultMap中使用哪种TypeHandler时，Java类型是已知的（从结果类型中），但是JDBC类型是未知的。因此，MyBatis使用组合 javaType = [TheJavaType]，jdbcType = null来选择TypeHandler。这意味着，使用@MappedJdbcTypes注解会限制TypeHandler的范围，除非明确设置，否则无法在ResultMap中使用。为了使可用于在使用一个类型处理器的ResultMap，设置includeNullJdbcType = true 的@MappedJdbcTypes注释。<br>由于MyBatis的3.4.0但是，如果单 类型处理器被注册为处理Java类型，它会被默认使用的ResultMap S使用该Java类型（即，即使没有includeNullJdbcType = TRUE）。<br>When deciding which TypeHandler to use in a ResultMap, the Java type is known (from the result type), but the JDBC type is unknown. MyBatis therefore uses the combination javaType=[TheJavaType], jdbcType=null to choose a TypeHandler. This means that using a @MappedJdbcTypes annotation restricts the scope of a TypeHandler and makes it unavailable for use in ResultMaps unless explicity set. To make a TypeHandler available for use in a ResultMap, set includeNullJdbcType=true on the @MappedJdbcTypes annotation.<br>Since Mybatis 3.4.0 however, if a single TypeHandler is registered to handle a Java type, it will be used by default in ResultMaps using this Java type (i.e. even without includeNullJdbcType=true).</p>
+<p>And finally you can let MyBatis search for your TypeHandlers:</p>
+<pre><code>&lt;!-- mybatis-config.xml --&gt;
+&lt;typeHandlers&gt;
+  &lt;package name=&quot;org.mybatis.example&quot;/&gt;
+&lt;/typeHandlers&gt;</code></pre><p>Note that when using the autodiscovery feature JDBC types can only be specified with annotations.</p>
+<p>You can create a generic TypeHandler that is able to handle more than one class. For that purpose add a constructor that receives the class as a parameter and MyBatis will pass the actual class when constructing the TypeHandler.</p>
+<pre><code>//GenericTypeHandler.java
+public class GenericTypeHandler&lt;E extends MyObject&gt; extends BaseTypeHandler&lt;E&gt; {
+
+  private Class&lt;E&gt; type;
+
+  public GenericTypeHandler(Class&lt;E&gt; type) {
+    if (type == null) throw new IllegalArgumentException(&quot;Type argument cannot be null&quot;);
+    this.type = type;
+  }
+  ...</code></pre><p>EnumTypeHandler和EnumOrdinalTypeHandler是通用TypeHandler。</p>
+<h2 id="Handling-Enums"><a href="#Handling-Enums" class="headerlink" title="Handling Enums"></a>Handling Enums</h2><p>如果要映射Enum，则需要使用 EnumTypeHandler或EnumOrdinalTypeHandler。</p>
+<p>注意EnumTypeHandler的特殊之处在于，它与其他处理程序不同，它不仅处理一个特定的类，而且还处理任何扩展Enum的类。<br>Note EnumTypeHandler is special in the sense that unlike other handlers, it does not handle just one specific class, but any class that extends Enum<br>However, we may not want to store names. Our DBA may insist on an integer code instead. That’s just as easy: add EnumOrdinalTypeHandler to the typeHandlers in your config file, and now each RoundingMode will be mapped to an integer using its ordinal value.</p>
+<pre><code>&lt;!-- mybatis-config.xml --&gt;
+&lt;typeHandlers&gt;
+  &lt;typeHandler handler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot;
+    javaType=&quot;java.math.RoundingMode&quot;/&gt;
+&lt;/typeHandlers&gt;</code></pre><p>But what if you want to map the same Enum to a string in one place and to integer in another?</p>
+<p>The auto-mapper will automatically use EnumOrdinalTypeHandler, so if we want to go back to using plain old ordinary EnumTypeHandler, we have to tell it, by explicitly setting the type handler to use for those SQL statements.</p>
+<p>(Mapper files aren’t covered until the next section, so if this is your first time reading through the documentation, you may want to skip this for now and come back to it later.)</p>
+<pre><code>&lt;!DOCTYPE mapper
+    PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;org.apache.ibatis.submitted.rounding.Mapper&quot;&gt;
+    &lt;resultMap type=&quot;org.apache.ibatis.submitted.rounding.User&quot; id=&quot;usermap&quot;&gt;
+        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+        &lt;result column=&quot;funkyNumber&quot; property=&quot;funkyNumber&quot;/&gt;
+        &lt;result column=&quot;roundingMode&quot; property=&quot;roundingMode&quot;/&gt;
+    &lt;/resultMap&gt;
+
+    &lt;select id=&quot;getUser&quot; resultMap=&quot;usermap&quot;&gt;
+        select * from users
+    &lt;/select&gt;
+    &lt;insert id=&quot;insert&quot;&gt;
+        insert into users (id, name, funkyNumber, roundingMode) values (
+            #{id}, #{name}, #{funkyNumber}, #{roundingMode}
+        )
+    &lt;/insert&gt;
+
+    &lt;resultMap type=&quot;org.apache.ibatis.submitted.rounding.User&quot; id=&quot;usermap2&quot;&gt;
+        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+        &lt;result column=&quot;funkyNumber&quot; property=&quot;funkyNumber&quot;/&gt;
+        &lt;result column=&quot;roundingMode&quot; property=&quot;roundingMode&quot;
+         typeHandler=&quot;org.apache.ibatis.type.EnumTypeHandler&quot;/&gt;
+    &lt;/resultMap&gt;
+    &lt;select id=&quot;getUser2&quot; resultMap=&quot;usermap2&quot;&gt;
+        select * from users2
+    &lt;/select&gt;
+    &lt;insert id=&quot;insert2&quot;&gt;
+        insert into users2 (id, name, funkyNumber, roundingMode) values (
+            #{id}, #{name}, #{funkyNumber}, #{roundingMode, typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+        )
+    &lt;/insert&gt;
+
+&lt;/mapper&gt;</code></pre><p>Note that this forces us to use a resultMap instead of a resultType in our select statements.</p>
+<h2 id="objectFactory"><a href="#objectFactory" class="headerlink" title="objectFactory"></a>objectFactory</h2><p>MyBatis每次都会使用ObjectFactory实例来创建result对象实例。默认的 ObjectFactory 除了使用默认的构造函数实例化目标类外，如果存在参数映射，则使用参数化的构造函数实例化目标类。如果要覆盖ObjectFactory的默认行为，则可以创建自己的行为。例如：</p>
+<pre><code>// ExampleObjectFactory.java
+public class ExampleObjectFactory extends DefaultObjectFactory {
+  @Override
+  public &lt;T&gt; T create(Class&lt;T&gt; type) {
+    return super.create(type);
+  }
+
+  @Override
+  public &lt;T&gt; T create(Class&lt;T&gt; type, List&lt;Class&lt;?&gt;&gt; constructorArgTypes, List&lt;Object&gt; constructorArgs) {
+    return super.create(type, constructorArgTypes, constructorArgs);
+  }
+
+  @Override
+  public void setProperties(Properties properties) {
+    super.setProperties(properties);
+  }
+
+  @Override
+  public &lt;T&gt; boolean isCollection(Class&lt;T&gt; type) {
+    return Collection.class.isAssignableFrom(type);
+  }}</code></pre><pre><code>&lt;!-- mybatis-config.xml --&gt;
+&lt;objectFactory type=&quot;org.mybatis.example.ExampleObjectFactory&quot;&gt;
+  &lt;property name=&quot;someProperty&quot; value=&quot;100&quot;/&gt;
+&lt;/objectFactory&gt;</code></pre><p>ObjectFactory接口非常简单。<br>它包含两种创建方法，一种用于处理默认构造函数，另一种用于处理参数化构造函数。最后，可以使用setProperties方法配置ObjectFactory。在初始化ObjectFactory实例后，把在ObjectFactory的主体内定义的属性 传递给setProperties方法。</p>
+<h2 id="plugins"><a href="#plugins" class="headerlink" title=" plugins "></a><a id="plugins"> plugins </a></h2><p>MyBatis允许您在映射语句的执行过程中的某些点拦截调用。默认情况下，MyBatis允许插件拦截以下方法的调用：</p>
+<ul>
+<li>Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</li>
+<li>ParameterHandler (getParameterObject, setParameters)</li>
+<li>ResultSetHandler (handleResultSets, handleOutputParameters)</li>
+<li>StatementHandler (prepare, parameterize, batch, update, query)</li>
+</ul>
+<p>如果尝试修改或覆盖给定方法的行为，则很可能会破坏MyBatis的核心。这些是底层的类和方法，因此请谨慎使用插件。<br>，使用插件非常简单。只需实现Interceptor接口，并指定要拦截的标志即可。</p>
+<pre><code>// ExamplePlugin.java
+@Intercepts({@Signature(
+  type= Executor.class,
+  method = &quot;update&quot;,
+  args = {MappedStatement.class,Object.class})})
+public class ExamplePlugin implements Interceptor {
+  private Properties properties = new Properties();
+
+  @Override
+  public Object intercept(Invocation invocation) throws Throwable {
+    // implement pre-processing if needed
+    Object returnObject = invocation.proceed();
+    // implement post-processing if needed
+    return returnObject;
+  }
+
+  @Override
+  public void setProperties(Properties properties) {
+    this.properties = properties;
+  }
+}</code></pre><pre><code>&lt;!-- mybatis-config.xml --&gt;
+&lt;plugins&gt;
+  &lt;plugin interceptor=&quot;org.mybatis.example.ExamplePlugin&quot;&gt;
+    &lt;property name=&quot;someProperty&quot; value=&quot;100&quot;/&gt;
+  &lt;/plugin&gt;
+&lt;/plugins&gt;</code></pre><p>上面的插件将拦截Executor实例上对“ update”方法的所有调用。<br>注意覆盖配置类<br>除了使用插件修改MyBatis核心行为外，您还可以完全覆盖Configuration类。只需对其进行扩展并覆盖其中的任何方法，然后将其传递给SqlSessionFactoryBuilder.build（myConfig）方法的调用即可 。这可能会对MyBatis的行为产生严重影响，因此请谨慎使用。</p>
+<h2 id="environments"><a href="#environments" class="headerlink" title=" environments "></a><a id="environments"> environments </a></h2><p>MyBatis可以配置多个环境。<br>这有助于您将SQL映射应用到多个数据库。<br>例如，您的开发、测试和生产环境可能有不同的配置。<br>或者，您可能有多个共享相同模式的生产数据库，您希望对这两个数据库使用相同的SQL映射。</p>
+<p><strong>虽然您可以配置多个环境，但是您只能为每个SqlSessionFactory实例选择一个</strong>。</p>
+<p>因此，如果希望连接两个数据库，需要创建两个SqlSessionFactory实例。对于三个数据库，您需要三个实例。</p>
+<p>每个数据库一个SqlSessionFactory实例来指定要构建的环境，只需将SqlSessionFactory实例作为一个可选参数传递给SqlSessionFactoryBuilder即可。<br>接受环境的两个签名是:</p>
+<pre><code>SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, environment);
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, environment, properties);</code></pre><p>如果省略环境，则加载默认环境，如下所示:</p>
+<pre><code>SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, properties);</code></pre><p>environments 配置如下：</p>
+<pre><code>&lt;environments default=&quot;development&quot;&gt;
+  &lt;environment id=&quot;development&quot;&gt;
+    &lt;transactionManager type=&quot;JDBC&quot;&gt;
+      &lt;property name=&quot;...&quot; value=&quot;...&quot;/&gt;
+    &lt;/transactionManager&gt;
+    &lt;dataSource type=&quot;POOLED&quot;&gt;
+      &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+      &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+      &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+      &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;
+    &lt;/dataSource&gt;
+  &lt;/environment&gt;
+&lt;/environments&gt;</code></pre><p>注意这里的关键部分:</p>
+<ul>
+<li><strong>默认环境 ID (e.g. default=”development”)</strong></li>
+<li><strong>environment 的 ID (e.g. id=”development”)</strong> </li>
+<li><strong>TransactionManager(事务管理器)配置 (e.g. type=”JDBC”)</strong></li>
+<li><strong>DataSource  数据源配置 (e.g. type=”POOLED”)</strong></li>
+</ul>
+<p>您可以随意命名 environment ID ，只要确保默认与其中一个匹配即可。</p>
+<h3 id="transactionManager"><a href="#transactionManager" class="headerlink" title=" transactionManager "></a><a id="transactionManager"> transactionManager </a></h3><p>在MyBatis中有两种TransactionManager类型(即type=”[JDBC|MANAGED]”)</p>
+<blockquote>
+<p>JDBC – 此配置只是直接使用JDBC提交和回滚功能。</p>
+</blockquote>
+<blockquote>
+<p>MANAGED – 这种配置几乎什么都不做。它从不提交或回滚连接。它让容器管理事务的整个生命周期(例如：JEE Application Server context)。<br>默认情况下，它会关闭连接。<br>但是，有些容器不希望这样，因此，如果不希望关闭连接，请将“closeConnection”属性设置为false。</p>
+</blockquote>
+<p>例如 :</p>
+<pre><code>&lt;transactionManager type=&quot;MANAGED&quot;&gt;
+  &lt;property name=&quot;closeConnection&quot; value=&quot;false&quot;/&gt;
+&lt;/transactionManager&gt;</code></pre><p>注意，如果您计划在Spring中使用MyBatis，那么不需要配置任何TransactionManager，因为Spring模块将设置自己的一个TransactionManager，覆盖以前设置的任何配置。</p>
+<p>NOTE If you are planning to use MyBatis with Spring there is no need to configure any TransactionManager because the Spring module will set its own one overriding any previously set configuration.</p>
+<p>Neither of these TransactionManager types require any properties. However, they are both Type Aliases, so in other words, instead of using them, you could put your own fully qualified class name or Type Alias that refers to your own implementation of the TransactionFactory interface.</p>
+<p>public interface TransactionFactory {<br>  default void setProperties(Properties props) { // Since 3.5.2, change to default method<br>    // NOP<br>  }<br>  Transaction newTransaction(Connection conn);<br>  Transaction newTransaction(DataSource dataSource, TransactionIsolationLevel level, boolean autoCommit);<br>}<br>Any properties configured in the XML will be passed to the setProperties() method after instantiation. Your implementation would also need to create a Transaction implementation, which is also a very simple interface:</p>
+<p>public interface Transaction {<br>  Connection getConnection() throws SQLException;<br>  void commit() throws SQLException;<br>  void rollback() throws SQLException;<br>  void close() throws SQLException;<br>  Integer getTimeout() throws SQLException;<br>}<br>Using these two interfaces, you can completely customize how MyBatis deals with Transactions.</p>
+<p>dataSource</p>
+<p>The dataSource element configures the source of JDBC Connection objects using the standard JDBC DataSource interface.</p>
+<p>Most MyBatis applications will configure a dataSource as in the example. However, it’s not required. Realize though, that to facilitate Lazy Loading, this dataSource is required.</p>
+<p>There are three built-in dataSource types (i.e. type=”[UNPOOLED|POOLED|JNDI]”):</p>
+<p>UNPOOLED – This implementation of DataSource simply opens and closes a connection each time it is requested. While it’s a bit slower, this is a good choice for simple applications that do not require the performance of immediately available connections. Different databases are also different in this performance area, so for some it may be less important to pool and this configuration will be ideal. The UNPOOLED DataSource has the following properties to configure:</p>
+<p>driver – This is the fully qualified Java class of the JDBC driver (NOT of the DataSource class if your driver includes one).<br>url – This is the JDBC URL for your database instance.<br>username – The database username to log in with.<br>password - The database password to log in with.<br>defaultTransactionIsolationLevel – The default transaction isolation level for connections.<br>defaultNetworkTimeout – The default network timeout value in milliseconds to wait for the database operation to complete. See the API documentation of java.sql.Connection#setNetworkTimeout() for details.<br>Optionally, you can pass properties to the database driver as well. To do this, prefix the properties with driver., for example:</p>
+<p>driver.encoding=UTF8<br>This will pass the property encoding, with the value UTF8, to your database driver via the DriverManager.getConnection(url, driverProperties) method.</p>
+<p>POOLED – This implementation of DataSource pools JDBC Connection objects to avoid the initial connection and authentication time required to create a new Connection instance. This is a popular approach for concurrent web applications to achieve the fastest response.</p>
+<p>In addition to the (UNPOOLED) properties above, there are many more properties that can be used to configure the POOLED datasource:</p>
+<p>poolMaximumActiveConnections – This is the number of active (i.e. in use) connections that can exist at any given time. Default: 10<br>poolMaximumIdleConnections – The number of idle connections that can exist at any given time.<br>poolMaximumCheckoutTime – This is the amount of time that a Connection can be “checked out” of the pool before it will be forcefully returned. Default: 20000ms (i.e. 20 seconds)<br>poolTimeToWait – This is a low level setting that gives the pool a chance to print a log status and re-attempt the acquisition of a connection in the case that it’s taking unusually long (to avoid failing silently forever if the pool is misconfigured). Default: 20000ms (i.e. 20 seconds)<br>poolMaximumLocalBadConnectionTolerance – This is a low level setting about tolerance of bad connections got for any thread. If a thread got a bad connection, it may still have another chance to re-attempt to get another connection which is valid. But the retrying times should not more than the sum of poolMaximumIdleConnections and poolMaximumLocalBadConnectionTolerance. Default: 3 (Since: 3.4.5)<br>poolPingQuery – The Ping Query is sent to the database to validate that a connection is in good working order and is ready to accept requests. The default is “NO PING QUERY SET”, which will cause most database drivers to fail with a decent error message.<br>poolPingEnabled – This enables or disables the ping query. If enabled, you must also set the poolPingQuery property with a valid SQL statement (preferably a very fast one). Default: false.<br>poolPingConnectionsNotUsedFor – This configures how often the poolPingQuery will be used. This can be set to match the typical timeout for a database connection, to avoid unnecessary pings. Default: 0 (i.e. all connections are pinged every time – but only if poolPingEnabled is true of course).<br>JNDI – This implementation of DataSource is intended for use with containers such as EJB or Application Servers that may configure the DataSource centrally or externally and place a reference to it in a JNDI context. This DataSource configuration only requires two properties:</p>
+<p>initial_context – This property is used for the Context lookup from the InitialContext (i.e. initialContext.lookup(initial_context)). This property is optional, and if omitted, then the data_source property will be looked up against the InitialContext directly.<br>data_source – This is the context path where the reference to the instance of the DataSource can be found. It will be looked up against the context returned by the initial_context lookup, or against the InitialContext directly if no initial_context is supplied.<br>Similar to the other DataSource configurations, it’s possible to send properties directly to the InitialContext by prefixing those properties with env., for example:</p>
+<p>env.encoding=UTF8<br>This would send the property encoding with the value of UTF8 to the constructor of the InitialContext upon instantiation.</p>
+<p>You can plug any 3rd party DataSource by implementing the interface org.apache.ibatis.datasource.DataSourceFactory:</p>
+<p>public interface DataSourceFactory {<br>  void setProperties(Properties props);<br>  DataSource getDataSource();<br>}<br>org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory can be used as super class to build new datasource adapters. For example this is the code needed to plug C3P0:</p>
+<p>import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;<br>import com.mchange.v2.c3p0.ComboPooledDataSource;</p>
+<p>public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {</p>
+<p>  public C3P0DataSourceFactory() {<br>    this.dataSource = new ComboPooledDataSource();<br>  }<br>}<br>To set it up, add a property for each setter method you want MyBatis to call. Follows below a sample configuration which connects to a PostgreSQL database:</p>
+<datasource type="org.myproject.C3P0DataSourceFactory">
+  <property name="driver" value="org.postgresql.Driver">
+  <property name="url" value="jdbc:postgresql:mydb">
+  <property name="username" value="postgres">
+  <property name="password" value="root">
+</property></property></property></property></datasource>
+databaseIdProvider
+MyBatis is able to execute different statements depending on your database vendor. The multi-db vendor support is based on the mapped statements databaseId attribute. MyBatis will load all statements with no databaseId attribute or with a databaseId that matches the current one. In case the same statement is found with and without the databaseId the latter will be discarded. To enable the multi vendor support add a databaseIdProvider to mybatis-config.xml file as follows:
+
+<databaseidprovider type="DB_VENDOR">
+The DB_VENDOR implementation databaseIdProvider sets as databaseId the String returned by DatabaseMetaData#getDatabaseProductName(). Given that usually that string is too long and that different versions of the same product may return different values, you may want to convert it to a shorter one by adding properties like follows:
+
+<databaseidprovider type="DB_VENDOR">
+  <property name="SQL Server" value="sqlserver">
+  <property name="DB2" value="db2">
+  <property name="Oracle" value="oracle">
+</property></property></property></databaseidprovider>
+When properties are provided, the DB_VENDOR databaseIdProvider will search the property value corresponding to the first key found in the returned database product name or "null" if there is not a matching property. In this case, if getDatabaseProductName() returns "Oracle (DataDirect)" the databaseId will be set to "oracle".
+
+<p>You can build your own DatabaseIdProvider by implementing the interface org.apache.ibatis.mapping.DatabaseIdProvider and registering it in mybatis-config.xml:</p>
+<pre><code>public interface DatabaseIdProvider {
+  default void setProperties(Properties p) { // Since 3.5.2, changed to default method
+    // NOP
+  }
+  String getDatabaseId(DataSource dataSource) throws SQLException;
+}</code></pre><h2 id="mappers"><a href="#mappers" class="headerlink" title="mappers"></a>mappers</h2><p>Now that the behavior of MyBatis is configured with the above configuration elements, we’re ready to define our mapped SQL statements. But first, we need to tell MyBatis where to find them. Java doesn’t really provide any good means of auto-discovery in this regard, so the best way to do it is to simply tell MyBatis where to find the mapping files. You can use classpath relative resource references, fully qualified url references (including file:/// URLs), class names or package names. For example:</p>
+<pre><code>&lt;!-- Using classpath relative resources --&gt;
+&lt;mappers&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/AuthorMapper.xml&quot;/&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/BlogMapper.xml&quot;/&gt;
+  &lt;mapper resource=&quot;org/mybatis/builder/PostMapper.xml&quot;/&gt;
+&lt;/mappers&gt;</code></pre><pre><code>&lt;!-- Using url fully qualified paths --&gt;
+&lt;mappers&gt;
+  &lt;mapper url=&quot;file:///var/mappers/AuthorMapper.xml&quot;/&gt;
+  &lt;mapper url=&quot;file:///var/mappers/BlogMapper.xml&quot;/&gt;
+  &lt;mapper url=&quot;file:///var/mappers/PostMapper.xml&quot;/&gt;
+&lt;/mappers&gt;
+</code></pre><pre><code>&lt;!-- Using mapper interface classes --&gt;
+&lt;mappers&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.AuthorMapper&quot;/&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.BlogMapper&quot;/&gt;
+  &lt;mapper class=&quot;org.mybatis.builder.PostMapper&quot;/&gt;
+&lt;/mappers&gt;</code></pre><pre><code>&lt;!-- Register all interfaces in a package as mappers --&gt;
+&lt;mappers&gt;
+  &lt;package name=&quot;org.mybatis.builder&quot;/&gt;
+&lt;/mappers&gt;</code></pre><p>These statement simply tell MyBatis where to go from here. The rest of the details are in each of the SQL Mapping files, and that’s exactly what the next section will discuss.</p>
+</databaseidprovider>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/11/06/设计模式-设计模式的七大原则/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                设计模式-设计模式的七大原则</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/10/31/Object类/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Object类</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Bruce<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bruce</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            学习资源
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书籍
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/categories/随想/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+            专题
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

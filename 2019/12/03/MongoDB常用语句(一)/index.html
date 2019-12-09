@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">MongoDB常用语句(一) | Bruce</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Bruce";
+  mashiro_option.author_name = "";
+  mashiro_option.site_url = "http://brucy.cn";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/505/505-bigskin-1.jpg,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/169/169-bigskin-5.jpg,https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture,https://api.ixiaowai.cn/gqapi/gqapi.php,https://api.ixiaowai.cn/api/api.php,http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/506/506-bigskin-1.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big145016.jpg,http://ossweb-img.qq.com/images/lol/web201310/skin/big121011.jpg,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp,/images/66.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <!-- 下面这个div是一个位于首页中间的圆形头像 -->
+      <!-- <div class="header-tou">
+        <a href="http://brucy.cn">
+          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+        </a>
+      </div> -->
+      <h1 class="center-text glitch is-glitching Ubuntu-font" data-text='"Hello Word"'>
+        "Hello Word"
+      </h1>
+      <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://v1.jinrishici.com/all.txt');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            var gushici = document.getElementById('gushici');
+            gushici.innerText = xhr.responseText;
+          }
+        };
+        xhr.send();
+      </script>
+      
+      <div class="header-info">
+        <p id='gushici'> 驽马十驾功在不舍</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Bruce</span>
+            <span class="shironeko"></span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    学习资源
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书籍
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+                    专题
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">MongoDB常用语句(一)</h1>
+            <p class="entry-census">&nbsp;·&nbsp;2019-12-3&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h4 id="use-命令-创建-选择-数据库"><a href="#use-命令-创建-选择-数据库" class="headerlink" title="use 命令 创建/选择 数据库"></a>use 命令 创建/选择 数据库</h4><p>MongoDB使用 <strong>use DATABASE_NAME</strong> 命令来创建数据库。如果指定的数据库DATABASE_NAME不存在，则该命令将创建一个新的数据库，否则返回现有的数据库。</p>
+<pre><code>MongoDB Enterprise &gt; use mydatabase
+switched to db mydatabase</code></pre><p>查看数据库列表：<strong>show dbs</strong></p>
+<p>刚刚创建的mydatabase不在其中，MongoDB不会显示空数据库</p>
+<pre><code>MongoDB Enterprise &gt; show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB</code></pre><p>在 MongoDB 中默认数据库是：<strong>test</strong>    如果您还没有创建过任何数据库，则集合/文档将存储在test数据库中。</p>
+<h4 id="删数据库"><a href="#删数据库" class="headerlink" title="删数据库"></a>删数据库</h4><p>MongoDB中的 <strong>db.dropDatabase()</strong> 命令用于删除现有的数据库。</p>
+<pre><code>MongoDB Enterprise &gt; use aa
+switched to db aa
+MongoDB Enterprise &gt; db.dropDatabase()
+{ &quot;ok&quot; : 1 }</code></pre><h4 id="创建集合-createCollection-方法"><a href="#创建集合-createCollection-方法" class="headerlink" title="创建集合 createCollection()方法"></a>创建集合 createCollection()方法</h4><p>MongoDB 的 <strong>db.createCollection(name，options)</strong>  方法用于在MongoDB 中创建集合。</p>
+<p>在命令中，name 是要创建的集合的名称。 options是一个文档，用于指定集合的配置</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>name</strong></td>
+<td>String</td>
+<td>要创建的集合的名称</td>
+</tr>
+<tr>
+<td><strong>options</strong></td>
+<td>Document</td>
+<td>(可选)指定有关内存大小和索引的选项</td>
+</tr>
+</tbody></table>
+<p><strong>options</strong> 参数是可选的，因此只需要指定集合的名称。 以下是可以使用的选项列表：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>capped</td>
+<td>Boolean</td>
+<td>(可选)如果为true，则<strong>启用封闭的集合</strong>。上限集合是固定大小的集合，它在达到其最大大小时自动覆盖其最旧的条目。 如果指定true，则还需要指定size参数。</td>
+</tr>
+<tr>
+<td>autoIndexId</td>
+<td>Boolean</td>
+<td>(可选)如果为true，则<strong>在_id字段上自动创建索引</strong>。默认值为false。</td>
+</tr>
+<tr>
+<td>size</td>
+<td>数字</td>
+<td>(可选)指定上限集合的最大大小(以字节为单位)。 如果capped为true，那么还需要指定此字段的值。</td>
+</tr>
+<tr>
+<td>max</td>
+<td>数字</td>
+<td>(可选)指定上限集合中允许的最大文档数。</td>
+</tr>
+</tbody></table>
+<p>在插入文档时，MongoDB首先检查上限集合 <strong>capped</strong> 字段的大小，然后检查 <strong>max</strong> 字段。</p>
+<p>没有使用选项的 <strong>createCollection()</strong> 方法的基本语法如下 </p>
+<pre><code>MongoDB Enterprise &gt; db.createCollection(&quot;mycollection&quot;)
+{ &quot;ok&quot; : 1 }</code></pre><p>可以使用命令 <strong>show collections</strong> 检查创建的集合。</p>
+<pre><code>MongoDB Enterprise &gt; show collections
+mycollection</code></pre><p>以下示例显示了 <strong>createCollection()</strong> 方法的语法，其中几个重要选项</p>
+<pre><code>MongoDB Enterprise &gt; db.createCollection(&quot;mycol&quot;, {capped : true, autoIndexId : true, size : 6142800, max : 10000 })
+{
+        &quot;note&quot; : &quot;the autoIndexId option is deprecated and will be removed in a future release&quot;,
+        &quot;ok&quot; : 1
+}</code></pre><blockquote>
+<p>note 中说 autoIndexId选项已被弃用，将在以后的版本中删除…</p>
+</blockquote>
+<p>在 MongoDB 中，不需要创建集合。当插入一些文档时，MongoDB 会自动创建集合。</p>
+<pre><code>MongoDB Enterprise &gt; db.newcollection.insert({&quot;name&quot; : 123456})
+WriteResult({ &quot;nInserted&quot; : 1 })
+MongoDB Enterprise &gt; show collections
+mycol
+mycollection
+newcollection</code></pre><h4 id="删除集合-drop-方法"><a href="#删除集合-drop-方法" class="headerlink" title="删除集合 drop()方法"></a>删除集合 drop()方法</h4><p>MongoDB 的 <strong>db.collection.drop()</strong> 用于从数据库中删除集合。</p>
+<pre><code>MongoDB Enterprise &gt; show collections
+mycol
+mycollection
+newcollection
+MongoDB Enterprise &gt; db.newcollection.drop()
+true
+MongoDB Enterprise &gt; show collections
+mycol
+mycollection</code></pre><p>MongoDB支持许多数据类型。 其中一些是 - </p>
+<ul>
+<li><strong>字符串</strong> - 这是用于存储数据的最常用的数据类型。MongoDB中的字符串必须为<strong>UTF-8</strong>。</li>
+<li><strong>整型</strong> - 此类型用于存储数值。 整数可以是32位或64位，具体取决于服务器。</li>
+<li><strong>布尔类型</strong> - 此类型用于存储布尔值(true / false)值。</li>
+<li><strong>双精度浮点数</strong> - 此类型用于存储浮点值。</li>
+<li><strong>最小/最大键</strong> - 此类型用于将值与最小和最大BSON元素进行比较。</li>
+<li><strong>数组</strong> - 此类型用于将数组或列表或多个值存储到一个键中。</li>
+<li><strong>时间戳</strong> - ctimestamp，当文档被修改或添加时，可以方便地进行录制。</li>
+<li><strong>对象</strong> - 此数据类型用于嵌入式文档。</li>
+<li><strong>Null</strong> - 此类型用于存储Null值。</li>
+<li><strong>符号</strong> - 该数据类型与字符串相同; 但是，通常保留用于使用特定符号类型的语言。</li>
+<li><strong>日期</strong> - 此数据类型用于以UNIX时间格式存储当前日期或时间。您可以通过创建日期对象并将日，月，年的日期进行指定自己需要的日期时间。</li>
+<li><strong>对象ID</strong> - 此数据类型用于存储文档的ID。</li>
+<li><strong>二进制数据</strong> - 此数据类型用于存储二进制数据。</li>
+<li><strong>代码</strong> - 此数据类型用于将<strong>JavaScript</strong>代码存储到文档中。</li>
+<li><strong>正则表达式</strong> - 此数据类型用于存储正则表达式。</li>
+</ul>
+<h4 id="插入-insert-方法"><a href="#插入-insert-方法" class="headerlink" title="插入 insert() 方法"></a>插入 insert() 方法</h4><p>要将数据插入到 MongoDB 集合中，需要使用 MongoDB 的 <strong>insert()</strong> 或 <strong>save()</strong> 方法。</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.insert({
+    _id : 100, 
+    title : &quot;mongoDB&quot;, 
+    tags: [&#39;mongdb&#39;, &#39;database&#39;,&#39;nosql&#39;], 
+    likes: 10000
+})
+WriteResult({ &quot;nInserted&quot; : 1 })</code></pre><p>要插入多个文档，可以在insert()命令中传递文档数组。如下所示</p>
+<pre><code>&gt; db.mycol.insert([
+   {
+      _id: 101,
+      title: &#39;MongoDB Guide&#39;, 
+      description: &#39;MongoDB is no sql database&#39;,
+      by: &#39;yiibai tutorials&#39;,
+      url: &#39;http://www.yiibai.com&#39;,
+      tags: [&#39;mongodb&#39;, &#39;database&#39;, &#39;NoSQL&#39;],
+      likes: 100
+   },
+
+   {
+      _id: 102,
+      title: &#39;NoSQL Database&#39;, 
+      description: &quot;NoSQL database doesn&#39;t have tables&quot;,
+      by: &#39;yiibai tutorials&#39;,
+      url: &#39;http://www.yiibai.com&#39;,
+      tags: [&#39;mongodb&#39;, &#39;database&#39;, &#39;NoSQL&#39;],
+      likes: 210, 
+      comments: [
+         {
+            user:&#39;user1&#39;,
+            message: &#39;My first comment&#39;,
+            dateCreated: new Date(2017,11,10,2,35),
+            like: 0 
+         }
+      ]
+   },
+   {
+      _id: 104,
+      title: &#39;Python Quick Guide&#39;, 
+      description: &quot;Python Quick start &quot;,
+      by: &#39;yiibai tutorials&#39;,
+      url: &#39;http://www.yiibai.com&#39;,
+      tags: [&#39;Python&#39;, &#39;database&#39;, &#39;NoSQL&#39;],
+      likes: 30, 
+      comments: [
+         {
+            user:&#39;user1&#39;,
+            message: &#39;My first comment&#39;,
+            dateCreated: new Date(2018,11,10,2,35),
+            like: 590 
+         }
+      ]
+   }
+])</code></pre><p>save（document）方法也可以插入document</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.save({&quot;save&quot;: &quot;insert&quot;})
+WriteResult({ &quot;nInserted&quot; : 1 })</code></pre><h4 id="其他插入方法-insertOne"><a href="#其他插入方法-insertOne" class="headerlink" title="其他插入方法 insertOne()"></a>其他插入方法 insertOne()</h4><p> <strong>db.collection.insertOne()</strong>  方法将单个文档插入到集合中。如果文档没有指定_id字段，MongoDB会自动将_id字段与ObjectId值添加到新文档</p>
+<p>返回包含新插入的文档的<strong>_id</strong> （自动生成）字段值的文档。</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.insertOne({&quot;insertOne&quot; : &quot;insert&quot;})
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedId&quot; : ObjectId(&quot;5de6562157b23a267c05ff5b&quot;)
+}</code></pre><p><strong>db.collection.insertMany()</strong> 方法将多个文档插入到集合中。如果文档没有指定_id字段，MongoDB会自动将_id字段与ObjectId值添加到新文档</p>
+<p><strong>insertMany()</strong> 返回包含新插入的文档_id字段值的文档。执行结果如下</p>
+<pre><code>&gt; db.inventory.insertMany([
+...    { item: &quot;journal&quot;, qty: 25, tags: [&quot;blank&quot;, &quot;red&quot;], size: { h: 14, w: 21, uom: &quot;cm&quot; } },
+...    { item: &quot;mat&quot;, qty: 85, tags: [&quot;gray&quot;], size: { h: 27.9, w: 35.5, uom: &quot;cm&quot; } },
+...    { item: &quot;mousepad&quot;, qty: 25, tags: [&quot;gel&quot;, &quot;blue&quot;], size: { h: 19, w: 22.85, uom: &quot;cm&quot; } }
+... ])
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedIds&quot; : [
+                ObjectId(&quot;59552c1c46be576f199feb56&quot;),
+                ObjectId(&quot;59552c1c46be576f199feb57&quot;),
+                ObjectId(&quot;59552c1c46be576f199feb58&quot;)
+        ]
+}</code></pre><h4 id="查询文档-drop-方法"><a href="#查询文档-drop-方法" class="headerlink" title="查询文档 drop()方法"></a>查询文档 drop()方法</h4><p>要从MongoDB集合查询数据，需要使用MongoDB的 <strong>find()</strong> 方法。</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.find()
+{ &quot;_id&quot; : ObjectId(&quot;5de653e157b23a267c05ff59&quot;) }
+{ &quot;_id&quot; : 100, &quot;title&quot; : &quot;mongoDB&quot;, &quot;tags&quot; : [ &quot;mongdb&quot;, &quot;database&quot;, &quot;nosql&quot; ], &quot;likes&quot; : 10000 }
+{ &quot;_id&quot; : ObjectId(&quot;5de6554957b23a267c05ff5a&quot;), &quot;save&quot; : &quot;insert&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5de6562157b23a267c05ff5b&quot;), &quot;insertOne&quot; : &quot;insert&quot; }</code></pre><p>要以格式化的方式显示结果，可以使用 <strong>pretty()</strong> 方法。</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.find().pretty()
+{ &quot;_id&quot; : ObjectId(&quot;5de653e157b23a267c05ff59&quot;) }
+{
+        &quot;_id&quot; : 100,
+        &quot;title&quot; : &quot;mongoDB&quot;,
+        &quot;tags&quot; : [
+                &quot;mongdb&quot;,
+                &quot;database&quot;,
+                &quot;nosql&quot;
+        ],
+        &quot;likes&quot; : 10000
+}
+{ &quot;_id&quot; : ObjectId(&quot;5de6554957b23a267c05ff5a&quot;), &quot;save&quot; : &quot;insert&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5de6562157b23a267c05ff5b&quot;), &quot;insertOne&quot; : &quot;insert&quot; }</code></pre><p><strong>findOne()</strong> 方法，它只返回一个文档。</p>
+<h4 id="MongoDB-与-RDBMS的等效-Where-子句"><a href="#MongoDB-与-RDBMS的等效-Where-子句" class="headerlink" title="MongoDB 与 RDBMS的等效 Where 子句"></a>MongoDB 与 RDBMS的等效 Where 子句</h4><p>find（）方法可加入以下查询条件：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>语法</th>
+<th>示例</th>
+<th>RDBMS等效语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>相等</td>
+<td>{<key>:<value>}</value></key></td>
+<td>db.mycol.find({“by”:”yiibai”}).pretty()</td>
+<td>where by = ‘yiibai’</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>{<key>:{$lt:<value>}}</value></key></td>
+<td>db.mycol.find({“likes”:{$lt:50}}).pretty()</td>
+<td>where likes &lt; 50</td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td>{<key>:{$lte:<value>}}</value></key></td>
+<td>db.mycol.find({“likes”:{$lte:50}}).pretty()</td>
+<td>where likes &lt;= 50</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>{<key>:{$gt:<value>}}</value></key></td>
+<td>db.mycol.find({“likes”:{$gt:50}}).pretty()</td>
+<td>where likes &gt; 50</td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td>{<key>:{$gte:<value>}}</value></key></td>
+<td>db.mycol.find({“likes”:{$gte:50}}).pretty()</td>
+<td>where likes &gt;= 50</td>
+</tr>
+<tr>
+<td>不等于</td>
+<td>{<key>:{$ne:<value>}}</value></key></td>
+<td>db.mycol.find({“likes”:{$ne:50}}).pretty()</td>
+<td>where likes != 50</td>
+</tr>
+</tbody></table>
+<pre><code>// 查看集合中所有document
+MongoDB Enterprise &gt; db.mycol.find()
+{ &quot;_id&quot; : ObjectId(&quot;5de7037d4a6c9f4d1af45d7b&quot;) }
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703ab4a6c9f4d1af45d7d&quot;), &quot;name&quot; : &quot;lisi&quot;, &quot;age&quot; : 24 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703b64a6c9f4d1af45d7e&quot;), &quot;name&quot; : &quot;wangwu&quot;, &quot;age&quot; : 25 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703c14a6c9f4d1af45d7f&quot;), &quot;name&quot; : &quot;zhaoliu&quot;, &quot;age&quot; : 26 }
+
+// 等于
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:23})
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:23}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;),
+        &quot;name&quot; : &quot;zhangsan&quot;,
+        &quot;age&quot; : 23
+}
+
+// 小于、小于等于、大于、大于等于、不等于
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$lt : 25}})
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703ab4a6c9f4d1af45d7d&quot;), &quot;name&quot; : &quot;lisi&quot;, &quot;age&quot; : 24 }
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$lte : 25}})
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703ab4a6c9f4d1af45d7d&quot;), &quot;name&quot; : &quot;lisi&quot;, &quot;age&quot; : 24 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703b64a6c9f4d1af45d7e&quot;), &quot;name&quot; : &quot;wangwu&quot;, &quot;age&quot; : 25 }
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$gt : 25}})
+{ &quot;_id&quot; : ObjectId(&quot;5de703c14a6c9f4d1af45d7f&quot;), &quot;name&quot; : &quot;zhaoliu&quot;, &quot;age&quot; : 26 }
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$gte : 25}})
+{ &quot;_id&quot; : ObjectId(&quot;5de703b64a6c9f4d1af45d7e&quot;), &quot;name&quot; : &quot;wangwu&quot;, &quot;age&quot; : 25 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703c14a6c9f4d1af45d7f&quot;), &quot;name&quot; : &quot;zhaoliu&quot;, &quot;age&quot; : 26 }
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$ne : 25}})
+{ &quot;_id&quot; : ObjectId(&quot;5de7037d4a6c9f4d1af45d7b&quot;) }
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703ab4a6c9f4d1af45d7d&quot;), &quot;name&quot; : &quot;lisi&quot;, &quot;age&quot; : 24 }
+{ &quot;_id&quot; : ObjectId(&quot;5de703c14a6c9f4d1af45d7f&quot;), &quot;name&quot; : &quot;zhaoliu&quot;, &quot;age&quot; : 26 }</code></pre><h4 id="MongoDB中的AND操作符"><a href="#MongoDB中的AND操作符" class="headerlink" title="MongoDB中的AND操作符"></a>MongoDB中的AND操作符</h4><p>在find()方法中，如果通过使用‘ <strong>,</strong> ’（逗号）将它们分开传递多个键，则 MongoDB 将其视为 <strong>AND</strong> 条件。</p>
+<p>语法：</p>
+<pre><code>&gt;db.mycol.find(
+   {
+      $and: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()</code></pre><p>示例：</p>
+<pre><code>MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;: 23})
+{ &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de7065c4a6c9f4d1af45d80&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de706634a6c9f4d1af45d81&quot;), &quot;name&quot; : &quot;xiaozhu&quot;, &quot;age&quot; : 23 }
+
+MongoDB Enterprise &gt; db.mycol.find({$and:[{&quot;name&quot;:&quot;xiaoming&quot;},{&quot;age&quot;:23}]})
+{ &quot;_id&quot; : ObjectId(&quot;5de7065c4a6c9f4d1af45d80&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : 23 }
+
+MongoDB Enterprise &gt; db.mycol.find({&quot;name&quot;:&quot;xiaoming&quot;,&quot;age&quot;:23})
+{ &quot;_id&quot; : ObjectId(&quot;5de7065c4a6c9f4d1af45d80&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : 23 }</code></pre><p>可以在find子句中传递任意数量的键值。</p>
+<h4 id="MongoDB中的OR操作符"><a href="#MongoDB中的OR操作符" class="headerlink" title="MongoDB中的OR操作符"></a>MongoDB中的OR操作符</h4><p>在要根据 <strong>OR</strong> 条件查询文档，需要使用 <strong>$or</strong> 关键字。</p>
+<p>语法：</p>
+<pre><code>&gt;db.mycol.find(
+   {
+      $or: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()</code></pre><p>示例：</p>
+<pre><code>// 查询 年龄等于24 或者名字等于wangwu
+MongoDB Enterprise &gt; db.mycol.find({$or:[{&quot;age&quot; : 24}, {&quot;name&quot;: &quot;wangwu&quot;}]}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de703ab4a6c9f4d1af45d7d&quot;),
+        &quot;name&quot; : &quot;lisi&quot;,
+        &quot;age&quot; : 24
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5de703b64a6c9f4d1af45d7e&quot;),
+        &quot;name&quot; : &quot;wangwu&quot;,
+        &quot;age&quot; : 25
+}
+
+ // 查询 年龄小于24 或者名字等于wangwu
+MongoDB Enterprise &gt; db.mycol.find({$or:[{&quot;age&quot; : {$lt: 24}}, {&quot;name&quot;: &quot;wangwu&quot;}]}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de7039f4a6c9f4d1af45d7c&quot;),
+        &quot;name&quot; : &quot;zhangsan&quot;,
+        &quot;age&quot; : 23
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5de703b64a6c9f4d1af45d7e&quot;),
+        &quot;name&quot; : &quot;wangwu&quot;,
+        &quot;age&quot; : 25
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5de7065c4a6c9f4d1af45d80&quot;),
+        &quot;name&quot; : &quot;xiaoming&quot;,
+        &quot;age&quot; : 23
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5de706634a6c9f4d1af45d81&quot;),
+        &quot;name&quot; : &quot;xiaozhu&quot;,
+        &quot;age&quot; : 23
+}</code></pre><h4 id="使用-AND-和-OR-条件一起"><a href="#使用-AND-和-OR-条件一起" class="headerlink" title="使用 AND 和 OR 条件一起"></a>使用 AND 和 OR 条件一起</h4><pre><code>// 查询 年龄小于24 并且名字要等于xiaoming或者xiaozhu的用户
+MongoDB Enterprise &gt; db.mycol.find({&quot;age&quot;:{$lt : 24}, $or: [{&quot;name&quot; : &quot;xiaoming&quot;},{&quot;name&quot;: &quot;xiaozhu&quot;}]})
+{ &quot;_id&quot; : ObjectId(&quot;5de7065c4a6c9f4d1af45d80&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : 23 }
+{ &quot;_id&quot; : ObjectId(&quot;5de706634a6c9f4d1af45d81&quot;), &quot;name&quot; : &quot;xiaozhu&quot;, &quot;age&quot; : 23 }</code></pre><p>示例中的查询条件相当于：</p>
+<blockquote>
+<p> SELECT * FROM mycol where age &lt; 24 AND (<code>name</code> = ‘xiaoming’ or <code>name</code> = ‘xiaozhu’)</p>
+</blockquote>
+<h4 id="查询嵌入-嵌套文档"><a href="#查询嵌入-嵌套文档" class="headerlink" title="查询嵌入/嵌套文档"></a>查询嵌入/嵌套文档</h4><p>为方便演示，插入以下内容：</p>
+<pre><code>db.inventory.insertMany( [
+   { item: &quot;journal&quot;, qty: 25, size: { h: 14, w: 21, uom: &quot;cm&quot; }, status: &quot;A&quot; },
+   { item: &quot;notebook&quot;, qty: 50, size: { h: 8.5, w: 11, uom: &quot;in&quot; }, status: &quot;A&quot; },
+   { item: &quot;paper&quot;, qty: 100, size: { h: 8.5, w: 11, uom: &quot;in&quot; }, status: &quot;D&quot; },
+   { item: &quot;planner&quot;, qty: 75, size: { h: 22.85, w: 30, uom: &quot;cm&quot; }, status: &quot;D&quot; },
+   { item: &quot;postcard&quot;, qty: 45, size: { h: 10, w: 15.25, uom: &quot;cm&quot; }, status: &quot;A&quot; }
+]);</code></pre><h5 id="匹配嵌入-嵌套文档"><a href="#匹配嵌入-嵌套文档" class="headerlink" title="匹配嵌入/嵌套文档"></a>匹配嵌入/嵌套文档</h5><p>要在作为嵌入/嵌套文档的字段上指定相等条件，请使用查询过滤器文档 <code>{&lt;field&gt;：&lt;value&gt;}</code> ，其中 <code>&lt;value&gt;</code> 是要匹配的文档。</p>
+<p>查询选择字段size等于{ h: 14, w: 21, uom: “cm” }的所有文档：</p>
+<pre><code>MongoDB Enterprise &gt; db.inventory.find({size: {h:14, w:21, uom: &quot;cm&quot;}}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d82&quot;),
+        &quot;item&quot; : &quot;journal&quot;,
+        &quot;qty&quot; : 25,
+        &quot;size&quot; : {
+                &quot;h&quot; : 14,
+                &quot;w&quot; : 21,
+                &quot;uom&quot; : &quot;cm&quot;
+        },
+        &quot;status&quot; : &quot;A&quot;
+}</code></pre><p>整个嵌入式文档中的相等匹配需要精确匹配指定的 <code>&lt;value&gt;</code> 文档，包括字段顺序。</p>
+<h5 id="查询嵌套字段"><a href="#查询嵌套字段" class="headerlink" title="查询嵌套字段"></a>查询嵌套字段</h5><p>要在嵌入/嵌套文档中的字段上指定查询条件，请使用点(.)符号(“ <code>field.nestedField</code> ”)。</p>
+<p>以下示例选择在 <code>size</code> 字段中嵌套的字段 <code>uom</code> 等于“ <code>in</code> ”的所有文档：</p>
+<pre><code>MongoDB Enterprise &gt; db.inventory.find({&quot;size.uom&quot;: &quot;in&quot;}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d83&quot;),
+        &quot;item&quot; : &quot;notebook&quot;,
+        &quot;qty&quot; : 50,
+        &quot;size&quot; : {
+                &quot;h&quot; : 8.5,
+                &quot;w&quot; : 11,
+                &quot;uom&quot; : &quot;in&quot;
+        },
+        &quot;status&quot; : &quot;A&quot;
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d84&quot;),
+        &quot;item&quot; : &quot;paper&quot;,
+        &quot;qty&quot; : 100,
+        &quot;size&quot; : {
+                &quot;h&quot; : 8.5,
+                &quot;w&quot; : 11,
+                &quot;uom&quot; : &quot;in&quot;
+        },
+        &quot;status&quot; : &quot;D&quot;
+}</code></pre><h5 id="使用查询运算符指定匹配"><a href="#使用查询运算符指定匹配" class="headerlink" title="使用查询运算符指定匹配"></a>使用查询运算符指定匹配</h5><p>查询过滤器文档可以使用查询运算符来指定，如以下形式的条件:</p>
+<p>以下查询使用 <code>size</code> 字段中嵌入的字段 <code>h</code> 中的小于运算符( <code>$lt</code> )：</p>
+<pre><code>db.inventory.find({&quot;size.h&quot; : { $lt: 15}})
+{ &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d82&quot;), &quot;item&quot; : &quot;journal&quot;, &quot;qty&quot; : 25, &quot;size&quot; : { &quot;h&quot; : 14, &quot;w&quot; : 21, &quot;uom&quot; : &quot;cm&quot; }, &quot;status&quot; : &quot;A&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d83&quot;), &quot;item&quot; : &quot;notebook&quot;, &quot;qty&quot; : 50, &quot;size&quot; : { &quot;h&quot; : 8.5, &quot;w&quot; : 11, &quot;uom&quot; : &quot;in&quot; }, &quot;status&quot; : &quot;A&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d84&quot;), &quot;item&quot; : &quot;paper&quot;, &quot;qty&quot; : 100, &quot;size&quot; : { &quot;h&quot; : 8.5, &quot;w&quot; : 11, &quot;uom&quot; : &quot;in&quot; }, &quot;status&quot; : &quot;D&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d86&quot;), &quot;item&quot; : &quot;postcard&quot;, &quot;qty&quot; : 45, &quot;size&quot; : { &quot;h&quot; : 10, &quot;w&quot; : 15.25, &quot;uom&quot; : &quot;cm&quot; }, &quot;status&quot; : &quot;A&quot; }</code></pre><h5 id="指定AND条件"><a href="#指定AND条件" class="headerlink" title="指定AND条件"></a>指定AND条件</h5><p>以下查询选择嵌套字段 <code>h</code> 小于 <code>15</code> 的所有文档，并且嵌套字段 <code>uom</code> 等于“ <code>in</code> ”，并且 <code>status</code> 字段等于“ <code>D</code> ”：</p>
+<pre><code>MongoDB Enterprise &gt; db.inventory.find({&quot;size.h&quot; : {$lt : 15}, &quot;size.uom&quot;: &quot;in&quot;, status:&quot;D&quot;}).pretty()
+{
+        &quot;_id&quot; : ObjectId(&quot;5de71b8e4a6c9f4d1af45d84&quot;),
+        &quot;item&quot; : &quot;paper&quot;,
+        &quot;qty&quot; : 100,
+        &quot;size&quot; : {
+                &quot;h&quot; : 8.5,
+                &quot;w&quot; : 11,
+                &quot;uom&quot; : &quot;in&quot;
+        },
+        &quot;status&quot; : &quot;D&quot;
+}</code></pre><hr>
+<p>参考资料：</p>
+<p>这个网站不错，推荐给大家：</p>
+<p><a href="https://www.yiibai.com/mongodb/mongodb_datatype.html#article-start" target="_blank" rel="noopener">易百教程</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/12/07/RabbitMQ基本概念介绍/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                RabbitMQ基本概念介绍</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/12/03/MongoDB介绍/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                MongoDB介绍</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Bruce<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avata8r.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Bruce</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            学习资源
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书籍
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/categories/随想/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-commenting-o" aria-hidden="true"></i>
+            专题
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
