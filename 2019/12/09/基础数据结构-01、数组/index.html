@@ -316,7 +316,7 @@
 <p>第一是<strong>线性表</strong> （Linear List）。顾名思义，线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。其实除了数组，链表、队列、栈等也是线性表结构。</p>
 <p>第二个是 <strong>连续的内存空间和相同类型的数据</strong> 。正是因为这两个限制，它才有了一个堪称“杀手锏”的特性：“随机访问”。</p>
 <p>但有利就有弊，这两个限制也让数组的很多操作变得非常低效，比如要想在数组中删除、插入一个数据，为了保证连续性，就需要做大量的数据搬移工作。</p>
-<h2 id="数组是如何实现随机访问的？"><a href="#数组是如何实现随机访问的？" class="headerlink" title="数组是如何实现随机访问的？"></a>数组是如何实现随机访问的？</h2><p>我们拿一个长度为10的int类型的数组int[] a = new int[10]来举例。在我画的这个图中，计算机给数组a[10]，分配了一块连续内存空间1000～1039，其中，内存块的首地址为base_address = 1000。<br><img src="/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-01%E3%80%81%E6%95%B0%E7%BB%84/arr.jpg" alt="image"></p>
+<h2 id="数组是如何实现随机访问的？"><a href="#数组是如何实现随机访问的？" class="headerlink" title="数组是如何实现随机访问的？"></a>数组是如何实现随机访问的？</h2><p>我们拿一个长度为10的int类型的数组int[] a = new int[10]来举例。在我画的这个图中，计算机给数组a[10]，分配了一块连续内存空间1000～1039，其中，内存块的首地址为base_address = 1000。<br><img src="//%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-01%E3%80%81%E6%95%B0%E7%BB%84/arr.jpg" alt="image"></p>
 <p>我们知道，计算机会给每个内存单元分配一个地址，计算机通过地址来访问内存中的数据。当计算机需要随机访问数组中的某个元素时，它会首先通过下面的寻址公式，计算出该元素存储的内存地址：</p>
 <blockquote>
 <p>a[i]_address = base_address + i * data_type_size</p>
@@ -372,9 +372,26 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/12/10/基础数据结构-02、链表/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                基础数据结构-02、链表</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2019/12/07/RabbitMQ基本概念介绍/" rel="next">
               <div class="background">
