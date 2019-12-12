@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2019-12-10T12:05:25.690Z</updated>
+  <updated>2019-12-12T03:32:25.445Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>连接远程MongoDB数据库</title>
+    <link href="http://brucy.cn/2019/12/12/%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BMongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://brucy.cn/2019/12/12/连接远程MongoDB数据库/</id>
+    <published>2019-12-12T02:53:28.000Z</published>
+    <updated>2019-12-12T03:32:25.445Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;spring-mongodb连接远程MongoDB数据库需要注意以下几点：&quot;&gt;&lt;a href=&quot;#spring-mongodb连接远程MongoDB数据库需要注意以下几点：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>基础数据结构-02、链表</title>
@@ -446,28 +470,6 @@
           &lt;h3 id=&quot;Object&quot;&gt;&lt;a href=&quot;#Object&quot; class=&quot;headerlink&quot; title=&quot;Object&quot;&gt;&lt;/a&gt;Object&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;object的概述：
    A、 object是所有的类父类
    B、
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ClassLoader</title>
-    <link href="http://brucy.cn/2019/10/28/ClassLoader/"/>
-    <id>http://brucy.cn/2019/10/28/ClassLoader/</id>
-    <published>2019-10-28T02:51:51.000Z</published>
-    <updated>2019-10-29T13:20:55.102Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;一、ClassLoader-定义&quot;&gt;&lt;a href=&quot;#一、ClassLoader-定义&quot; class=&quot;headerlink&quot; title=&quot;一、ClassLoader 定义&quot;&gt;&lt;/a&gt;一、ClassLoader
         
       
     
