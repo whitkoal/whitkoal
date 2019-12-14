@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2019-12-12T03:32:25.445Z</updated>
+  <updated>2019-12-14T08:52:01.031Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB配置文件部分选项解释</title>
+    <link href="http://brucy.cn/2019/12/14/MongoDB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86%E9%80%89%E9%A1%B9%E8%A7%A3%E9%87%8A/"/>
+    <id>http://brucy.cn/2019/12/14/MongoDB配置文件部分选项解释/</id>
+    <published>2019-12-14T08:51:10.000Z</published>
+    <updated>2019-12-14T08:52:01.031Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;pre&gt;&lt;code&gt;systemLog:
+   verbosity: &amp;lt;int&amp;gt; 组件的默认日志消息详细级别。详细级别决定了MongoDB输出的信息和调试消息的数量。
+                   
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>连接远程MongoDB数据库</title>
@@ -446,30 +474,6 @@
         
         
           &lt;h2 id=&quot;What-is-MyBatis&quot;&gt;&lt;a href=&quot;#What-is-MyBatis&quot; class=&quot;headerlink&quot; title=&quot;What is MyBatis?&quot;&gt;&lt;/a&gt;What is
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Object类</title>
-    <link href="http://brucy.cn/2019/10/31/Object%E7%B1%BB/"/>
-    <id>http://brucy.cn/2019/10/31/Object类/</id>
-    <published>2019-10-31T12:08:51.000Z</published>
-    <updated>2019-11-06T06:17:15.815Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Object&quot;&gt;&lt;a href=&quot;#Object&quot; class=&quot;headerlink&quot; title=&quot;Object&quot;&gt;&lt;/a&gt;Object&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;object的概述：
-   A、 object是所有的类父类
-   B、
         
       
     
