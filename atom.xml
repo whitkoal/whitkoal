@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2019-12-14T08:52:01.031Z</updated>
+  <updated>2019-12-23T13:49:27.576Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB搭建副本集</title>
+    <link href="http://brucy.cn/2019/12/23/MongoDB%E6%90%AD%E5%BB%BA%E5%89%AF%E6%9C%AC%E9%9B%86/"/>
+    <id>http://brucy.cn/2019/12/23/MongoDB搭建副本集/</id>
+    <published>2019-12-23T02:50:56.000Z</published>
+    <updated>2019-12-23T13:49:27.576Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、环境搭建&quot;&gt;&lt;a href=&quot;#一、环境搭建&quot; class=&quot;headerlink&quot; title=&quot;一、环境搭建&quot;&gt;&lt;/a&gt;一、环境搭建&lt;/h3&gt;&lt;h4 id=&quot;1、副本集结构&quot;&gt;&lt;a href=&quot;#1、副本集结构&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>MongoDB配置文件部分选项解释</title>
@@ -457,28 +483,6 @@
     
     
       <category term="设计模式" scheme="http://brucy.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis</title>
-    <link href="http://brucy.cn/2019/11/03/Mybatis/"/>
-    <id>http://brucy.cn/2019/11/03/Mybatis/</id>
-    <published>2019-11-03T13:42:11.000Z</published>
-    <updated>2019-11-04T13:35:30.737Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;What-is-MyBatis&quot;&gt;&lt;a href=&quot;#What-is-MyBatis&quot; class=&quot;headerlink&quot; title=&quot;What is MyBatis?&quot;&gt;&lt;/a&gt;What is
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
