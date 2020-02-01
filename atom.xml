@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Bruce</title>
   
-  
+  <subtitle>-vv</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2019-12-23T13:49:27.576Z</updated>
+  <updated>2020-02-01T01:49:54.461Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中的Volatile和Synchronized有何不同？</title>
+    <link href="http://brucy.cn/2020/01/31/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/"/>
+    <id>http://brucy.cn/2020/01/31/Java中的Volatile和Synchronized有何不同？/</id>
+    <published>2020-01-31T14:44:26.000Z</published>
+    <updated>2020-02-01T01:49:54.461Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;为充分理解Java中多线程同步的实现原理，必须先清除JMM。&lt;/p&gt;
+&lt;h2 id=&quot;一、Java内存模型&quot;&gt;&lt;a href=&quot;#一、Java内存模型&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="多线程" scheme="http://brucy.cn/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ribbon</title>
+    <link href="http://brucy.cn/2020/01/18/Ribbon/"/>
+    <id>http://brucy.cn/2020/01/18/Ribbon/</id>
+    <published>2020-01-17T23:20:24.000Z</published>
+    <updated>2020-01-18T01:53:43.337Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、简介&quot;&gt;&lt;a href=&quot;#一、简介&quot; class=&quot;headerlink&quot; title=&quot;一、简介&quot;&gt;&lt;/a&gt;一、简介&lt;/h2&gt;&lt;p&gt;Spring Cloud Ribbon是一个基于HTTP和TCP的客户端负载均衡工具，它基于Netflix
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring-Security-PasswordEncoder</title>
+    <link href="http://brucy.cn/2019/12/24/Spring-Security-PasswordEncoder/"/>
+    <id>http://brucy.cn/2019/12/24/Spring-Security-PasswordEncoder/</id>
+    <published>2019-12-24T12:35:12.000Z</published>
+    <updated>2019-12-24T12:36:13.342Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;今天在使用SpringBoot整合spring
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>MongoDB搭建副本集</title>
@@ -408,81 +483,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Java8-Lambda表达式与函数式接口</title>
-    <link href="http://brucy.cn/2019/11/08/Java8-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/"/>
-    <id>http://brucy.cn/2019/11/08/Java8-Lambda表达式与函数式接口/</id>
-    <published>2019-11-08T06:47:20.000Z</published>
-    <updated>2019-11-08T06:47:49.392Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Lambda表达式&quot;&gt;&lt;a href=&quot;#Lambda表达式&quot; class=&quot;headerlink&quot; title=&quot;Lambda表达式&quot;&gt;&lt;/a&gt;Lambda表达式&lt;/h2&gt;&lt;p&gt;Lambda表达式（也叫做闭包）是Java
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式—-创建型模式</title>
-    <link href="http://brucy.cn/2019/11/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://brucy.cn/2019/11/06/设计模式—-创建型模式/</id>
-    <published>2019-11-06T07:26:46.000Z</published>
-    <updated>2019-11-06T07:27:31.347Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;创建型模式&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;作用：主要用于创建对象，为类实例化对象提供指南&lt;/p&gt;
-&lt;p&gt;创建型模式，共五种：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#FactoryMethord&quot;&gt;工厂方法模式&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="设计模式" scheme="http://brucy.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式-设计模式的七大原则</title>
-    <link href="http://brucy.cn/2019/11/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
-    <id>http://brucy.cn/2019/11/06/设计模式-设计模式的七大原则/</id>
-    <published>2019-11-06T01:38:47.000Z</published>
-    <updated>2019-11-06T07:27:40.157Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;设计模式的七大原则&quot;&gt;&lt;a href=&quot;#设计模式的七大原则&quot; class=&quot;headerlink&quot; title=&quot;设计模式的七大原则&quot;&gt;&lt;/a&gt;设计模式的七大原则&lt;/h2&gt;&lt;h3 id=&quot;学习设计模式的建议&quot;&gt;&lt;a href=&quot;#学习设计模式的建议&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="设计模式" scheme="http://brucy.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
