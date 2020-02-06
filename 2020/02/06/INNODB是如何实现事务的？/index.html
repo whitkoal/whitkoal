@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Java中的Volatile和Synchronized有何不同？ | Bruce</title>
-  <meta name="keywords" content=" 多线程 ">
-  <meta name="description" content="Java中的Volatile和Synchronized有何不同？ | Bruce">
+  <title>INNODB是如何实现事务的？ | Bruce</title>
+  <meta name="keywords" content=" MySQL ">
+  <meta name="description" content="INNODB是如何实现事务的？ | Bruce">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="为充分理解Java中多线程同步的实现原理，必须先清除JMM。 一、Java内存模型Java Memory Model 是为了处理并发过程中的可见性、原子性、有序性问题的。 在Java虚拟机中，堆是一个线程共享的内存区域。堆中主要存放对象的实例、静态对象、数组等。堆中存放着一些共享变量。 每条线程都会有一个属于自己的本地内存，本地内存不允许其他线程访问。本地内存中存储的是共享变量的副本。 线程A若要">
 <meta name="keywords" content="多线程">
@@ -528,31 +528,25 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Java中的Volatile和Synchronized有何不同？" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-INNODB是如何实现事务的？" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Java中的Volatile和Synchronized有何不同？</h1>
+        <h1 class="article-title">INNODB是如何实现事务的？</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            
-                <a  data-rel="技术">技术</a>
-            
-        </span>
-        
         
         <span class="tag">
             
-            <a class="color4">多线程</a>
+            <a class="color1">MySQL</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-02-01 10:18:28'>2020-01-31 22:44</time>
+        创建时间:<time class="date" title='更新时间: 2020-02-06 10:21:05'>2020-02-06 10:19</time>
         
     </div>
     <div class="article-meta">
@@ -574,7 +568,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Java内存模型"><span class="toc-text">一、Java内存模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、线程通信和线程同步"><span class="toc-text">二、线程通信和线程同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Volatile原理"><span class="toc-text">三、Volatile原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Synchronized原理"><span class="toc-text">四、Synchronized原理</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、什么是事务"><span class="toc-text">1、什么是事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、InnoDB存储引擎对ACID的实现方式"><span class="toc-text">2、InnoDB存储引擎对ACID的实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、MVCC-多版本并发控制"><span class="toc-text">3、MVCC 多版本并发控制</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -590,40 +584,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>为充分理解Java中多线程同步的实现原理，必须先清除JMM。</p>
-<h2 id="一、Java内存模型"><a href="#一、Java内存模型" class="headerlink" title="一、Java内存模型"></a>一、Java内存模型</h2><p>Java Memory Model 是为了处理并发过程中的可见性、原子性、有序性问题的。</p>
-<p>在Java虚拟机中，堆是一个线程共享的内存区域。堆中主要存放对象的实例、静态对象、数组等。堆中存放着一些共享变量。</p>
-<p>每条线程都会有一个属于自己的本地内存，本地内存不允许其他线程访问。本地内存中存储的是共享变量的副本。</p>
-<p>线程A若要改变主内存中的一个变量，会先改变线程A本地内存中的值，然后再写入主内存。</p>
-<p><img src="/_posts/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/JMM.png" alt="image"></p>
-<h2 id="二、线程通信和线程同步"><a href="#二、线程通信和线程同步" class="headerlink" title="二、线程通信和线程同步"></a>二、线程通信和线程同步</h2><p>为了让程序在多线程的情况下正确执行，我们必须关注线程通信和线程同步这两个问题</p>
-<p>并发中的两个关键问题：</p>
-<ol>
-<li><p>线程之间如何通信？</p>
-<ol>
-<li>共享内存机制，通过共享一些公共状态，从而实现线程间信息交换。—— 隐示通信</li>
-<li>消息传递机制，通过直接调用 <code>wait()</code> 、 <code>notify()</code> 、 <code>notifyAll()</code>  这些方法进行线程间通信。—— 显示通信</li>
-</ol>
-</li>
-<li><p>线程之间如何同步？ </p>
-<p> 同步是指程序中用于控制不同线程之间操作发生的相对顺序</p>
-<ol>
-<li>在共享内存的并发模型中，同步是显示做的。程序员必须在程序中显示的调用某个方法、或某个代码段来达到线程互斥，如： <code>Synchronized</code> 让多个线程排队访问。</li>
-<li>在消息传递的并发模型中，由于消息的发送必须在消息接收之前，所以同步是隐示的。</li>
-</ol>
-</li>
-</ol>
-<h2 id="三、Volatile原理"><a href="#三、Volatile原理" class="headerlink" title="三、Volatile原理"></a>三、Volatile原理</h2><p>对于申明了 <code>Volatile</code> 的变量进行写操作时，JVM会向处理器发送一个带<strong>Lock前缀</strong>的指令，将变量的缓存值写回主内存，在多处理器的情况下，为保证各个处理器缓存一致，就会实现<a href="https://blog.csdn.net/zxp_cpinfo/article/details/53523697" target="_blank" rel="noopener">缓存一致性协议</a>（当其他处理器嗅探到缓存对应的主内存中的值发生了改变，当前缓存的旧值会失效，然后从主内存中加载新值到线程本地内存中缓存起来）</p>
-<p><strong>volatile使修改后的值立刻可见</strong>，从而实现同步。</p>
-<p>通过 <code>Volatile</code> 实现同步，可以做到原子性、可见性，但不能做到复合操作的原子性，如： i++</p>
-<p>自增操作是不具备原子性的，它包括读取变量的原始值、进行加1操作、写入工作内存。在多线程的情况下，自增操作的三个子操作可能会分割开执行，导致程序结果出现错误。</p>
-<h2 id="四、Synchronized原理"><a href="#四、Synchronized原理" class="headerlink" title="四、Synchronized原理"></a>四、Synchronized原理</h2><p>通过反编译可以看到Synchronized的原理：</p>
-<p><img src="/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/synchronized%E5%8F%8D%E7%BC%96%E8%AF%91.PNg" alt="image"></p>
-<p> <code>Synchronized</code> 原理上是实现了一个锁的机制。当方法或代码块被Synchronized修饰后，执行被修饰方法前先要获得<strong>Monitor</strong>（监视器，可理解为锁），执行完之后释放Monitor。</p>
-<p> 执行流程如下：</p>
-<p><img src="/source/_posts/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/synchronized%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="image"> </p>
-<p>当Monitor被其他线程占用时，当前线程会进入<strong>SynchronizedQueue</strong>中等待Monitor被释放。</p>
-<p>通过 <code>Synchronized</code> 实现同步，本质是实现了一个可重入锁，可以做到互斥性、可见性。</p>
+        <h2 id="1、什么是事务"><a href="#1、什么是事务" class="headerlink" title="1、什么是事务"></a>1、什么是事务</h2><p>通俗来说就是一组SQL语句，而且这组SQL要么同时都执行成功要么同时都不成功。</p>
+<p>事务的特性：</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原子性（A）</td>
+<td>一个事务中的所有操作，要么全都成功，要么全都不成功，不会结束在中间某个环节；</td>
+</tr>
+<tr>
+<td>一致性（C）</td>
+<td>事务开始之前和结束之后，数据库的完整性没有被破坏；</td>
+</tr>
+<tr>
+<td>隔离性（I）</td>
+<td>要求每个读写事务的操作对象与其他事务的操作对象能相互隔离；</td>
+</tr>
+<tr>
+<td>持久性（D）</td>
+<td>事务一旦提交，其结果就会持久化，就算发生宕机也能恢复数据；</td>
+</tr>
+</tbody></table>
+<h2 id="2、InnoDB存储引擎对ACID的实现方式"><a href="#2、InnoDB存储引擎对ACID的实现方式" class="headerlink" title="2、InnoDB存储引擎对ACID的实现方式"></a>2、InnoDB存储引擎对ACID的实现方式</h2><p>利用<strong>回滚日志（undo log）</strong> 和 <strong>重做日志（redo log）</strong> 两种表实现事务，并实现 <strong>MVCC (多版本并发控制)</strong>；</p>
+<p>在执行事务的每条SQL时，会先将数据原值写入undo log 中， 然后执行SQL对数据进行修改，最后将修改后的值写入redo log中。</p>
+<p>redo log 重做日志包括两部分：1 是内存中的重做日志缓冲 ；2 是重做日志文件。在事务提交时，必须先将该事务的所有日志写入到重做日志文件进行持久化，待事务commit操作完成才算完成。</p>
+<p>当一个事务中的所有SQL都执行成功后，会将redo log 缓存中的数据刷入磁盘，然后提交。</p>
+<p>如果发生回滚，会根据undo log 恢复数据。</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>INNODB实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原子性（A）</td>
+<td>回滚日志（undo log）：用于记录数据修改前的状态；</td>
+</tr>
+<tr>
+<td>一致性（C）</td>
+<td>重做日志（redo log）：用于记录市局修改后的状态；</td>
+</tr>
+<tr>
+<td>隔离性（I）</td>
+<td>锁：用于资源隔离，分为共享锁和排它锁；</td>
+</tr>
+<tr>
+<td>持久性（D）</td>
+<td>重做日志（redo log） +  回滚日志（undo log）；</td>
+</tr>
+</tbody></table>
+<h2 id="3、MVCC-多版本并发控制"><a href="#3、MVCC-多版本并发控制" class="headerlink" title="3、MVCC 多版本并发控制"></a>3、MVCC 多版本并发控制</h2><p><strong>查询需要对资源加共享锁（S），数据修改需要对资源加排他锁（X）</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>排他锁</th>
+<th>共享锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>排他锁</strong></td>
+<td>不兼容</td>
+<td>不兼容</td>
+</tr>
+<tr>
+<td><strong>共享锁</strong></td>
+<td>不兼容</td>
+<td>兼容</td>
+</tr>
+</tbody></table>
+<p>MVCC 多版本并发控制：利用undo log使读写不阻塞，实现了<strong>可重复读</strong>。当一个事务正在对一条数据进行修改时，该资源会被加上排它锁。在事务未提交时对加锁资源进行读操作时，读操作无法读到被锁资源，通过一些特殊的标志符去读undo log 中的数据（过程很复杂），这样读到的都是事务执行之前的数据。</p>
+<hr>
+<p>相关资料：</p>
+<p><a href="https://blog.csdn.net/tanliqing2010/article/details/81509539" target="_blank" rel="noopener">mysql技术内幕–innodb存储引擎图解（超级详细）</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -637,12 +676,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Java中的Volatile和Synchronized有何不同？</p>
+    <p><span class="copy-title">文章标题:</span>INNODB是如何实现事务的？</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Bruce">Bruce</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-01-31, 22:44:26</p>
-    <p><span class="copy-title">最后更新:</span>2020-02-01, 10:18:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/31/Java中的Volatile和Synchronized有何不同？/" title="Java中的Volatile和Synchronized有何不同？">http://brucy.cn/2020/01/31/Java中的Volatile和Synchronized有何不同？/</a>
+    <p><span class="copy-title">发布时间:</span>2020-02-06, 10:19:34</p>
+    <p><span class="copy-title">最后更新:</span>2020-02-06, 10:21:05</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/02/06/INNODB是如何实现事务的？/" title="INNODB是如何实现事务的？">http://brucy.cn/2020/02/06/INNODB是如何实现事务的？/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

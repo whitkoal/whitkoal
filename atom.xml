@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2020-02-01T01:49:54.461Z</updated>
+  <updated>2020-02-06T02:21:05.189Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -17,11 +17,107 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>INNODB是如何实现事务的？</title>
+    <link href="http://brucy.cn/2020/02/06/INNODB%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%BA%8B%E5%8A%A1%E7%9A%84%EF%BC%9F/"/>
+    <id>http://brucy.cn/2020/02/06/INNODB是如何实现事务的？/</id>
+    <published>2020-02-06T02:19:34.000Z</published>
+    <updated>2020-02-06T02:21:05.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1、什么是事务&quot;&gt;&lt;a href=&quot;#1、什么是事务&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL常用的存储引擎</title>
+    <link href="http://brucy.cn/2020/02/06/MySQL%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"/>
+    <id>http://brucy.cn/2020/02/06/MySQL常用的存储引擎/</id>
+    <published>2020-02-06T02:18:39.000Z</published>
+    <updated>2020-02-06T02:19:13.151Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1、MySQL中常用的存储引擎&quot;&gt;&lt;a href=&quot;#1、MySQL中常用的存储引擎&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL用户管理</title>
+    <link href="http://brucy.cn/2020/02/06/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    <id>http://brucy.cn/2020/02/06/MySQL用户管理/</id>
+    <published>2020-02-06T02:17:30.000Z</published>
+    <updated>2020-02-06T02:18:09.285Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1、如何定义MySQL数据库账号？&quot;&gt;&lt;a href=&quot;#1、如何定义MySQL数据库账号？&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL各版本对比</title>
+    <link href="http://brucy.cn/2020/02/06/MySQL%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94/"/>
+    <id>http://brucy.cn/2020/02/06/MySQL各版本对比/</id>
+    <published>2020-02-06T02:16:06.000Z</published>
+    <updated>2020-02-06T02:17:11.855Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1、MySQL各版本对比&quot;&gt;&lt;a href=&quot;#1、MySQL各版本对比&quot; class=&quot;headerlink&quot; title=&quot;1、MySQL各版本对比&quot;&gt;&lt;/a&gt;1、MySQL各版本对比&lt;/h2&gt;&lt;p&gt;截止到2020年2月5日，MySQL更新到了 MySQL
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java中的Volatile和Synchronized有何不同？</title>
     <link href="http://brucy.cn/2020/01/31/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/"/>
     <id>http://brucy.cn/2020/01/31/Java中的Volatile和Synchronized有何不同？/</id>
     <published>2020-01-31T14:44:26.000Z</published>
-    <updated>2020-02-01T01:49:54.461Z</updated>
+    <updated>2020-02-01T02:18:28.489Z</updated>
     
     <summary type="html">
     
@@ -403,83 +499,6 @@
           &lt;h2 id=&quot;注解的派生性&quot;&gt;&lt;a href=&quot;#注解的派生性&quot; class=&quot;headerlink&quot; title=&quot;注解的派生性&quot;&gt;&lt;/a&gt;注解的派生性&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;注解有派生性&lt;/strong&gt;：在SpringFramework 4.0
         
       
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>归并排序（递归）</title>
-    <link href="http://brucy.cn/2019/11/16/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89/"/>
-    <id>http://brucy.cn/2019/11/16/归并排序（递归）/</id>
-    <published>2019-11-16T05:03:54.000Z</published>
-    <updated>2019-11-16T05:09:22.889Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;hr&gt;
-&lt;p&gt;title: 归并排序&lt;br&gt;date: 2019-10-26 10:56:30&lt;br&gt;tags: 算法&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&quot;归并排序&quot;&gt;&lt;a href=&quot;#归并排序&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>TCP三次握手与四次挥手</title>
-    <link href="http://brucy.cn/2019/11/16/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
-    <id>http://brucy.cn/2019/11/16/TCP三次握手与四次挥手/</id>
-    <published>2019-11-16T04:59:17.000Z</published>
-    <updated>2019-11-16T05:00:59.299Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;TCP-概述&quot;&gt;&lt;a href=&quot;#TCP-概述&quot; class=&quot;headerlink&quot; title=&quot;TCP 概述&quot;&gt;&lt;/a&gt;TCP
-        
-      
-    
-    </summary>
-    
-    
-      <category term="计算机网络" scheme="http://brucy.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>类的执行过程</title>
-    <link href="http://brucy.cn/2019/11/16/%E7%B1%BB%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/"/>
-    <id>http://brucy.cn/2019/11/16/类的执行过程/</id>
-    <published>2019-11-16T04:58:25.000Z</published>
-    <updated>2019-11-16T04:58:25.311Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ArrayList源码详解</title>
-    <link href="http://brucy.cn/2019/11/13/ArrayList%E6%BA%90%E7%A0%81%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://brucy.cn/2019/11/13/ArrayList源码详解/</id>
-    <published>2019-11-13T13:18:41.000Z</published>
-    <updated>2019-11-13T13:18:42.032Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
