@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Bruce</title>
   
-  <subtitle>-vv</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
@@ -144,7 +144,7 @@
     <link href="http://brucy.cn/2020/01/18/Ribbon/"/>
     <id>http://brucy.cn/2020/01/18/Ribbon/</id>
     <published>2020-01-17T23:20:24.000Z</published>
-    <updated>2020-01-18T01:53:43.337Z</updated>
+    <updated>2020-02-11T13:47:08.413Z</updated>
     
     <summary type="html">
     
@@ -158,7 +158,7 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="Ribbon" scheme="http://brucy.cn/categories/Ribbon/"/>
     
     
   </entry>
@@ -192,7 +192,7 @@
     <link href="http://brucy.cn/2019/12/23/MongoDB%E6%90%AD%E5%BB%BA%E5%89%AF%E6%9C%AC%E9%9B%86/"/>
     <id>http://brucy.cn/2019/12/23/MongoDB搭建副本集/</id>
     <published>2019-12-23T02:50:56.000Z</published>
-    <updated>2019-12-23T13:49:27.576Z</updated>
+    <updated>2020-02-11T13:59:34.542Z</updated>
     
     <summary type="html">
     
@@ -206,7 +206,7 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="MongoDB" scheme="http://brucy.cn/categories/MongoDB/"/>
     
     
       <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
