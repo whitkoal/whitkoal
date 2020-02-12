@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2020-02-12T08:39:37.250Z</updated>
+  <updated>2020-02-12T08:43:13.102Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接口-SingletonBeanRegistry</title>
+    <link href="http://brucy.cn/2020/02/12/%E6%A1%86%E6%9E%B6/Spring/%E6%8E%A5%E5%8F%A3-SingletonBeanRegistry/"/>
+    <id>http://brucy.cn/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/</id>
+    <published>2020-02-12T08:42:24.000Z</published>
+    <updated>2020-02-12T08:43:13.102Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这个接口的作用是：为共享bean实例定义注册   &lt;/p&gt;
+&lt;p&gt;可以由  org.springframework.beans.factory.BeanFactory  实现来以统一的方式公开它们的单例管理功能。&lt;br&gt;ConfigurableBeanFactory
+        
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Spring" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://brucy.cn/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>DefaultSingletonBeanRegistry</title>
@@ -205,7 +234,7 @@
     <link href="http://brucy.cn/2020/01/18/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ribbon/"/>
     <id>http://brucy.cn/2020/01/18/中间件/Ribbon/</id>
     <published>2020-01-17T23:20:24.000Z</published>
-    <updated>2020-02-11T13:47:08.413Z</updated>
+    <updated>2020-02-12T08:59:39.926Z</updated>
     
     <summary type="html">
     
@@ -219,8 +248,12 @@
     
     </summary>
     
-      <category term="Ribbon" scheme="http://brucy.cn/categories/Ribbon/"/>
+      <category term="中间件" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
+      <category term="负载均衡" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    
+    
+      <category term="Ribbon" scheme="http://brucy.cn/tags/Ribbon/"/>
     
   </entry>
   
@@ -343,7 +376,7 @@
     <link href="http://brucy.cn/2019/12/10/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-02%E3%80%81%E9%93%BE%E8%A1%A8/"/>
     <id>http://brucy.cn/2019/12/10/算法/基础数据结构-02、链表/</id>
     <published>2019-12-10T03:28:14.000Z</published>
-    <updated>2019-12-10T12:05:25.690Z</updated>
+    <updated>2020-02-12T09:12:21.454Z</updated>
     
     <summary type="html">
     
@@ -357,10 +390,10 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="算法" scheme="http://brucy.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="数据结构与算法" scheme="http://brucy.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+      <category term="链表" scheme="http://brucy.cn/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
@@ -369,7 +402,7 @@
     <link href="http://brucy.cn/2019/12/09/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-01%E3%80%81%E6%95%B0%E7%BB%84/"/>
     <id>http://brucy.cn/2019/12/09/算法/基础数据结构-01、数组/</id>
     <published>2019-12-09T10:29:47.000Z</published>
-    <updated>2019-12-09T11:58:54.536Z</updated>
+    <updated>2020-02-12T09:12:08.360Z</updated>
     
     <summary type="html">
     
@@ -383,10 +416,10 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="算法" scheme="http://brucy.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="数据结构与算法" scheme="http://brucy.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+      <category term="数组" scheme="http://brucy.cn/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -395,7 +428,7 @@
     <link href="http://brucy.cn/2019/12/07/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/"/>
     <id>http://brucy.cn/2019/12/07/中间件/RabbitMQ基本概念介绍/</id>
     <published>2019-12-07T12:28:18.000Z</published>
-    <updated>2019-12-07T13:06:51.762Z</updated>
+    <updated>2020-02-12T09:01:29.242Z</updated>
     
     <summary type="html">
     
@@ -408,6 +441,10 @@
       
     
     </summary>
+    
+      <category term="中间件" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+      <category term="MQ" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/MQ/"/>
     
     
       <category term="RabbitMQ" scheme="http://brucy.cn/tags/RabbitMQ/"/>
@@ -475,7 +512,7 @@
     <link href="http://brucy.cn/2019/12/01/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%97%A8/"/>
     <id>http://brucy.cn/2019/12/01/中间件/消息队列入门/</id>
     <published>2019-12-01T13:42:36.000Z</published>
-    <updated>2019-12-07T13:08:04.063Z</updated>
+    <updated>2020-02-12T08:55:17.782Z</updated>
     
     <summary type="html">
     
@@ -490,8 +527,12 @@
     
     </summary>
     
+      <category term="中间件" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
-      <category term="消息队列" scheme="http://brucy.cn/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+      <category term="MQ" scheme="http://brucy.cn/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/MQ/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://brucy.cn/tags/RabbitMQ/"/>
     
   </entry>
   
@@ -549,34 +590,6 @@
     
     
       <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis数据源与连接池</title>
-    <link href="http://brucy.cn/2019/11/18/%E6%A1%86%E6%9E%B6/MyBatis/MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
-    <id>http://brucy.cn/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/</id>
-    <published>2019-11-18T12:52:56.000Z</published>
-    <updated>2020-02-12T08:20:56.277Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;MyBatis-把数据源-DataSource-分为三种：&quot;&gt;&lt;a href=&quot;#MyBatis-把数据源-DataSource-分为三种：&quot; class=&quot;headerlink&quot; title=&quot;MyBatis 把数据源 DataSource
-        
-      
-    
-    </summary>
-    
-      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="MyBatis" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/MyBatis/"/>
-    
-    
-      <category term="MyBatis" scheme="http://brucy.cn/tags/MyBatis/"/>
     
   </entry>
   
