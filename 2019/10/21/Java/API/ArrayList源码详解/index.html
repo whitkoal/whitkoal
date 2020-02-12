@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>ArrayList源码详解 | Bruce</title>
+  <meta name="keywords" content=" ArrayList ">
+  <meta name="description" content="ArrayList源码详解 | Bruce">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DefaultSingletonBeanRegistry">
+<meta property="og:url" content="http://brucy.cn/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/index.html">
+<meta property="og:site_name" content="Bruce">
+<meta property="og:description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-02-12T08:39:37.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DefaultSingletonBeanRegistry">
+<meta name="twitter:description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/zenbum.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>Bruce</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+        <a title="github" href="https://github.com/whitkoal" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:2233093661@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2233093661&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+<a class="more-menus">更多菜单</a>
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(32)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Ribbon">Ribbon<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="技术">技术<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="hexo">hexo<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(8)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="API">API<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="并发">并发<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="特性">特性<small>(2)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(4)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Spring">Spring<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Security">Security<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/photo">电子书</a>
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/whitkoal">github</a>
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="32">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">RabbitMQ</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">消息队列</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">数据结构与算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">计算机网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MongoDB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">INNODB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">MyISAM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">ClassLoader</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">双亲委派机制</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Object</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Volatile</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Synchronized</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">并发</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">多线程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">反射</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">Spring-Security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">ArrayList</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2019/12/07/中间件/RabbitMQ基本概念介绍/"
+           data-tag="RabbitMQ"
+           data-author="" >
+            <span class="post-title" title="RabbitMQ基本概念介绍">RabbitMQ基本概念介绍</span>
+            <span class="post-date" title="2019-12-07 20:28:18">2019/12/07</span>
+        </a>
+        
+        <a  class="Ribbon "
+           href="/2020/01/18/中间件/Ribbon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ribbon">Ribbon</span>
+            <span class="post-date" title="2020-01-18 07:20:24">2020/01/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/01/中间件/消息队列入门/"
+           data-tag="消息队列"
+           data-author="" >
+            <span class="post-title" title="消息队列入门">消息队列入门</span>
+            <span class="post-date" title="2019-12-01 21:42:36">2019/12/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/10/19/其他/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
+        </a>
+        
+        <a  class="技术 "
+           href="/2019/12/09/算法/基础数据结构-01、数组/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-01、数组">基础数据结构-01、数组</span>
+            <span class="post-date" title="2019-12-09 18:29:47">2019/12/09</span>
+        </a>
+        
+        <a  class="hexo "
+           href="/2019/10/26/其他/hexo常用命令/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo常用命令">hexo常用命令</span>
+            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
+        </a>
+        
+        <a  class="技术 "
+           href="/2019/12/10/算法/基础数据结构-02、链表/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-02、链表">基础数据结构-02、链表</span>
+            <span class="post-date" title="2019-12-10 11:28:14">2019/12/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/16/算法/归并排序（递归）/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="归并排序（递归）">归并排序（递归）</span>
+            <span class="post-date" title="2019-11-16 13:03:54">2019/11/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/16/网络/TCP三次握手与四次挥手/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="TCP三次握手与四次挥手">TCP三次握手与四次挥手</span>
+            <span class="post-date" title="2019-11-16 12:59:17">2019/11/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/06/设计模式/设计模式—-创建型模式/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式—-创建型模式">设计模式—-创建型模式</span>
+            <span class="post-date" title="2019-11-06 15:26:46">2019/11/06</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/06/设计模式/设计模式-设计模式的七大原则/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式-设计模式的七大原则">设计模式-设计模式的七大原则</span>
+            <span class="post-date" title="2019-11-06 09:38:47">2019/11/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
+            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
+            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
+           data-tag="MySQL,INNODB"
+           data-author="" >
+            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
+            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
+            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
+            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
+           data-tag="MySQL,INNODB,MyISAM"
+           data-author="" >
+            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
+            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/28/Java/API/ClassLoader/"
+           data-tag="ClassLoader,双亲委派机制"
+           data-author="" >
+            <span class="post-title" title="ClassLoader">ClassLoader</span>
+            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/31/Java/API/Object类/"
+           data-tag="Object"
+           data-author="" >
+            <span class="post-title" title="Object类">Object类</span>
+            <span class="post-date" title="2019-10-31 20:08:51">2019/10/31</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
+           data-tag="Java,Volatile,Synchronized,并发,多线程"
+           data-author="" >
+            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
+            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
+            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/11/08/Java/特性/Java8-Lambda表达式与函数式接口/"
+           data-tag="Lambda"
+           data-author="" >
+            <span class="post-title" title="Java8-Lambda表达式与函数式接口">Java8-Lambda表达式与函数式接口</span>
+            <span class="post-date" title="2019-11-08 14:47:20">2019/11/08</span>
+        </a>
+        
+        <a  class="框架 MyBatis "
+           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
+            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/10/27/Java/特性/java-反射/"
+           data-tag="反射"
+           data-author="" >
+            <span class="post-title" title="java-反射">java-反射</span>
+            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2019/11/17/框架/Spring/Spring注解驱动编程/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="Spring注解驱动编程">Spring注解驱动编程</span>
+            <span class="post-date" title="2019-11-17 10:41:25">2019/11/17</span>
+        </a>
+        
+        <a  class="框架 Security "
+           href="/2019/12/24/框架/security/Spring-Security-PasswordEncoder/"
+           data-tag="Spring-Security"
+           data-author="" >
+            <span class="post-title" title="Spring-Security-PasswordEncoder">Spring-Security-PasswordEncoder</span>
+            <span class="post-date" title="2019-12-24 20:35:12">2019/12/24</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
+            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/23/Java/并发/volatile关键字解析/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="volatile关键字解析">volatile关键字解析</span>
+            <span class="post-date" title="2019-11-23 20:53:22">2019/11/23</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="DefaultSingletonBeanRegistry">DefaultSingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:38:10">2020/02/12</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
+            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/21/Java/API/ArrayList源码详解/"
+           data-tag="ArrayList"
+           data-author="" >
+            <span class="post-title" title="ArrayList源码详解">ArrayList源码详解</span>
+            <span class="post-date" title="2019-10-21 21:15:37">2019/10/21</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Java/API/ArrayList源码详解" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ArrayList源码详解</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="Java">Java</a>/
+            
+                <a  data-rel="API">API</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color5">ArrayList</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-02-12 10:52:42'>2019-10-21 21:15</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、ArrayList-介绍"><span class="toc-text">一、ArrayList 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1、概述"><span class="toc-text">1.1、概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2、ArrayList-数据结构"><span class="toc-text">1.2、ArrayList 数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3、继承关系"><span class="toc-text">1.3、继承关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、ArrayList-源码详解"><span class="toc-text">二、ArrayList 源码详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1、ArrayList-中的属性"><span class="toc-text">2.1、ArrayList 中的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2、构造方法"><span class="toc-text">2.2、构造方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3、常用API"><span class="toc-text">2.3、常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1、容量调整"><span class="toc-text">2.3.1、容量调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2、常用API"><span class="toc-text">2.3.2、常用API</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、ArrayList-介绍"><a href="#一、ArrayList-介绍" class="headerlink" title="一、ArrayList 介绍"></a>一、ArrayList 介绍</h2><h3 id="1-1、概述"><a href="#1-1、概述" class="headerlink" title="1.1、概述"></a>1.1、概述</h3><ul>
+<li>ArrayList 是一种变长集合，基于定长<strong>数组</strong>实现。</li>
+<li>ArrayList 允许所有元素，包括<strong>null</strong>和重复元素。</li>
+<li>ArrayList 类还提供了一些方法来操作数组的大小，每个ArrayList实例都有一个<strong>容量</strong>值。当往 ArrayList 中添加的元素数量大于其底层数组容量时，其会通过扩容机制对数组进行扩容。</li>
+<li>ArrayList中size、isEmpty、get、set、iterator和listIterator操作在常数时间内运行。插入删除元素的时间复杂度为O（n）。所有其他操作基本都在线性时间内运行。</li>
+<li>ArrayList 中的操作<strong>不是线程安全的！</strong></li>
+</ul>
+<h3 id="1-2、ArrayList-数据结构"><a href="#1-2、ArrayList-数据结构" class="headerlink" title="1.2、ArrayList 数据结构"></a>1.2、ArrayList 数据结构</h3><p>ArrayList 的底层是数组队列，相当于动态数组。与 Java 中的数组相比，它的容量能动态增长。在添加大量元素前，应用程序可以使用ensureCapacity操作来增加 ArrayList 实例的容量。这可以减少递增式再分配的数量。</p>
+<pre><code>    // 由此构造方法可知 ArrayList 底层实现为数组
+    public ArrayList(int initialCapacity) {
+        if (initialCapacity &gt; 0) {
+            this.elementData = new Object[initialCapacity];
+        } else if (initialCapacity == 0) {
+            this.elementData = EMPTY_ELEMENTDATA;
+        } else {
+            throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+  initialCapacity);
+        }
+    }</code></pre><h3 id="1-3、继承关系"><a href="#1-3、继承关系" class="headerlink" title="1.3、继承关系"></a>1.3、继承关系</h3><ul>
+<li>ArrayList 继承了AbstractList，实现了List。它是一个数组队列，提供了相关的添加、删除、修改、遍历等功能。</li>
+<li>ArrayList 实现了RandomAccess <strong>接口</strong>， RandomAccess 是一个标志接口，表明实现这个接口的 List 集合是支持<strong>快速随机访问</strong>的。在 ArrayList 中，我们即可以通过元素的序号快速获取元素对象，这就是快速随机访问。</li>
+<li>　ArrayList 实现了Cloneable <strong>接口</strong>，即覆盖了函数 clone()，能被<strong>克隆</strong>。</li>
+<li>ArrayList 实现java.io.Serializable <strong>接口</strong>，这意味着ArrayList<strong>支持序列化</strong>，<strong>能通过序列化去传输</strong>。<br><img src="https://img-blog.csdnimg.cn/20191024212619275.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FyZ2xlYXJ5,size_16,color_FFFFFF,t_70" alt="图片"></li>
+</ul>
+<h2 id="二、ArrayList-源码详解"><a href="#二、ArrayList-源码详解" class="headerlink" title="二、ArrayList 源码详解"></a>二、ArrayList 源码详解</h2><h3 id="2-1、ArrayList-中的属性"><a href="#2-1、ArrayList-中的属性" class="headerlink" title="2.1、ArrayList 中的属性"></a>2.1、ArrayList 中的属性</h3><ul>
+<li>serialVersionUID 用于实例的序列化，为了保持版本的兼容性。</li>
+</ul>
+<pre><code>private static final long serialVersionUID = 8683452581122892189L;</code></pre><ul>
+<li>DEFAULT_CAPACITY  <strong>默认初始容量为 10</strong></li>
+</ul>
+<pre><code>private static final int DEFAULT_CAPACITY = 10;</code></pre><ul>
+<li>EMPTY_ELEMENTDATA  <strong>用于空实例的共享空数组实例</strong>，当执行无参构造方法后，并未给 ArrayList 实例开辟存储空间，而是引用此空数组。<pre><code> private static final Object[] EMPTY_ELEMENTDATA = {};</code></pre></li>
+<li>DEFAULTCAPACITY_EMPTY_ELEMENTDATA <strong>用于默认大小的空实例的共享空数组实例</strong>，new 一个ArrayList 时会默认返回此数组，若ArrayList 被指定容量为 0 会返回EMPTY_ELEMENTDATA</li>
+</ul>
+<pre><code>    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};</code></pre><ul>
+<li>elementData <strong>存储ArrayList元素的数组缓冲区</strong>，该方法为非私有以此简化嵌套类访问</li>
+</ul>
+<pre><code>    transient Object[] elementData; // 非私有以简化嵌套类访问</code></pre><ul>
+<li>size 数组的大小（包含元素的个数）</li>
+</ul>
+<pre><code>    private int size;</code></pre><h3 id="2-2、构造方法"><a href="#2-2、构造方法" class="headerlink" title="2.2、构造方法"></a>2.2、构造方法</h3><ul>
+<li>构造具有指定初始容量的空列表。 如果初始容量为 0 ，将返回 EMPTY_ELEMENTDATA<pre><code>  public ArrayList(int initialCapacity) {
+      if (initialCapacity &gt; 0) {
+          this.elementData = new Object[initialCapacity];
+      } else if (initialCapacity == 0) {
+          this.elementData = EMPTY_ELEMENTDATA; 
+      } else {
+          throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                             initialCapacity);
+      }
+  }</code></pre></li>
+<li>构造一个初始容量为10的空列表。在没有元素真正存入ArrayList时，并没有为ArrayList开辟10个存储空间<pre><code>  public ArrayList() {
+      this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+  }</code></pre></li>
+<li>构造一个包含指定集合的元素的列表，按照它们由集合的迭代器返回的顺序。<pre><code>  public ArrayList(Collection&lt;? extends E&gt; c) {
+      elementData = c.toArray();
+      if ((size = elementData.length) != 0) {
+          // c.toArray 可能返回的不是Object类型的数组所以加上下面的语句用于判断
+          //这里用到了反射里面的getClass()方法
+          if (elementData.getClass() != Object[].class)
+              elementData = Arrays.copyOf(elementData, size, Object[].class);
+      } else {
+          // 若数组为空，用 EMPTY_ELEMENTDATA 替换
+          this.elementData = EMPTY_ELEMENTDATA;
+      }
+  }</code></pre></li>
+</ul>
+<h3 id="2-3、常用API"><a href="#2-3、常用API" class="headerlink" title="2.3、常用API"></a>2.3、常用API</h3><h4 id="2-3-1、容量调整"><a href="#2-3-1、容量调整" class="headerlink" title="2.3.1、容量调整"></a>2.3.1、容量调整</h4><blockquote>
+<p>modCount 表示从结构上修改此列表的次数。注意并不是改变容器内部存储的值，而是改变结构。在迭代器遍历元素时会校验迭代器中存储的modCount 是否与ArrayList 实例中的modCount相等，如果不相等就表示已经有其他线程修改了会抛出异常。</p>
+</blockquote>
+<ul>
+<li>修改这个ArrayList实例的容量为列表的当前大小。使用此操作来最小化ArrayList实例的存储。 <pre><code>  public void trimToSize() {
+      modCount++;
+      if (size &lt; elementData.length) {
+          elementData = (size == 0)
+            ? EMPTY_ELEMENTDATA
+            : Arrays.copyOf(elementData, size);
+      }
+  }</code></pre></li>
+<li>判断是否需要扩容。如有必要，增加此ArrayList实例的容量，以确保它至少能容纳元素的数量<pre><code>public void ensureCapacity(int minCapacity) {
+      if (minCapacity &gt; elementData.length
+          &amp;&amp; !(elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
+               &amp;&amp; minCapacity &lt;= DEFAULT_CAPACITY)) {
+          modCount++;
+          grow(minCapacity); // grow 方法是真正用来扩容的方法
+      }
+  }</code></pre></li>
+<li>要分配的数组的最大大小。试图分配更大的数组可能会导致OutOfMemoryError:请求的数组大小超过VM限制，.Integer.MAX_VALUE = 2147483647 </li>
+</ul>
+<blockquote>
+<p>解释一下为什么要减8：在这 8 Byte的存储中保存了数组的一些头信息。这样做还可以避免内存溢出！</p>
+</blockquote>
+<pre><code>    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</code></pre><ul>
+<li><p>grow是用来扩容的方法，确保它至少可以容纳由最小容量参数指定的元素数量</p>
+<pre><code>  private Object[] grow(int minCapacity) {
+      return elementData = Arrays.copyOf(elementData,
+                                         newCapacity(minCapacity));
+  }
+
+  private Object[] grow() {
+      return grow(size + 1);
+  }</code></pre></li>
+<li><p>改变容量值，返回给grow 方法。</p>
+<pre><code>  private int newCapacity(int minCapacity) {
+      // overflow-conscious code
+      int oldCapacity = elementData.length;
+      // 扩容到原来容量的1.5倍
+      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); // 右移一位相当于除以2
+      if (newCapacity - minCapacity &lt;= 0) {
+          if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
+              return Math.max(DEFAULT_CAPACITY, minCapacity);
+          if (minCapacity &lt; 0) // 溢出
+              throw new OutOfMemoryError();
+          return minCapacity;
+      }
+      return (newCapacity - MAX_ARRAY_SIZE &lt;= 0)
+          ? newCapacity
+          : hugeCapacity(minCapacity);
+  }</code></pre></li>
+<li><p>扩容到最大容量</p>
+<pre><code>  private static int hugeCapacity(int minCapacity) {
+      if (minCapacity &lt; 0) // 溢出
+          throw new OutOfMemoryError();
+      return (minCapacity &gt; MAX_ARRAY_SIZE) ? Integer.MAX_VALUE : MAX_ARRAY_SIZE;
+  }</code></pre><p>在这里可以看到ArrayList 的容量最大值任然可以扩容到 MAX_ARRAY_SIZE ，那么数组的头信息到底是怎么存储的呢？ <a href="https://muzinuo.com/article/b43l5o2zf787.html" target="_blank" rel="noopener">在别人的博客中找到了解释</a></p>
+<blockquote>
+<p>1、存储 Headerwords(并不是在所有虚拟机中都这样，只是部分虚拟机在数组中保留了一些头信息)，因此该现象仅为部分存在；</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>2、避免内存溢出，减少出错几率；</p>
+</blockquote>
+<blockquote>
+<p>3、最大值其实还是为Integer.MAX_VALUE，并不是Integer.MAX_VALUE-8。(因为只是为了规避不同平台机器内存溢出的风险)</p>
+</blockquote>
+<h4 id="2-3-2、常用API"><a href="#2-3-2、常用API" class="headerlink" title="2.3.2、常用API"></a>2.3.2、常用API</h4><ul>
+<li>返回List 中元素的数量<pre><code>  public int size() {
+      return size;
+  }
+</code></pre></li>
+</ul>
+<pre><code>- 判断List 是否为空</code></pre><pre><code>public boolean isEmpty() {
+    return size == 0;
+}</code></pre><pre><code>- 判断List 中是否包含某个值</code></pre><pre><code>public boolean contains(Object o) {
+    return indexOf(o) &gt;= 0;
+}</code></pre><pre><code>- 返回元素在List 中第一次出现的位置，如果List 中没有此元素则返回 -1</code></pre><pre><code>public int indexOf(Object o) {
+    return indexOfRange(o, 0, size);
+}
+
+int indexOfRange(Object o, int start, int end) {
+    Object[] es = elementData;
+    if (o == null) {
+        for (int i = start; i &lt; end; i++) {
+            if (es[i] == null) {
+                return i;
+            }
+        }
+    } else {
+        for (int i = start; i &lt; end; i++) {
+            if (o.equals(es[i])) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}</code></pre><pre><code>- 返回元素在List 中最后一次出现的位置，如果List 中没有此元素则返回 -1 。lastIndexOfRange 与indexOfRange 方法相似，lastIndexOfRange 方法在倒着遍历。</code></pre><pre><code>public int lastIndexOf(Object o) {
+    return lastIndexOfRange(o, 0, size);
+}
+
+int lastIndexOfRange(Object o, int start, int end) {
+    Object[] es = elementData;
+    if (o == null) {
+        for (int i = end - 1; i &gt;= start; i--) {
+            if (es[i] == null) {
+                return i;
+            }
+        }
+    } else {
+        for (int i = end - 1; i &gt;= start; i--) {
+            if (o.equals(es[i])) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}</code></pre><pre><code>- 克隆ArrayList 调用了Object 类中的 clone() 方法。</code></pre><pre><code>public Object clone() {
+    try {
+        ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();
+        v.elementData = Arrays.copyOf(elementData, size);
+        v.modCount = 0;
+        return v;
+    } catch (CloneNotSupportedException e) {
+        throw new InternalError(e);
+    }
+}</code></pre><pre><code>- 返回一个数组</code></pre><pre><code>public Object[] toArray() {
+    return Arrays.copyOf(elementData, size);
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public &lt;T&gt; T[] toArray(T[] a) {
+    if (a.length &lt; size)
+        // Make a new array of a&#39;s runtime type, but my contents:
+        return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+    System.arraycopy(elementData, 0, a, 0, size);
+    if (a.length &gt; size)
+        a[size] = null;
+    return a;
+}</code></pre><pre><code>- 位置访问操作</code></pre><pre><code>@SuppressWarnings(&quot;unchecked&quot;)
+E elementData(int index) {
+    return (E) elementData[index];
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+static &lt;E&gt; E elementAt(Object[] es, int index) {
+    return (E) es[index];
+}</code></pre><pre><code>- 增删改查操作</code></pre><pre><code>public E get(int index) {
+    Objects.checkIndex(index, size);
+    return elementData(index);
+}
+
+public E set(int index, E element) {
+    Objects.checkIndex(index, size);
+    E oldValue = elementData(index);
+    elementData[index] = element;
+    return oldValue;
+}
+
+private void add(E e, Object[] elementData, int s) {
+    if (s == elementData.length)
+        elementData = grow();
+    elementData[s] = e;
+    size = s + 1;
+}
+
+public boolean add(E e) {
+    modCount++;
+    add(e, elementData, size);
+    return true;
+}
+
+public void add(int index, E element) {
+    rangeCheckForAdd(index);
+    modCount++;
+    final int s;
+    Object[] elementData;
+    if ((s = size) == (elementData = this.elementData).length)
+        elementData = grow();
+    System.arraycopy(elementData, index,
+                     elementData, index + 1,
+                     s - index);
+    elementData[index] = element;
+    size = s + 1;
+}
+
+public E remove(int index) {
+    Objects.checkIndex(index, size);
+    final Object[] es = elementData;
+
+    @SuppressWarnings(&quot;unchecked&quot;) E oldValue = (E) es[index];
+    fastRemove(es, index);
+
+    return oldValue;
+}
+ public boolean remove(Object o) {
+    final Object[] es = elementData;
+    final int size = this.size;
+    int i = 0;
+    found: {
+        if (o == null) {
+            for (; i &lt; size; i++)
+                if (es[i] == null)
+                    break found;
+        } else {
+            for (; i &lt; size; i++)
+                if (o.equals(es[i]))
+                    break found;
+        }
+        return false;
+    }
+    fastRemove(es, i);
+    return true;
+}
+
+// 此方法是真正的进行删除的方法，
+private void fastRemove(Object[] es, int i) {
+    modCount++;
+    final int newSize;
+    if ((newSize = size - 1) &gt; i)
+        System.arraycopy(es, i + 1, es, i, newSize - i);
+    es[size = newSize] = null;
+}
+
+public void clear() {
+    modCount++;
+    final Object[] es = elementData;
+    for (int to = size, i = size = 0; i &lt; to; i++)
+        es[i] = null;
+}
+
+public boolean addAll(Collection&lt;? extends E&gt; c) {
+    Object[] a = c.toArray();
+    modCount++;
+    int numNew = a.length;
+    if (numNew == 0)
+        return false;
+    Object[] elementData;
+    final int s;
+    if (numNew &gt; (elementData = this.elementData).length - (s = size))
+        elementData = grow(s + numNew);
+    System.arraycopy(a, 0, elementData, s, numNew);
+    size = s + numNew;
+    return true;
+}
+
+public boolean addAll(int index, Collection&lt;? extends E&gt; c) {
+    rangeCheckForAdd(index);
+
+    Object[] a = c.toArray();
+    modCount++;
+    int numNew = a.length;
+    if (numNew == 0)
+        return false;
+    Object[] elementData;
+    final int s;
+    if (numNew &gt; (elementData = this.elementData).length - (s = size))
+        elementData = grow(s + numNew);
+
+    int numMoved = s - index;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index,
+                         elementData, index + numNew,
+                         numMoved);
+    System.arraycopy(a, 0, elementData, index, numNew);
+    size = s + numNew;
+    return true;
+}</code></pre><pre><code>- 比较相关方法</code></pre><pre><code>public boolean equals(Object o) {
+    if (o == this) {
+        return true;
+    }
+
+    if (!(o instanceof List)) {
+        return false;
+    }
+
+    final int expectedModCount = modCount;
+    // ArrayList can be subclassed and given arbitrary behavior, but we can
+    // still deal with the common case where o is ArrayList precisely
+    boolean equal = (o.getClass() == ArrayList.class)
+        ? equalsArrayList((ArrayList&lt;?&gt;) o)
+        : equalsRange((List&lt;?&gt;) o, 0, size);
+
+    checkForComodification(expectedModCount);
+    return equal;
+}
+
+boolean equalsRange(List&lt;?&gt; other, int from, int to) {
+    final Object[] es = elementData;
+    if (to &gt; es.length) {
+        throw new ConcurrentModificationException();
+    }
+    var oit = other.iterator();
+    for (; from &lt; to; from++) {
+        if (!oit.hasNext() || !Objects.equals(es[from], oit.next())) {
+            return false;
+        }
+    }
+    return !oit.hasNext();
+}
+
+private boolean equalsArrayList(ArrayList&lt;?&gt; other) {
+    final int otherModCount = other.modCount;
+    final int s = size;
+    boolean equal;
+    if (equal = (s == other.size)) {
+        final Object[] otherEs = other.elementData;
+        final Object[] es = elementData;
+        if (s &gt; es.length || s &gt; otherEs.length) {
+            throw new ConcurrentModificationException();
+        }
+        for (int i = 0; i &lt; s; i++) {
+            if (!Objects.equals(es[i], otherEs[i])) {
+                equal = false;
+                break;
+            }
+        }
+    }
+    other.checkForComodification(otherModCount);
+    return equal;
+}</code></pre><pre><code>
+### 2.3.4、四个内部类###
+</code></pre><pre><code>private class Itr implements Iterator&lt;E&gt;  
+private class ListItr extends Itr implements ListIterator&lt;E&gt;  
+private class SubList extends AbstractList&lt;E&gt; implements RandomAccess  
+static final class ArrayListSpliterator&lt;E&gt; implements Spliterator&lt;E&gt;  </code></pre><pre><code>ArrayList有四个内部类，
+    其中的Itr是实现了Iterator接口，同时重写了里面的hasNext()， next()， remove() 等方法；
+    其中的ListItr 继承 Itr，实现了ListIterator接口，同时重写了hasPrevious()， nextIndex()， previousIndex()， previous()， set(E e)， add(E e) 等方法，所以这也可以看出了 Iterator和ListIterator的区别: ListIterator在Iterator的基础上增加了添加对象，修改对象，逆向遍历等方法，这些是Iterator不能实现的。
+
+## 三、ArrayList 经典 demo ##
+</code></pre><p>package list;<br>import java.util.ArrayList;<br>import java.util.Iterator;</p>
+<p>public class ArrayListDemo {</p>
+<pre><code>public static void main(String[] srgs){
+     ArrayList&lt;Integer&gt; arrayList = new ArrayList&lt;Integer&gt;();
+
+     System.out.printf(&quot;Before add:arrayList.size() = %d\n&quot;,arrayList.size());
+
+     arrayList.add(1);
+     arrayList.add(3);
+     arrayList.add(5);
+     arrayList.add(7);
+     arrayList.add(9);
+     System.out.printf(&quot;After add:arrayList.size() = %d\n&quot;,arrayList.size());
+
+     System.out.println(&quot;Printing elements of arrayList&quot;);
+     // 三种遍历方式打印元素
+     // 第一种：通过迭代器遍历
+     System.out.print(&quot;通过迭代器遍历:&quot;);
+     Iterator&lt;Integer&gt; it = arrayList.iterator();
+     while(it.hasNext()){
+         System.out.print(it.next() + &quot; &quot;);
+     }
+     System.out.println();
+
+     // 第二种：通过索引值遍历
+     System.out.print(&quot;通过索引值遍历:&quot;);
+     for(int i = 0; i &lt; arrayList.size(); i++){
+         System.out.print(arrayList.get(i) + &quot; &quot;);
+     }
+     System.out.println();
+
+     // 第三种：for循环遍历
+     System.out.print(&quot;for循环遍历:&quot;);
+     for(Integer number : arrayList){
+         System.out.print(number + &quot; &quot;);
+     }
+
+     // toArray用法
+     // 第一种方式(最常用)
+     Integer[] integer = arrayList.toArray(new Integer[0]);
+
+     // 第二种方式(容易理解)
+     Integer[] integer1 = new Integer[arrayList.size()];
+     arrayList.toArray(integer1);
+
+     // 抛出异常，java不支持向下转型
+     //Integer[] integer2 = new Integer[arrayList.size()];
+     //integer2 = arrayList.toArray();
+     System.out.println();
+
+     // 在指定位置添加元素
+     arrayList.add(2,2);
+     // 删除指定位置上的元素
+     arrayList.remove(2);    
+     // 删除指定元素
+     arrayList.remove((Object)3);
+     // 判断arrayList是否包含5
+     System.out.println(&quot;ArrayList contains 5 is: &quot; + arrayList.contains(5));
+
+     // 清空ArrayList
+     arrayList.clear();
+     // 判断ArrayList是否为空
+     System.out.println(&quot;ArrayList is empty: &quot; + arrayList.isEmpty());
+}</code></pre><p>}</p>
+<pre><code>
+</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以邮件至 paion_go@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2020 Bruce</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#RabbitMQ','#消息队列','#数据结构与算法','#hexo','#计算机网络','#设计模式','#MongoDB','#MySQL','#INNODB','#MyISAM','#ClassLoader','#双亲委派机制','#Object','#Java','#Volatile','#Synchronized','#并发','#多线程','#Lambda','#MyBatis','#反射','#Spring','#Spring-Security','#ArrayList',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/photo">电子书</a>
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/whitkoal">github</a>
+    
+</div>
+
+
+</html>

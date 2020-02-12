@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>DefaultSingletonBeanRegistry | Bruce</title>
+  <meta name="keywords" content=" Spring ">
+  <meta name="description" content="DefaultSingletonBeanRegistry | Bruce">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DefaultSingletonBeanRegistry">
+<meta property="og:url" content="http://brucy.cn/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/index.html">
+<meta property="og:site_name" content="Bruce">
+<meta property="og:description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-02-12T08:39:37.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DefaultSingletonBeanRegistry">
+<meta name="twitter:description" content="共享bean实例的通用注册表，实现了SingletonBeanRegistry。    允许通过bean的名称注册共享单例实例    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。    可以注册bean之间的依赖项来强制执行适当的关闭命令。  属性    /** 单例对象的缓存: bean name to bean instance */">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/zenbum.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>Bruce</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+        <a title="github" href="https://github.com/whitkoal" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:2233093661@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2233093661&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+<a class="more-menus">更多菜单</a>
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(32)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Ribbon">Ribbon<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="技术">技术<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="hexo">hexo<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(8)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="API">API<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="并发">并发<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="特性">特性<small>(2)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(4)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Spring">Spring<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Security">Security<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/photo">电子书</a>
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/whitkoal">github</a>
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="32">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">RabbitMQ</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">消息队列</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">数据结构与算法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">计算机网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MongoDB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">INNODB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">MyISAM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">ClassLoader</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">双亲委派机制</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Object</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Volatile</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Synchronized</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">并发</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">多线程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">反射</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">Spring-Security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">ArrayList</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2019/12/07/中间件/RabbitMQ基本概念介绍/"
+           data-tag="RabbitMQ"
+           data-author="" >
+            <span class="post-title" title="RabbitMQ基本概念介绍">RabbitMQ基本概念介绍</span>
+            <span class="post-date" title="2019-12-07 20:28:18">2019/12/07</span>
+        </a>
+        
+        <a  class="Ribbon "
+           href="/2020/01/18/中间件/Ribbon/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ribbon">Ribbon</span>
+            <span class="post-date" title="2020-01-18 07:20:24">2020/01/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/01/中间件/消息队列入门/"
+           data-tag="消息队列"
+           data-author="" >
+            <span class="post-title" title="消息队列入门">消息队列入门</span>
+            <span class="post-date" title="2019-12-01 21:42:36">2019/12/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/10/19/其他/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
+        </a>
+        
+        <a  class="技术 "
+           href="/2019/12/09/算法/基础数据结构-01、数组/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-01、数组">基础数据结构-01、数组</span>
+            <span class="post-date" title="2019-12-09 18:29:47">2019/12/09</span>
+        </a>
+        
+        <a  class="hexo "
+           href="/2019/10/26/其他/hexo常用命令/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo常用命令">hexo常用命令</span>
+            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
+        </a>
+        
+        <a  class="技术 "
+           href="/2019/12/10/算法/基础数据结构-02、链表/"
+           data-tag="数据结构与算法"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-02、链表">基础数据结构-02、链表</span>
+            <span class="post-date" title="2019-12-10 11:28:14">2019/12/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/16/算法/归并排序（递归）/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="归并排序（递归）">归并排序（递归）</span>
+            <span class="post-date" title="2019-11-16 13:03:54">2019/11/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/16/网络/TCP三次握手与四次挥手/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="TCP三次握手与四次挥手">TCP三次握手与四次挥手</span>
+            <span class="post-date" title="2019-11-16 12:59:17">2019/11/16</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/06/设计模式/设计模式—-创建型模式/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式—-创建型模式">设计模式—-创建型模式</span>
+            <span class="post-date" title="2019-11-06 15:26:46">2019/11/06</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/11/06/设计模式/设计模式-设计模式的七大原则/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式-设计模式的七大原则">设计模式-设计模式的七大原则</span>
+            <span class="post-date" title="2019-11-06 09:38:47">2019/11/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
+            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
+            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
+           data-tag="MySQL,INNODB"
+           data-author="" >
+            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
+            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
+            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
+            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
+           data-tag="MySQL,INNODB,MyISAM"
+           data-author="" >
+            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
+            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/28/Java/API/ClassLoader/"
+           data-tag="ClassLoader,双亲委派机制"
+           data-author="" >
+            <span class="post-title" title="ClassLoader">ClassLoader</span>
+            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/31/Java/API/Object类/"
+           data-tag="Object"
+           data-author="" >
+            <span class="post-title" title="Object类">Object类</span>
+            <span class="post-date" title="2019-10-31 20:08:51">2019/10/31</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
+           data-tag="Java,Volatile,Synchronized,并发,多线程"
+           data-author="" >
+            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
+            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
+            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/11/08/Java/特性/Java8-Lambda表达式与函数式接口/"
+           data-tag="Lambda"
+           data-author="" >
+            <span class="post-title" title="Java8-Lambda表达式与函数式接口">Java8-Lambda表达式与函数式接口</span>
+            <span class="post-date" title="2019-11-08 14:47:20">2019/11/08</span>
+        </a>
+        
+        <a  class="框架 MyBatis "
+           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
+            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/10/27/Java/特性/java-反射/"
+           data-tag="反射"
+           data-author="" >
+            <span class="post-title" title="java-反射">java-反射</span>
+            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2019/11/17/框架/Spring/Spring注解驱动编程/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="Spring注解驱动编程">Spring注解驱动编程</span>
+            <span class="post-date" title="2019-11-17 10:41:25">2019/11/17</span>
+        </a>
+        
+        <a  class="框架 Security "
+           href="/2019/12/24/框架/security/Spring-Security-PasswordEncoder/"
+           data-tag="Spring-Security"
+           data-author="" >
+            <span class="post-title" title="Spring-Security-PasswordEncoder">Spring-Security-PasswordEncoder</span>
+            <span class="post-date" title="2019-12-24 20:35:12">2019/12/24</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
+            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/23/Java/并发/volatile关键字解析/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="volatile关键字解析">volatile关键字解析</span>
+            <span class="post-date" title="2019-11-23 20:53:22">2019/11/23</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="DefaultSingletonBeanRegistry">DefaultSingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:38:10">2020/02/12</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
+            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/21/Java/API/ArrayList源码详解/"
+           data-tag="ArrayList"
+           data-author="" >
+            <span class="post-title" title="ArrayList源码详解">ArrayList源码详解</span>
+            <span class="post-date" title="2019-10-21 21:15:37">2019/10/21</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-框架/Spring/DefaultSingletonBeanRegistry" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">DefaultSingletonBeanRegistry</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="框架">框架</a>/
+            
+                <a  data-rel="Spring">Spring</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color2">Spring</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-02-12 16:39:37'>2020-02-12 16:38</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#registerSingleton-注册单例对象"><span class="toc-text">registerSingleton 注册单例对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取单例对象"><span class="toc-text">获取单例对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#获取单例对象（传入一个单例工厂）"><span class="toc-text">获取单例对象（传入一个单例工厂）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些比较简单的方法"><span class="toc-text">其他一些比较简单的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对bean之间的关系进行处理的方法"><span class="toc-text">对bean之间的关系进行处理的方法</span></a>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>共享bean实例的通用注册表，实现了SingletonBeanRegistry。<br>    允许通过bean的名称注册共享单例实例<br>    还支持一次性bean实例的注册(可能对应也可能不对应于已注册的单例)，在注册表关闭时销毁这些实例。<br>    可以注册bean之间的依赖项来强制执行适当的关闭命令。</p>
+</blockquote>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><pre><code>    /** 单例对象的缓存: bean name to bean instance */
+    private final Map&lt;String, Object&gt; singletonObjects = new ConcurrentHashMap&lt;&gt;(256);
+
+    /** 单例工厂的缓存: bean name to ObjectFactory. */
+    private final Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = new HashMap&lt;&gt;(16);
+
+    /** 早期单例对象的缓存: bean name to bean instance. */
+    private final Map&lt;String, Object&gt; earlySingletonObjects = new HashMap&lt;&gt;(16);
+
+    /** 一组已注册的单例，包含按注册顺序排列的bean名称。 */
+    private final Set&lt;String&gt; registeredSingletons = new LinkedHashSet&lt;&gt;(256);
+
+    /** 这个集合用来存正在创建的bean */
+    private final Set&lt;String&gt; singletonsCurrentlyInCreation = Collections.newSetFromMap(new ConcurrentHashMap&lt;&gt;(16));
+
+    /** 这个Set集合存了不用提前检查就可以直接创建的bean 的beanName. */
+    private final Set&lt;String&gt; inCreationCheckExclusions =
+            Collections.newSetFromMap(new ConcurrentHashMap&lt;&gt;(16));
+
+    /** 保存创建前不需要检查的bean */
+    private final Set&lt;String&gt; inCreationCheckExclusions =
+            Collections.newSetFromMap(new ConcurrentHashMap&lt;&gt;(16));
+
+    /** bean包含关系的缓存: bean name to bean名称集 */
+    private final Map&lt;String, Set&lt;String&gt;&gt; containedBeanMap = new ConcurrentHashMap&lt;&gt;(16);
+
+    /** bean依赖关系的缓存: bean name 对应 依赖于该bean的所有bean的name */
+    private final Map&lt;String, Set&lt;String&gt;&gt; dependentBeanMap = new ConcurrentHashMap&lt;&gt;(64);
+
+    /** bean依赖关系的缓存：bean name 对应 该bean依赖的所有bean的name */
+    private final Map&lt;String, Set&lt;String&gt;&gt; dependenciesForBeanMap = new ConcurrentHashMap&lt;&gt;(64);</code></pre><h3 id="registerSingleton-注册单例对象"><a href="#registerSingleton-注册单例对象" class="headerlink" title="registerSingleton 注册单例对象"></a>registerSingleton 注册单例对象</h3><blockquote>
+<p>在bean注册表中，在给定的bean名称下，将给定的现有对象注册为单例对象。</p>
+</blockquote>
+<p>Assert类是org.springframework.util包下的一个类，用来验证参数合法性，在参数不合法时会抛出相应的异常</p>
+<pre><code>    @Override
+    public void registerSingleton(String beanName, Object singletonObject) throws IllegalStateException {   // 判断参数是否为空
+        Assert.notNull(beanName, &quot;Bean name must not be null&quot;);
+        Assert.notNull(singletonObject, &quot;Singleton object must not be null&quot;);
+        synchronized (this.singletonObjects) {   // 对 singletonObjects 加锁
+            Object oldObject = this.singletonObjects.get(beanName);     // 检查是否已经存在此单例bean
+            if (oldObject != null) {
+                throw new IllegalStateException(&quot;Could not register object [&quot; + singletonObject +
+                        &quot;] under bean name &#39;&quot; + beanName + &quot;&#39;: there is already object [&quot; + oldObject + &quot;] bound&quot;);
+            }
+            // 不存在就加入注册表
+            addSingleton(beanName, singletonObject);
+        }
+    }</code></pre><blockquote>
+<p>将给定的单例对象添加到工厂的单例缓存中。并立刻注册此单例对象</p>
+</blockquote>
+<pre><code>    protected void addSingleton(String beanName, Object singletonObject) {
+        synchronized (this.singletonObjects) {
+            this.singletonObjects.put(beanName, singletonObject);  // 加入单例对象集合中(ConcurrentHashMap)
+            this.singletonFactories.remove(beanName);   // 从单例工厂集合中移除( HashMap)
+            this.earlySingletonObjects.remove(beanName);  // 从早期单例对象集合中移除( HashMap)
+            this.registeredSingletons.add(beanName);    // 加入已注册单例集合中（LinkedHashSet）
+        }
+    }</code></pre><blockquote>
+<p>添加指定的单例工厂来构建指定的单例。</p>
+</blockquote>
+<p>此方法传入beanName和一个单例工厂，并把单例工厂添加到singletonFactories中</p>
+<pre><code>    protected void addSingletonFactory(String beanName, ObjectFactory&lt;?&gt; singletonFactory) {
+        Assert.notNull(singletonFactory, &quot;Singleton factory must not be null&quot;);
+        synchronized (this.singletonObjects) {
+            if (!this.singletonObjects.containsKey(beanName)) {
+                this.singletonFactories.put(beanName, singletonFactory);
+                this.earlySingletonObjects.remove(beanName);
+                this.registeredSingletons.add(beanName);
+            }
+        }
+    }</code></pre><h3 id="获取单例对象"><a href="#获取单例对象" class="headerlink" title="获取单例对象"></a>获取单例对象</h3><p>传入参数后什么都没做…</p>
+<pre><code>public Object getSingleton(String beanName) {
+        return getSingleton(beanName, true);
+    }</code></pre><blockquote>
+<p>如果单例对象集合中没有想要的bean，在允许返回早期引用时会返回早期的bean，</p>
+</blockquote>
+<pre><code>protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+        Object singletonObject = this.singletonObjects.get(beanName);
+        // 如果beanName对应的单例对象为null，并且此bean正在创建（isSingletonCurrentlyInCreation方法用来判断bean是否正在被创建）
+        if (singletonObject == null &amp;&amp; isSingletonCurrentlyInCreation(beanName)) {
+            synchronized (this.singletonObjects) {
+                singletonObject = this.earlySingletonObjects.get(beanName);
+                if (singletonObject == null &amp;&amp; allowEarlyReference) {
+                    ObjectFactory&lt;?&gt; singletonFactory = this.singletonFactories.get(beanName);
+                    if (singletonFactory != null) {
+                        singletonObject = singletonFactory.getObject();   // 用单例工厂创建单例对象
+                        this.earlySingletonObjects.put(beanName, singletonObject);
+                        this.singletonFactories.remove(beanName);
+                    }
+                }
+            }
+        }
+        return singletonObject;
+    }</code></pre><blockquote>
+<p>返回指定的单例bean是否正在创建(在整个工厂内)。</p>
+</blockquote>
+<p>singletonsCurrentlyInCreation 这是个Set集合，里面保存着正在创建的bean。</p>
+<pre><code>    public boolean isSingletonCurrentlyInCreation(String beanName) {
+        return this.singletonsCurrentlyInCreation.contains(beanName);
+    }</code></pre><h4 id="获取单例对象（传入一个单例工厂）"><a href="#获取单例对象（传入一个单例工厂）" class="headerlink" title="获取单例对象（传入一个单例工厂）"></a>获取单例对象（传入一个单例工厂）</h4><pre><code>public Object getSingleton(String beanName, ObjectFactory&lt;?&gt; singletonFactory) {
+        Assert.notNull(beanName, &quot;Bean name must not be null&quot;);
+        synchronized (this.singletonObjects) {
+            Object singletonObject = this.singletonObjects.get(beanName);
+            if (singletonObject == null) {
+                if (this.singletonsCurrentlyInDestruction) {
+                    throw new BeanCreationNotAllowedException(beanName,
+                            &quot;Singleton bean creation not allowed while singletons of this factory are in destruction &quot; +
+                            &quot;(Do not request a bean from a BeanFactory in a destroy method implementation!)&quot;);
+                }
+                if (logger.isDebugEnabled()) {
+                    logger.debug(&quot;Creating shared instance of singleton bean &#39;&quot; + beanName + &quot;&#39;&quot;);
+                }
+                beforeSingletonCreation(beanName);
+                boolean newSingleton = false;
+                boolean recordSuppressedExceptions = (this.suppressedExceptions == null);
+                if (recordSuppressedExceptions) {
+                    this.suppressedExceptions = new LinkedHashSet&lt;&gt;();
+                }
+                try {
+                    singletonObject = singletonFactory.getObject();
+                    newSingleton = true;
+                }
+                catch (IllegalStateException ex) {
+                    // 在此期间是否隐式地出现了单例对象 -&gt;
+                    // 如果是，则继续执行，因为异常指示了该状态。
+                    singletonObject = this.singletonObjects.get(beanName);
+                    if (singletonObject == null) {
+                        throw ex;
+                    }
+                }
+                catch (BeanCreationException ex) {
+                    if (recordSuppressedExceptions) {
+                        for (Exception suppressedException : this.suppressedExceptions) {
+                            ex.addRelatedCause(suppressedException);
+                        }
+                    }
+                    throw ex;
+                }
+                finally {
+                    if (recordSuppressedExceptions) {
+                        this.suppressedExceptions = null;
+                    }
+                    afterSingletonCreation(beanName);
+                }
+                if (newSingleton) {
+                    addSingleton(beanName, singletonObject);
+                }
+            }
+            return singletonObject;
+        }
+    }</code></pre><hr>
+<p>单例对象创建后执行beforeSingletonCreation方法</p>
+<blockquote>
+<p>完美的运用了短路与（&amp;&amp;），如果当前bean不需要检查，就不会加入 singletonsCurrentlyInCreation集合</p>
+</blockquote>
+<pre><code>    protected void beforeSingletonCreation(String beanName) {
+        // 如果当前bean创建之前需要检查，并且没能成功加入singletonsCurrentlyInCreation集合，就报错
+        // singletonsCurrentlyInCreation 集合是个Set集合，记录了当前正在创建的bean
+        if (!this.inCreationCheckExclusions.contains(beanName) &amp;&amp; !this.singletonsCurrentlyInCreation.add(beanName)) {
+            throw new BeanCurrentlyInCreationException(beanName);
+        }
+    }</code></pre><p>单例对象创建后执行afterSingletonCreation方法</p>
+<pre><code>    protected void afterSingletonCreation(String beanName) {
+    // 如果当前bean创建之前需要检查，并且没能成功从singletonsCurrentlyInCreation集合移除，就报错
+        if (!this.inCreationCheckExclusions.contains(beanName) &amp;&amp; !this.singletonsCurrentlyInCreation.remove(beanName)) {
+            throw new IllegalStateException(&quot;Singleton &#39;&quot; + beanName + &quot;&#39; isn&#39;t currently in creation&quot;);
+        }
+    }</code></pre><h3 id="其他一些比较简单的方法"><a href="#其他一些比较简单的方法" class="headerlink" title="其他一些比较简单的方法"></a>其他一些比较简单的方法</h3><pre><code>    @Override
+    public boolean containsSingleton(String beanName) {
+        return this.singletonObjects.containsKey(beanName);
+    }
+
+    @Override
+    public String[] getSingletonNames() {
+        synchronized (this.singletonObjects) {
+            return StringUtils.toStringArray(this.registeredSingletons);
+        }
+    }
+
+    @Override
+    public int getSingletonCount() {
+        synchronized (this.singletonObjects) {
+            return this.registeredSingletons.size();
+        }
+    }</code></pre><h3 id="对bean之间的关系进行处理的方法"><a href="#对bean之间的关系进行处理的方法" class="headerlink" title="对bean之间的关系进行处理的方法"></a>对bean之间的关系进行处理的方法</h3><blockquote>
+<p>bean之间的包容关系保存在<strong>containedBeanMap</strong> 中 containedBeanMap 是个 ConcurrentHashMap&lt;String, Set<string>&gt;</string></p>
+</blockquote>
+<blockquote>
+<p>bean之间的依赖关系保存在<strong>dependentBeanMap</strong>它是个 ConcurrentHashMap&lt;String, Set<string>&gt;<br>    保存了依赖于beanName的所有bean的名字集合。</string></p>
+</blockquote>
+<blockquote>
+<p>dependenciesForBeanMap保存了bean name 对应 该bean依赖的所有bean的name集合 的映射<br>    也是个ConcurrentHashMap&lt;String, Set<string>&gt;</string></p>
+</blockquote>
+<p>在两个bean之间注册一个包容关系，例如在一个内部bean和它外部bean之间的关系。</p>
+<pre><code>    public void registerContainedBean(String containedBeanName, String containingBeanName) {
+        synchronized (this.containedBeanMap) {
+        // 通过containingBeanName 获取map集合中的value，若key对应的value为空，会将第二个参数的返回值存入并返回
+            Set&lt;String&gt; containedBeans =
+                    this.containedBeanMap.computeIfAbsent(containingBeanName, k -&gt; new LinkedHashSet&lt;&gt;(8));
+            if (!containedBeans.add(containedBeanName)) {
+                return;
+            }
+        }
+        registerDependentBean(containedBeanName, containingBeanName);
+    }</code></pre><hr>
+<blockquote>
+<p>为给定bean注册一个依赖bean，在销毁给定bean之前销毁它</p>
+</blockquote>
+<pre><code>public void registerDependentBean(String beanName, String dependentBeanName) {
+        // 确定原始名称，将别名解析为规范名称。
+        String canonicalName = canonicalName(beanName);
+
+        synchronized (this.dependentBeanMap) {
+        // 通过canonicalName 获取map集合中的value，若key对应的value为空，会将第二个参数的返回值存入并返回
+            Set&lt;String&gt; dependentBeans =
+                    this.dependentBeanMap.computeIfAbsent(canonicalName, k -&gt; new LinkedHashSet&lt;&gt;(8));
+            if (!dependentBeans.add(dependentBeanName)) {
+                return;
+            }
+        }
+
+        synchronized (this.dependenciesForBeanMap) {
+            Set&lt;String&gt; dependenciesForBean =
+                    this.dependenciesForBeanMap.computeIfAbsent(dependentBeanName, k -&gt; new LinkedHashSet&lt;&gt;(8));
+            dependenciesForBean.add(canonicalName);
+        }
+    }</code></pre><hr>
+<p>是否是依赖关系</p>
+<pre><code>protected boolean isDependent(String beanName, String dependentBeanName) {
+        synchronized (this.dependentBeanMap) {
+            return isDependent(beanName, dependentBeanName, null);
+        }
+    }</code></pre><pre><code>private boolean isDependent(String beanName, String dependentBeanName, @Nullable Set&lt;String&gt; alreadySeen) {
+        if (alreadySeen != null &amp;&amp; alreadySeen.contains(beanName)) {
+            return false;
+        }
+        String canonicalName = canonicalName(beanName);
+        Set&lt;String&gt; dependentBeans = this.dependentBeanMap.get(canonicalName);
+        if (dependentBeans == null) {
+            return false;
+        }
+        if (dependentBeans.contains(dependentBeanName)) {
+            return true;
+        }
+        for (String transitiveDependency : dependentBeans) {
+            if (alreadySeen == null) {
+                alreadySeen = new HashSet&lt;&gt;();
+            }
+            alreadySeen.add(beanName);
+            if (isDependent(transitiveDependency, dependentBeanName, alreadySeen)) {
+                return true;
+            }
+        }
+        return false;
+    }</code></pre><hr>
+<p>是否为给定的bean注册了依赖bean</p>
+<pre><code>protected boolean hasDependentBean(String beanName) {
+        return this.dependentBeanMap.containsKey(beanName);
+    }</code></pre><hr>
+<p>返回所有依赖于传入beanName的bean的名字</p>
+<pre><code>public String[] getDependentBeans(String beanName) {
+        Set&lt;String&gt; dependentBeans = this.dependentBeanMap.get(beanName);
+        if (dependentBeans == null) {
+            return new String[0];
+        }
+        synchronized (this.dependentBeanMap) {
+            return StringUtils.toStringArray(dependentBeans);
+        }
+    }</code></pre><hr>
+<p>返回传入bean的所有依赖</p>
+<pre><code>public String[] getDependenciesForBean(String beanName) {
+        Set&lt;String&gt; dependenciesForBean = this.dependenciesForBeanMap.get(beanName);
+        if (dependenciesForBean == null) {
+            return new String[0];
+        }
+        synchronized (this.dependenciesForBeanMap) {
+            return StringUtils.toStringArray(dependenciesForBean);
+        }
+    }</code></pre><hr>
+<pre><code>    public void destroySingletons() {
+        if (logger.isTraceEnabled()) {
+            logger.trace(&quot;Destroying singletons in &quot; + this);
+        }
+        synchronized (this.singletonObjects) {
+            this.singletonsCurrentlyInDestruction = true;
+        }
+
+        String[] disposableBeanNames;
+        synchronized (this.disposableBeans) {
+            disposableBeanNames = StringUtils.toStringArray(this.disposableBeans.keySet());
+        }
+        for (int i = disposableBeanNames.length - 1; i &gt;= 0; i--) {
+            destroySingleton(disposableBeanNames[i]);
+        }
+
+        this.containedBeanMap.clear();
+        this.dependentBeanMap.clear();
+        this.dependenciesForBeanMap.clear();
+
+        clearSingletonCache();
+    }</code></pre><hr>
+<p>其他参考资料：<br><a href="https://www.cnblogs.com/insaneXs/p/7811273.html" target="_blank" rel="noopener">https://www.cnblogs.com/insaneXs/p/7811273.html</a><br><a href="https://blog.csdn.net/dhaiuda/article/details/83069280" target="_blank" rel="noopener">https://blog.csdn.net/dhaiuda/article/details/83069280</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以邮件至 paion_go@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2020 Bruce</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#RabbitMQ','#消息队列','#数据结构与算法','#hexo','#计算机网络','#设计模式','#MongoDB','#MySQL','#INNODB','#MyISAM','#ClassLoader','#双亲委派机制','#Object','#Java','#Volatile','#Synchronized','#并发','#多线程','#Lambda','#MyBatis','#反射','#Spring','#Spring-Security','#ArrayList',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    <a class="dynamic-menu site_url"   href="/photo">电子书</a>
+    
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://github.com/whitkoal">github</a>
+    
+</div>
+
+
+</html>

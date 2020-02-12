@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2020-02-06T02:21:05.189Z</updated>
+  <updated>2020-02-12T08:39:37.250Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DefaultSingletonBeanRegistry</title>
+    <link href="http://brucy.cn/2020/02/12/%E6%A1%86%E6%9E%B6/Spring/DefaultSingletonBeanRegistry/"/>
+    <id>http://brucy.cn/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/</id>
+    <published>2020-02-12T08:38:10.000Z</published>
+    <updated>2020-02-12T08:39:37.250Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;共享bean实例的通用注册表，实现了SingletonBeanRegistry。&lt;br&gt;    允许通过bean的名称注册共享单例实例&lt;br&gt;   
+        
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Spring" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://brucy.cn/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
     <title>INNODB是如何实现事务的？</title>
-    <link href="http://brucy.cn/2020/02/06/INNODB%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%BA%8B%E5%8A%A1%E7%9A%84%EF%BC%9F/"/>
-    <id>http://brucy.cn/2020/02/06/INNODB是如何实现事务的？/</id>
+    <link href="http://brucy.cn/2020/02/06/DB/MySQL/INNODB%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%BA%8B%E5%8A%A1%E7%9A%84%EF%BC%9F/"/>
+    <id>http://brucy.cn/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/</id>
     <published>2020-02-06T02:19:34.000Z</published>
-    <updated>2020-02-06T02:21:05.189Z</updated>
+    <updated>2020-02-12T03:55:55.052Z</updated>
     
     <summary type="html">
     
@@ -35,17 +64,23 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MySQL" scheme="http://brucy.cn/categories/DB/MySQL/"/>
+    
     
       <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+      <category term="INNODB" scheme="http://brucy.cn/tags/INNODB/"/>
     
   </entry>
   
   <entry>
     <title>MySQL常用的存储引擎</title>
-    <link href="http://brucy.cn/2020/02/06/MySQL%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"/>
-    <id>http://brucy.cn/2020/02/06/MySQL常用的存储引擎/</id>
+    <link href="http://brucy.cn/2020/02/06/DB/MySQL/MySQL%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"/>
+    <id>http://brucy.cn/2020/02/06/DB/MySQL/MySQL常用的存储引擎/</id>
     <published>2020-02-06T02:18:39.000Z</published>
-    <updated>2020-02-06T02:19:13.151Z</updated>
+    <updated>2020-02-12T03:57:06.054Z</updated>
     
     <summary type="html">
     
@@ -59,17 +94,25 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MySQL" scheme="http://brucy.cn/categories/DB/MySQL/"/>
+    
     
       <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
+    
+      <category term="INNODB" scheme="http://brucy.cn/tags/INNODB/"/>
+    
+      <category term="MyISAM" scheme="http://brucy.cn/tags/MyISAM/"/>
     
   </entry>
   
   <entry>
     <title>MySQL用户管理</title>
-    <link href="http://brucy.cn/2020/02/06/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
-    <id>http://brucy.cn/2020/02/06/MySQL用户管理/</id>
+    <link href="http://brucy.cn/2020/02/06/DB/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    <id>http://brucy.cn/2020/02/06/DB/MySQL/MySQL用户管理/</id>
     <published>2020-02-06T02:17:30.000Z</published>
-    <updated>2020-02-06T02:18:09.285Z</updated>
+    <updated>2020-02-12T03:57:29.326Z</updated>
     
     <summary type="html">
     
@@ -83,6 +126,10 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MySQL" scheme="http://brucy.cn/categories/DB/MySQL/"/>
+    
     
       <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
     
@@ -90,10 +137,10 @@
   
   <entry>
     <title>MySQL各版本对比</title>
-    <link href="http://brucy.cn/2020/02/06/MySQL%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94/"/>
-    <id>http://brucy.cn/2020/02/06/MySQL各版本对比/</id>
+    <link href="http://brucy.cn/2020/02/06/DB/MySQL/MySQL%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94/"/>
+    <id>http://brucy.cn/2020/02/06/DB/MySQL/MySQL各版本对比/</id>
     <published>2020-02-06T02:16:06.000Z</published>
-    <updated>2020-02-06T02:17:11.855Z</updated>
+    <updated>2020-02-12T03:57:20.304Z</updated>
     
     <summary type="html">
     
@@ -107,6 +154,10 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MySQL" scheme="http://brucy.cn/categories/DB/MySQL/"/>
+    
     
       <category term="MySQL" scheme="http://brucy.cn/tags/MySQL/"/>
     
@@ -114,10 +165,10 @@
   
   <entry>
     <title>Java中的Volatile和Synchronized有何不同？</title>
-    <link href="http://brucy.cn/2020/01/31/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/"/>
-    <id>http://brucy.cn/2020/01/31/Java中的Volatile和Synchronized有何不同？/</id>
+    <link href="http://brucy.cn/2020/01/31/Java/%E5%B9%B6%E5%8F%91/Java%E4%B8%AD%E7%9A%84Volatile%E5%92%8CSynchronized%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C%EF%BC%9F/"/>
+    <id>http://brucy.cn/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/</id>
     <published>2020-01-31T14:44:26.000Z</published>
-    <updated>2020-02-01T02:18:28.489Z</updated>
+    <updated>2020-02-12T08:13:28.021Z</updated>
     
     <summary type="html">
     
@@ -132,8 +183,18 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="Java" scheme="http://brucy.cn/categories/Java/"/>
     
+      <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Java" scheme="http://brucy.cn/tags/Java/"/>
+    
+      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
+    
+      <category term="Synchronized" scheme="http://brucy.cn/tags/Synchronized/"/>
+    
+      <category term="并发" scheme="http://brucy.cn/tags/%E5%B9%B6%E5%8F%91/"/>
     
       <category term="多线程" scheme="http://brucy.cn/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
@@ -141,8 +202,8 @@
   
   <entry>
     <title>Ribbon</title>
-    <link href="http://brucy.cn/2020/01/18/Ribbon/"/>
-    <id>http://brucy.cn/2020/01/18/Ribbon/</id>
+    <link href="http://brucy.cn/2020/01/18/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ribbon/"/>
+    <id>http://brucy.cn/2020/01/18/中间件/Ribbon/</id>
     <published>2020-01-17T23:20:24.000Z</published>
     <updated>2020-02-11T13:47:08.413Z</updated>
     
@@ -165,10 +226,10 @@
   
   <entry>
     <title>Spring-Security-PasswordEncoder</title>
-    <link href="http://brucy.cn/2019/12/24/Spring-Security-PasswordEncoder/"/>
-    <id>http://brucy.cn/2019/12/24/Spring-Security-PasswordEncoder/</id>
-    <published>2019-12-24T12:35:12.000Z</published>
-    <updated>2019-12-24T12:36:13.342Z</updated>
+    <link href="http://brucy.cn/2019/12/24/%E6%A1%86%E6%9E%B6/security/Spring-Security-PasswordEncoder/"/>
+    <id>http://brucy.cn/2019/12/24/框架/security/Spring-Security-PasswordEncoder/</id>
+    <published>2019-12-24T12:35:12.477Z</published>
+    <updated>2020-02-12T08:22:43.310Z</updated>
     
     <summary type="html">
     
@@ -182,17 +243,21 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
     
+      <category term="Security" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/Security/"/>
+    
+    
+      <category term="Spring-Security" scheme="http://brucy.cn/tags/Spring-Security/"/>
     
   </entry>
   
   <entry>
     <title>MongoDB搭建副本集</title>
-    <link href="http://brucy.cn/2019/12/23/MongoDB%E6%90%AD%E5%BB%BA%E5%89%AF%E6%9C%AC%E9%9B%86/"/>
-    <id>http://brucy.cn/2019/12/23/MongoDB搭建副本集/</id>
+    <link href="http://brucy.cn/2019/12/23/DB/MongoDB/MongoDB%E6%90%AD%E5%BB%BA%E5%89%AF%E6%9C%AC%E9%9B%86/"/>
+    <id>http://brucy.cn/2019/12/23/DB/MongoDB/MongoDB搭建副本集/</id>
     <published>2019-12-23T02:50:56.000Z</published>
-    <updated>2020-02-11T13:59:34.542Z</updated>
+    <updated>2020-02-12T04:24:30.558Z</updated>
     
     <summary type="html">
     
@@ -206,7 +271,9 @@
     
     </summary>
     
-      <category term="MongoDB" scheme="http://brucy.cn/categories/MongoDB/"/>
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
     
     
       <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
@@ -215,10 +282,10 @@
   
   <entry>
     <title>MongoDB配置文件部分选项解释</title>
-    <link href="http://brucy.cn/2019/12/14/MongoDB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86%E9%80%89%E9%A1%B9%E8%A7%A3%E9%87%8A/"/>
-    <id>http://brucy.cn/2019/12/14/MongoDB配置文件部分选项解释/</id>
+    <link href="http://brucy.cn/2019/12/14/DB/MongoDB/MongoDB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86%E9%80%89%E9%A1%B9%E8%A7%A3%E9%87%8A/"/>
+    <id>http://brucy.cn/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/</id>
     <published>2019-12-14T08:51:10.000Z</published>
-    <updated>2019-12-14T08:52:01.031Z</updated>
+    <updated>2020-02-12T03:58:59.322Z</updated>
     
     <summary type="html">
     
@@ -234,7 +301,9 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
     
     
       <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
@@ -243,10 +312,10 @@
   
   <entry>
     <title>连接远程MongoDB数据库</title>
-    <link href="http://brucy.cn/2019/12/12/%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BMongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>http://brucy.cn/2019/12/12/连接远程MongoDB数据库/</id>
+    <link href="http://brucy.cn/2019/12/12/DB/MongoDB/%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BMongoDB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://brucy.cn/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/</id>
     <published>2019-12-12T02:53:28.000Z</published>
-    <updated>2019-12-12T03:32:25.445Z</updated>
+    <updated>2020-02-12T04:22:10.949Z</updated>
     
     <summary type="html">
     
@@ -260,15 +329,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://brucy.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
     
+      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
     
   </entry>
   
   <entry>
     <title>基础数据结构-02、链表</title>
-    <link href="http://brucy.cn/2019/12/10/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-02%E3%80%81%E9%93%BE%E8%A1%A8/"/>
-    <id>http://brucy.cn/2019/12/10/基础数据结构-02、链表/</id>
+    <link href="http://brucy.cn/2019/12/10/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-02%E3%80%81%E9%93%BE%E8%A1%A8/"/>
+    <id>http://brucy.cn/2019/12/10/算法/基础数据结构-02、链表/</id>
     <published>2019-12-10T03:28:14.000Z</published>
     <updated>2019-12-10T12:05:25.690Z</updated>
     
@@ -293,8 +366,8 @@
   
   <entry>
     <title>基础数据结构-01、数组</title>
-    <link href="http://brucy.cn/2019/12/09/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-01%E3%80%81%E6%95%B0%E7%BB%84/"/>
-    <id>http://brucy.cn/2019/12/09/基础数据结构-01、数组/</id>
+    <link href="http://brucy.cn/2019/12/09/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-01%E3%80%81%E6%95%B0%E7%BB%84/"/>
+    <id>http://brucy.cn/2019/12/09/算法/基础数据结构-01、数组/</id>
     <published>2019-12-09T10:29:47.000Z</published>
     <updated>2019-12-09T11:58:54.536Z</updated>
     
@@ -319,8 +392,8 @@
   
   <entry>
     <title>RabbitMQ基本概念介绍</title>
-    <link href="http://brucy.cn/2019/12/07/RabbitMQ%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://brucy.cn/2019/12/07/RabbitMQ基本概念介绍/</id>
+    <link href="http://brucy.cn/2019/12/07/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://brucy.cn/2019/12/07/中间件/RabbitMQ基本概念介绍/</id>
     <published>2019-12-07T12:28:18.000Z</published>
     <updated>2019-12-07T13:06:51.762Z</updated>
     
@@ -343,10 +416,10 @@
   
   <entry>
     <title>MongoDB常用语句(一)</title>
-    <link href="http://brucy.cn/2019/12/03/MongoDB%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5(%E4%B8%80)/"/>
-    <id>http://brucy.cn/2019/12/03/MongoDB常用语句(一)/</id>
+    <link href="http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5(%E4%B8%80)/"/>
+    <id>http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/</id>
     <published>2019-12-03T12:44:06.000Z</published>
-    <updated>2019-12-05T03:42:49.551Z</updated>
+    <updated>2020-02-12T03:58:03.642Z</updated>
     
     <summary type="html">
     
@@ -360,6 +433,10 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
+    
     
       <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
     
@@ -367,10 +444,10 @@
   
   <entry>
     <title>MongoDB介绍</title>
-    <link href="http://brucy.cn/2019/12/03/MongoDB%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://brucy.cn/2019/12/03/MongoDB介绍/</id>
+    <link href="http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB介绍/</id>
     <published>2019-12-03T12:42:51.000Z</published>
-    <updated>2019-12-03T12:44:14.198Z</updated>
+    <updated>2020-02-12T03:58:36.826Z</updated>
     
     <summary type="html">
     
@@ -384,6 +461,10 @@
     
     </summary>
     
+      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
+    
+      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
+    
     
       <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
     
@@ -391,8 +472,8 @@
   
   <entry>
     <title>消息队列入门</title>
-    <link href="http://brucy.cn/2019/12/01/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%97%A8/"/>
-    <id>http://brucy.cn/2019/12/01/消息队列入门/</id>
+    <link href="http://brucy.cn/2019/12/01/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%85%A5%E9%97%A8/"/>
+    <id>http://brucy.cn/2019/12/01/中间件/消息队列入门/</id>
     <published>2019-12-01T13:42:36.000Z</published>
     <updated>2019-12-07T13:08:04.063Z</updated>
     
@@ -416,10 +497,10 @@
   
   <entry>
     <title>使用volatile修饰基本数据内存不能保证原子性</title>
-    <link href="http://brucy.cn/2019/11/24/%E4%BD%BF%E7%94%A8volatile%E4%BF%AE%E9%A5%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%86%85%E5%AD%98%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7/"/>
-    <id>http://brucy.cn/2019/11/24/使用volatile修饰基本数据内存不能保证原子性/</id>
+    <link href="http://brucy.cn/2019/11/24/Java/%E5%B9%B6%E5%8F%91/%E4%BD%BF%E7%94%A8volatile%E4%BF%AE%E9%A5%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%86%85%E5%AD%98%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7/"/>
+    <id>http://brucy.cn/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/</id>
     <published>2019-11-24T09:44:23.000Z</published>
-    <updated>2019-11-24T09:44:52.948Z</updated>
+    <updated>2020-02-12T08:15:30.344Z</updated>
     
     <summary type="html">
     
@@ -433,15 +514,21 @@
     
     </summary>
     
+      <category term="Java" scheme="http://brucy.cn/categories/Java/"/>
+    
+      <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
     
   </entry>
   
   <entry>
     <title>volatile关键字解析</title>
-    <link href="http://brucy.cn/2019/11/23/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90/"/>
-    <id>http://brucy.cn/2019/11/23/volatile关键字解析/</id>
+    <link href="http://brucy.cn/2019/11/23/Java/%E5%B9%B6%E5%8F%91/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90/"/>
+    <id>http://brucy.cn/2019/11/23/Java/并发/volatile关键字解析/</id>
     <published>2019-11-23T12:53:22.000Z</published>
-    <updated>2019-11-23T12:53:55.892Z</updated>
+    <updated>2020-02-12T08:14:40.198Z</updated>
     
     <summary type="html">
     
@@ -456,15 +543,21 @@
     
     </summary>
     
+      <category term="Java" scheme="http://brucy.cn/categories/Java/"/>
+    
+      <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
+    
+    
+      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
     
   </entry>
   
   <entry>
     <title>MyBatis数据源与连接池</title>
-    <link href="http://brucy.cn/2019/11/18/MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
-    <id>http://brucy.cn/2019/11/18/MyBatis数据源与连接池/</id>
+    <link href="http://brucy.cn/2019/11/18/%E6%A1%86%E6%9E%B6/MyBatis/MyBatis%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%8E%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
+    <id>http://brucy.cn/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/</id>
     <published>2019-11-18T12:52:56.000Z</published>
-    <updated>2019-11-18T12:55:01.647Z</updated>
+    <updated>2020-02-12T08:20:56.277Z</updated>
     
     <summary type="html">
     
@@ -478,30 +571,12 @@
     
     </summary>
     
+      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="MyBatis" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/MyBatis/"/>
+    
     
       <category term="MyBatis" scheme="http://brucy.cn/tags/MyBatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring注解驱动编程</title>
-    <link href="http://brucy.cn/2019/11/17/Spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E7%BC%96%E7%A8%8B/"/>
-    <id>http://brucy.cn/2019/11/17/Spring注解驱动编程/</id>
-    <published>2019-11-17T02:41:25.000Z</published>
-    <updated>2019-11-17T03:24:28.935Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;注解的派生性&quot;&gt;&lt;a href=&quot;#注解的派生性&quot; class=&quot;headerlink&quot; title=&quot;注解的派生性&quot;&gt;&lt;/a&gt;注解的派生性&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;注解有派生性&lt;/strong&gt;：在SpringFramework 4.0
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
