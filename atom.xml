@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2020-02-12T08:43:13.102Z</updated>
+  <updated>2020-02-14T14:31:43.813Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面向对象</title>
+    <link href="http://brucy.cn/2020/02/14/Java/%E7%89%B9%E6%80%A7/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://brucy.cn/2020/02/14/Java/特性/面向对象/</id>
+    <published>2020-02-14T03:28:14.000Z</published>
+    <updated>2020-02-14T14:31:43.813Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;1、类与对象&quot;&gt;&lt;a href=&quot;#1、类与对象&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="特性" scheme="http://brucy.cn/categories/%E7%89%B9%E6%80%A7/"/>
+    
+    
+      <category term="Java" scheme="http://brucy.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java运行时数据区</title>
+    <link href="http://brucy.cn/2020/02/13/Java/JVM/Java%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA/"/>
+    <id>http://brucy.cn/2020/02/13/Java/JVM/Java运行时数据区/</id>
+    <published>2020-02-13T08:29:02.000Z</published>
+    <updated>2020-02-13T08:29:02.609Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>接口-SingletonBeanRegistry</title>
@@ -533,63 +573,6 @@
     
     
       <category term="RabbitMQ" scheme="http://brucy.cn/tags/RabbitMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用volatile修饰基本数据内存不能保证原子性</title>
-    <link href="http://brucy.cn/2019/11/24/Java/%E5%B9%B6%E5%8F%91/%E4%BD%BF%E7%94%A8volatile%E4%BF%AE%E9%A5%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%86%85%E5%AD%98%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7/"/>
-    <id>http://brucy.cn/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/</id>
-    <published>2019-11-24T09:44:23.000Z</published>
-    <updated>2020-02-12T08:15:30.344Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;对synchronized-的探究&quot;&gt;&lt;a href=&quot;#对synchronized-的探究&quot; class=&quot;headerlink&quot; title=&quot;对synchronized 的探究&quot;&gt;&lt;/a&gt;对synchronized
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://brucy.cn/categories/Java/"/>
-    
-      <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>volatile关键字解析</title>
-    <link href="http://brucy.cn/2019/11/23/Java/%E5%B9%B6%E5%8F%91/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%A7%A3%E6%9E%90/"/>
-    <id>http://brucy.cn/2019/11/23/Java/并发/volatile关键字解析/</id>
-    <published>2019-11-23T12:53:22.000Z</published>
-    <updated>2020-02-12T08:14:40.198Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;并发编程中的三个概念&quot;&gt;&lt;a href=&quot;#并发编程中的三个概念&quot; class=&quot;headerlink&quot; title=&quot;并发编程中的三个概念&quot;&gt;&lt;/a&gt;并发编程中的三个概念&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;原子性：即一个操作或者多个操作
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://brucy.cn/categories/Java/"/>
-    
-      <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
     
   </entry>
   
