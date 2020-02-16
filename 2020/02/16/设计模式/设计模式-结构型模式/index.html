@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>设计模式-结构型模式 | Bruce</title>
+  <meta name="keywords" content=" 设计模式 ">
+  <meta name="description" content="设计模式-结构型模式 | Bruce">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-结构型模式">
+<meta property="og:url" content="http://brucy.cn/2020/02/16/设计模式/设计模式-结构型模式/index.html">
+<meta property="og:site_name" content="Bruce">
+<meta property="og:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2020-02-16T14:36:03.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式-结构型模式">
+<meta name="twitter:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/zenbum.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>Bruce</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+        <a title="github" href="https://github.com/whitkoal" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:2233093661@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=2233093661&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(37)</small></div></li>
+    
+        
+            
+            <li><div data-rel="算法">算法<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="Hexo">Hexo<small>(2)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="中间件"><i class="fold iconfont icon-right"></i>中间件<small>(3)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MQ">MQ<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="负载均衡">负载均衡<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="设计模式">设计模式<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="网络">网络<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="特性">特性<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="并发">并发<small>(3)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="API">API<small>(3)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(5)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Security">Security<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Spring">Spring<small>(3)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="37">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color3">数组</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">链表</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">归并排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Ribbon</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">RabbitMQ</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">TCP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">计算机网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MongoDB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">INNODB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">MyISAM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Volatile</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Synchronized</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">并发</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">多线程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Object</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">面向对象</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">static</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">接口</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">抽象类</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">ClassLoader</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">双亲委派机制</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">反射</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">Spring-Security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Spring</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">ArrayList</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="算法 "
+           href="/2019/12/09/算法/基础数据结构-01、数组/"
+           data-tag="数组"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-01、数组">基础数据结构-01、数组</span>
+            <span class="post-date" title="2019-12-09 18:29:47">2019/12/09</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/26/其他/hexo常用命令/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
+            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
+        </a>
+        
+        <a  class="算法 "
+           href="/2019/12/10/算法/基础数据结构-02、链表/"
+           data-tag="链表"
+           data-author="" >
+            <span class="post-title" title="基础数据结构-02、链表">基础数据结构-02、链表</span>
+            <span class="post-date" title="2019-12-10 11:28:14">2019/12/10</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/19/其他/hello-world/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
+        </a>
+        
+        <a  class="算法 "
+           href="/2019/11/16/算法/归并排序（递归）/"
+           data-tag="归并排序"
+           data-author="" >
+            <span class="post-title" title="归并排序（递归）">归并排序（递归）</span>
+            <span class="post-date" title="2019-11-16 13:03:54">2019/11/16</span>
+        </a>
+        
+        <a  class="中间件 负载均衡 "
+           href="/2020/01/18/中间件/Ribbon/"
+           data-tag="Ribbon"
+           data-author="" >
+            <span class="post-title" title="Ribbon">Ribbon</span>
+            <span class="post-date" title="2020-01-18 07:20:24">2020/01/18</span>
+        </a>
+        
+        <a  class="中间件 MQ "
+           href="/2019/12/07/中间件/RabbitMQ基本概念介绍/"
+           data-tag="RabbitMQ"
+           data-author="" >
+            <span class="post-title" title="RabbitMQ基本概念介绍">RabbitMQ基本概念介绍</span>
+            <span class="post-date" title="2019-12-07 20:28:18">2019/12/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/02/16/设计模式/设计模式-行为型模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式-行为型模式">设计模式-行为型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:47">2020/02/16</span>
+        </a>
+        
+        <a  class="中间件 MQ "
+           href="/2019/12/01/中间件/消息队列入门/"
+           data-tag="RabbitMQ"
+           data-author="" >
+            <span class="post-title" title="消息队列入门">消息队列入门</span>
+            <span class="post-date" title="2019-12-01 21:42:36">2019/12/01</span>
+        </a>
+        
+        <a  class="设计模式 "
+           href="/2019/11/06/设计模式/设计模式—-创建型模式/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式—-创建型模式">设计模式—-创建型模式</span>
+            <span class="post-date" title="2019-11-06 15:26:46">2019/11/06</span>
+        </a>
+        
+        <a  class="网络 "
+           href="/2019/11/16/网络/TCP三次握手与四次挥手/"
+           data-tag="TCP,计算机网络"
+           data-author="" >
+            <span class="post-title" title="TCP三次握手与四次挥手">TCP三次握手与四次挥手</span>
+            <span class="post-date" title="2019-11-16 12:59:17">2019/11/16</span>
+        </a>
+        
+        <a  class="设计模式 "
+           href="/2019/11/06/设计模式/设计模式-设计模式的七大原则/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式-设计模式的七大原则">设计模式-设计模式的七大原则</span>
+            <span class="post-date" title="2019-11-06 09:38:47">2019/11/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
+            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
+            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
+           data-tag="MySQL,INNODB"
+           data-author="" >
+            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
+            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
+            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
+            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/02/13/Java/JVM/Java运行时数据区/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java运行时数据区">Java运行时数据区</span>
+            <span class="post-date" title="2020-02-13 16:29:02">2020/02/13</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
+           data-tag="MySQL,INNODB,MyISAM"
+           data-author="" >
+            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
+            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
+           data-tag="Java,Volatile,Synchronized,并发,多线程"
+           data-author="" >
+            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
+            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
+            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/31/Java/API/Object类/"
+           data-tag="Object"
+           data-author="" >
+            <span class="post-title" title="Object类">Object类</span>
+            <span class="post-date" title="2019-10-31 20:08:51">2019/10/31</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2020/02/14/Java/特性/面向对象/"
+           data-tag="面向对象,static,接口,抽象类"
+           data-author="" >
+            <span class="post-title" title="面向对象">面向对象</span>
+            <span class="post-date" title="2020-02-14 11:28:14">2020/02/14</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/28/Java/API/ClassLoader/"
+           data-tag="ClassLoader,双亲委派机制"
+           data-author="" >
+            <span class="post-title" title="ClassLoader">ClassLoader</span>
+            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/11/08/Java/特性/Java8-Lambda表达式与函数式接口/"
+           data-tag="Lambda"
+           data-author="" >
+            <span class="post-title" title="Java8-Lambda表达式与函数式接口">Java8-Lambda表达式与函数式接口</span>
+            <span class="post-date" title="2019-11-08 14:47:20">2019/11/08</span>
+        </a>
+        
+        <a  class="Java 特性 "
+           href="/2019/10/27/Java/特性/java-反射/"
+           data-tag="反射"
+           data-author="" >
+            <span class="post-title" title="java-反射">java-反射</span>
+            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+        </a>
+        
+        <a  class="框架 MyBatis "
+           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
+            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
+        </a>
+        
+        <a  class="框架 Security "
+           href="/2019/12/24/框架/security/Spring-Security-PasswordEncoder/"
+           data-tag="Spring-Security"
+           data-author="" >
+            <span class="post-title" title="Spring-Security-PasswordEncoder">Spring-Security-PasswordEncoder</span>
+            <span class="post-date" title="2019-12-24 20:35:12">2019/12/24</span>
+        </a>
+        
+        <a  class="设计模式 "
+           href="/2020/02/16/设计模式/设计模式-结构型模式/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式-结构型模式">设计模式-结构型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:23">2020/02/16</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2019/11/17/框架/Spring/Spring注解驱动编程/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="Spring注解驱动编程">Spring注解驱动编程</span>
+            <span class="post-date" title="2019-11-17 10:41:25">2019/11/17</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="接口-SingletonBeanRegistry">接口-SingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:42:24">2020/02/12</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
+            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
+        </a>
+        
+        <a  class="Java 并发 "
+           href="/2019/11/23/Java/并发/volatile关键字解析/"
+           data-tag="Volatile"
+           data-author="" >
+            <span class="post-title" title="volatile关键字解析">volatile关键字解析</span>
+            <span class="post-date" title="2019-11-23 20:53:22">2019/11/23</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/DefaultSingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="DefaultSingletonBeanRegistry">DefaultSingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:38:10">2020/02/12</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
+            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+        </a>
+        
+        <a  class="Java API "
+           href="/2019/10/21/Java/API/ArrayList源码详解/"
+           data-tag="ArrayList"
+           data-author="" >
+            <span class="post-title" title="ArrayList源码详解">ArrayList源码详解</span>
+            <span class="post-date" title="2019-10-21 21:15:37">2019/10/21</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-设计模式/设计模式-结构型模式" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">设计模式-结构型模式</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="设计模式">设计模式</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color5">设计模式</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-02-16 22:36:03'>2020-02-16 22:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#结构型模式"><span class="toc-text">结构型模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、代理（Proxy）模式"><span class="toc-text"> 1、代理（Proxy）模式 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、适配器（Adapter）模式"><span class="toc-text">2、适配器（Adapter）模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、桥接（Bridge）模式"><span class="toc-text">3、桥接（Bridge）模式 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、装饰（Decorator）模式"><span class="toc-text">4、装饰（Decorator）模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、外观（Facade）模式"><span class="toc-text">5、外观（Facade）模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6、享元（Flyweight）模式"><span class="toc-text">6、享元（Flyweight）模式 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7、组合（Composite）模式"><span class="toc-text"> 7、组合（Composite）模式</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h1><p>作用：<strong>主要用于处理类和对象的组</strong>合，对类如何设计以形成更大的结构提供指南</p>
+<p>它分为类结构型模式和对象结构型模式：</p>
+<ul>
+<li><strong>类结构型模式</strong>：采用<strong>继承机制</strong>来组织接口和类；</li>
+<li><strong>对象结构型模式</strong>：釆用<strong>组合</strong>或<strong>聚合</strong>来组合对象；</li>
+</ul>
+<p>由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。</p>
+<p>结构型模式分为以下 7 种：</p>
+<ol>
+<li><a href="#Proxy">代理（Proxy）模式</a></li>
+<li><a href="#Adapter">适配器（Adapter）模式</a></li>
+<li><a href="#Bridge">桥接（Bridge）模式</a></li>
+<li><a href="#Decorator">装饰（Decorator）模式</a></li>
+<li><a href="#Facade">外观（Facade）模式</a></li>
+<li><a href="#Flyweight">享元（Flyweight）模式</a></li>
+<li><a href="#Composite">组合（Composite）模式</a></li>
+</ol>
+<h1 id="1、代理（Proxy）模式"><a href="#1、代理（Proxy）模式" class="headerlink" title=" 1、代理（Proxy）模式 "></a><a id="Proxy"> 1、代理（Proxy）模式 </a></h1><p>为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性。</p>
+<p>代理模式的结构比较简单，主要是通过定义一个继承抽象主题的代理来包含真实主题，从而实现对真实主题的访问，下面来分析其基本结构和实现方法。</p>
+<p>代理模式的主要角色如下:</p>
+<ul>
+<li><strong>抽象主题（Subject）类</strong>：通过接口或抽象类声明真实主题和代理对象实现的业务方法。</li>
+<li><strong>真实主题（Real Subject）类</strong>：实现了抽象主题中的具体业务，是代理对象所代表的真实对象，是最终要引用的对象。</li>
+<li><strong>代理（Proxy）类</strong>：提供了与真实主题相同的接口，其内部含有对真实主题的引用，它可以访问、控制或扩展真实主题的功能。</li>
+</ul>
+<p>代理模式的实现代码如下：</p>
+<pre><code>package proxy;
+public class ProxyTest
+{
+    public static void main(String[] args)
+    {
+        Proxy proxy=new Proxy();
+        proxy.Request();
+    }
+}
+//抽象主题
+interface Subject
+{
+    void Request();
+}
+//真实主题
+class RealSubject implements Subject
+{
+    public void Request()
+    {
+        System.out.println(&quot;访问真实主题方法...&quot;);
+    }
+}
+//代理
+class Proxy implements Subject
+{
+    private RealSubject realSubject;
+    public void Request()
+    {
+        if (realSubject==null)
+        {
+            realSubject=new RealSubject();
+        }
+        preRequest();
+        realSubject.Request();
+        postRequest();
+    }
+    public void preRequest()
+    {
+        System.out.println(&quot;访问真实主题之前的预处理。&quot;);
+    }
+    public void postRequest()
+    {
+        System.out.println(&quot;访问真实主题之后的后续处理。&quot;);
+    }
+}</code></pre><p>代理模式的主要优点有：</p>
+<ul>
+<li>代理模式在客户端与目标对象之间起到一个中介作用和保护目标对象的作用；</li>
+<li>代理对象可以扩展目标对象的功能；</li>
+<li>代理模式能将客户端与目标对象分离，在一定程度上降低了系统的耦合度；</li>
+</ul>
+<p>其主要缺点是：</p>
+<ul>
+<li>在客户端和目标对象之间增加一个代理对象，会造成请求处理速度变慢；</li>
+<li>增加了系统的复杂度；</li>
+</ul>
+<h1 id="2、适配器（Adapter）模式"><a href="#2、适配器（Adapter）模式" class="headerlink" title="2、适配器（Adapter）模式"></a><a id="Adapter">2、适配器（Adapter）模式</a></h1><p>将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作。</p>
+<p>适配器模式（Adapter）的定义如下：<strong>将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作</strong>。适配器模式分为类结构型模式和对象结构型模式两种，前者类之间的耦合度比后者高，且要求程序员了解现有组件库中的相关组件的内部结构，所以应用相对较少些。</p>
+<p>适配器模式（Adapter）包含以下主要角色：</p>
+<ol>
+<li><strong>目标（Target）接口</strong>：当前系统业务所期待的接口，它可以是抽象类或接口。</li>
+<li><strong>适配者（Adaptee）类</strong>：它是被访问和适配的现存组件库中的组件接口。</li>
+<li><strong>适配器（Adapter）类</strong>：它是一个转换器，通过继承或引用适配者的对象，把适配者接口转换成目标接口，让客户按目标接口的格式访问适配者。</li>
+</ol>
+<pre><code>package adapter;
+//目标接口
+interface Target
+{
+    public void request();
+}
+//适配者接口
+class Adaptee
+{
+    public void specificRequest()
+    {       
+        System.out.println(&quot;适配者中的业务代码被调用！&quot;);
+    }
+}
+//类适配器类
+class ClassAdapter extends Adaptee implements Target
+{
+    public void request()
+    {
+        specificRequest();
+    }
+}
+//客户端代码
+public class ClassAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println(&quot;类适配器模式测试：&quot;);
+        Target target = new ClassAdapter();
+        target.request();
+    }
+}</code></pre><p>对象适配器模式的代码如下：</p>
+<pre><code>package adapter;
+//对象适配器类
+class ObjectAdapter implements Target
+{
+    private Adaptee adaptee;
+    public ObjectAdapter(Adaptee adaptee)
+    {
+        this.adaptee=adaptee;
+    }
+    public void request()
+    {
+        adaptee.specificRequest();
+    }
+}
+//客户端代码
+public class ObjectAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println(&quot;对象适配器模式测试：&quot;);
+        Adaptee adaptee = new Adaptee();
+        Target target = new ObjectAdapter(adaptee);
+        target.request();
+    }
+}</code></pre><p>该模式的主要优点如下：</p>
+<ul>
+<li>客户端通过适配器可以透明地调用目标接口。</li>
+<li>复用了现存的类，程序员不需要修改原有代码而重用现有的适配者类。</li>
+<li>将目标类和适配者类解耦，解决了目标类和适配者类接口不一致的问题。</li>
+</ul>
+<p>其缺点是：对类适配器来说，更换适配器的实现过程比较复杂。</p>
+<h1 id="3、桥接（Bridge）模式"><a href="#3、桥接（Bridge）模式" class="headerlink" title="3、桥接（Bridge）模式 "></a><a id="Bridge">3、桥接（Bridge）模式 </a></h1><p>桥接（Bridge）模式的定义如下：<strong>将抽象与实现分离，使它们可以独立变化</strong>。它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</p>
+<p>桥接（Bridge）模式的优点是：</p>
+<ul>
+<li>由于抽象与实现分离，所以扩展能力强；</li>
+<li>其实现细节对客户透明。</li>
+</ul>
+<p>缺点是：由于聚合关系建立在抽象层，要求开发者针对抽象化进行设计与编程，这增加了系统的理解与设计难度。</p>
+<p>可以将抽象化部分与实现化部分分开，取消二者的继承关系，改用组合关系。</p>
+<p>桥接（Bridge）模式包含以下主要角色:</p>
+<ol>
+<li>抽象化（Abstraction）角色：定义抽象类，并包含一个对实现化对象的引用。</li>
+<li>扩展抽象化（Refined    Abstraction）角色：是抽象化角色的子类，实现父类中的业务方法，并通过组合关系调用实现化角色中的业务方法。</li>
+<li>实现化（Implementor）角色：定义实现化角色的接口，供扩展抽象化角色调用。</li>
+<li>具体实现化（Concrete Implementor）角色：给出实现化角色接口的具体实现。</li>
+</ol>
+<p>桥接模式的代码如下：</p>
+<pre><code>package bridge;
+public class BridgeTest
+{
+    public static void main(String[] args)
+    {
+        Implementor imple=new ConcreteImplementorA();
+        Abstraction abs=new RefinedAbstraction(imple);
+        abs.Operation();
+    }
+}
+//实现化角色
+interface Implementor
+{
+    public void OperationImpl();
+}
+//具体实现化角色
+class ConcreteImplementorA implements Implementor
+{
+    public void OperationImpl()
+    {
+        System.out.println(&quot;具体实现化(Concrete Implementor)角色被访问&quot; );
+    }
+}
+//抽象化角色
+abstract class Abstraction
+{
+   protected Implementor imple;
+   protected Abstraction(Implementor imple)
+   {
+       this.imple=imple;
+   }
+   public abstract void Operation();   
+}
+//扩展抽象化角色
+class RefinedAbstraction extends Abstraction
+{
+   protected RefinedAbstraction(Implementor imple)
+   {
+       super(imple);
+   }
+   public void Operation()
+   {
+       System.out.println(&quot;扩展抽象化(Refined Abstraction)角色被访问&quot; );
+       imple.OperationImpl();
+   }
+}</code></pre><p>桥接模式通常适用于以下场景:</p>
+<ul>
+<li>当一个类存在两个独立变化的维度，且这两个维度都需要进行扩展时。</li>
+<li>当一个系统不希望使用继承或因为多层次继承导致系统类的个数急剧增加时。</li>
+<li>当一个系统需要在构件的抽象化角色和具体化角色之间增加更多的灵活性时。</li>
+</ul>
+<h1 id="4、装饰（Decorator）模式"><a href="#4、装饰（Decorator）模式" class="headerlink" title="4、装饰（Decorator）模式"></a><a id="#Decorator">4、装饰（Decorator）模式</a></h1><p>动态地给对象增加一些职责，即增加其额外的功能。</p>
+<p>装饰（Decorator）模式的主要优点有：</p>
+<ul>
+<li>采用装饰模式扩展对象的功能比采用继承方式更加灵活。</li>
+<li>可以设计出多个不同的具体装饰类，创造出多个不同行为的组合。</li>
+</ul>
+<p>其主要缺点是：装饰模式增加了许多子类，如果过度使用会使程序变得很复杂。</p>
+<p>通常情况下，扩展一个类的功能会使用继承方式来实现。但继承具有静态特征，耦合度高，并且随着扩展功能的增多，子类会很膨胀。如果<strong>使用组合关系来创建一个包装对象（即装饰对象）来包裹真实对象，并在保持真实对象的类结构不变的前提下，为其提供额外的功能，这就是装饰模式的目标。</strong>下面来分析其基本结构和实现方法。</p>
+<p>装饰模式主要包含以下角色:</p>
+<ol>
+<li>抽象构件（Component）角色：定义一个抽象接口以规范准备接收附加责任的对象。</li>
+<li>具体构件（Concrete    Component）角色：实现抽象构件，通过装饰角色为其添加一些职责。</li>
+<li>抽象装饰（Decorator）角色：继承抽象构件，并包含具体构件的实例，可以通过其子类扩展具体构件的功能。</li>
+<li>具体装饰（ConcreteDecorator）角色：实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。</li>
+</ol>
+<p>装饰模式的实现代码如下：</p>
+<pre><code>package decorator;
+public class DecoratorPattern
+{
+    public static void main(String[] args)
+    {
+        Component p=new ConcreteComponent();
+        p.operation();
+        System.out.println(&quot;---------------------------------&quot;);
+        Component d=new ConcreteDecorator(p);
+        d.operation();
+    }
+}
+//抽象构件角色
+interface  Component
+{
+    public void operation();
+}
+//具体构件角色
+class ConcreteComponent implements Component
+{
+    public ConcreteComponent()
+    {
+        System.out.println(&quot;创建具体构件角色&quot;);       
+    }   
+    public void operation()
+    {
+        System.out.println(&quot;调用具体构件角色的方法operation()&quot;);           
+    }
+}
+//抽象装饰角色
+class Decorator implements Component
+{
+    private Component component;   
+    public Decorator(Component component)
+    {
+        this.component=component;
+    }   
+    public void operation()
+    {
+        component.operation();
+    }
+}
+//具体装饰角色
+class ConcreteDecorator extends Decorator
+{
+    public ConcreteDecorator(Component component)
+    {
+        super(component);
+    }   
+    public void operation()
+    {
+        super.operation();
+        addedFunction();
+    }
+    public void addedFunction()
+    {
+        System.out.println(&quot;为具体构件角色增加额外的功能addedFunction()&quot;);           
+    }
+}</code></pre><p>前面讲解了关于装饰模式的结构与特点，下面介绍其适用的应用场景，装饰模式通常在以下几种情况使用。</p>
+<ul>
+<li>当需要给一个现有类<strong>添加附加职责</strong>，而又不能采用生成子类的方法进行扩充时。例如，该类被隐藏或者该类是终极类或者采用继承方式会产生大量的子类。</li>
+<li>当需要通过对现有的一组基本功能进行排列组合而产生非常多的功能时，采用继承关系很难实现，而采用装饰模式却很好实现。</li>
+<li>当对象的功能要求可以动态地添加，也可以再动态地撤销时。</li>
+</ul>
+<p>装饰模式在 Java 语言中的最著名的应用莫过于 <code>Java I/O</code>  标准库的设计了。例如，InputStream 的子类 FilterInputStream，OutputStream 的子类 FilterOutputStream，Reader 的子类 BufferedReader 以及 FilterReader，还有 Writer 的子类 BufferedWriter、FilterWriter 以及 PrintWriter 等，它们都是抽象装饰类。</p>
+<p>下面代码是为 FileReader 增加缓冲区而采用的装饰类 BufferedReader 的例子：</p>
+<pre><code>BufferedReader in=new BufferedReader(new FileReader(&quot;filename.txtn));
+String s=in.readLine();</code></pre><h1 id="5、外观（Facade）模式"><a href="#5、外观（Facade）模式" class="headerlink" title="5、外观（Facade）模式"></a><a id="Facade">5、外观（Facade）模式</a></h1><p>外观（Facade）模式的定义：是一种<strong>通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式</strong>。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</p>
+<p>外观（Facade）模式是“迪米特法则”的典型应用，它有以下主要优点:</p>
+<ul>
+<li>降低了子系统与客户端之间的耦合度，使得子系统的变化不会影响调用它的客户类。</li>
+<li>对客户屏蔽了子系统组件，减少了客户处理的对象数目，并使得子系统使用起来更加容易。</li>
+<li>降低了大型软件系统中的编译依赖性，简化了系统在不同平台之间的移植过程，因为编译一个子系统不会影响其他的子系统，也不会影响外观对象。</li>
+</ul>
+<p>外观（Facade）模式的主要缺点如下:</p>
+<ul>
+<li>不能很好地限制客户使用子系统类。</li>
+<li>增加新的子系统可能需要修改外观类或客户端的源代码，违背了“开闭原则”。</li>
+</ul>
+<p>外观（Facade）模式的结构比较简单，主要是定义了一个高层接口。它包含了对各个子系统的引用，客户端可以通过它访问各个子系统的功能。现在来分析其基本结构和实现方法。</p>
+<p>外观（Facade）模式包含以下主要角色:</p>
+<ol>
+<li>外观（Facade）角色：为多个子系统对外提供一个共同的接口。</li>
+<li>子系统（Sub System）角色：实现系统的部分功能，客户可以通过外观角色访问它。</li>
+<li>客户（Client）角色：通过一个外观角色访问各个子系统的功能。</li>
+</ol>
+<p>外观模式的实现代码如下：</p>
+<pre><code>package facade;
+public class FacadePattern
+{
+    public static void main(String[] args)
+    {
+        Facade f=new Facade();
+        f.method();
+    }
+}
+//外观角色
+class Facade
+{
+    private SubSystem01 obj1=new SubSystem01();
+    private SubSystem02 obj2=new SubSystem02();
+    private SubSystem03 obj3=new SubSystem03();
+    public void method()
+    {
+        obj1.method1();
+        obj2.method2();
+        obj3.method3();
+    }
+}
+//子系统角色
+class SubSystem01
+{
+    public  void method1()
+    {
+        System.out.println(&quot;子系统01的method1()被调用！&quot;);
+    }   
+}
+//子系统角色
+class SubSystem02
+{
+    public  void method2()
+    {
+        System.out.println(&quot;子系统02的method2()被调用！&quot;);
+    }   
+}
+//子系统角色
+class SubSystem03
+{
+    public  void method3()
+    {
+        System.out.println(&quot;子系统03的method3()被调用！&quot;);
+    }   
+}</code></pre><p>通常在以下情况下可以考虑使用外观模式:</p>
+<ul>
+<li>对分层结构系统构建时，使用外观模式定义子系统中每层的入口点可以简化子系统之间的依赖关系。</li>
+<li>当一个复杂系统的子系统很多时，外观模式可以为系统设计一个简单的接口供外界访问。</li>
+<li>当客户端与多个子系统之间存在很大的联系时，引入外观模式可将它们分离，从而提高子系统的独立性和可移植性。</li>
+</ul>
+<h1 id="6、享元（Flyweight）模式"><a href="#6、享元（Flyweight）模式" class="headerlink" title="6、享元（Flyweight）模式 "></a><a id="Flyweight">6、享元（Flyweight）模式 </a></h1><p>享元（Flyweight）模式的定义：<strong>运用共享技术来有效地支持大量细粒度对象的复用</strong>。它通过共享已经存在的又橡来大幅度减少需要创建的对象数量、避免大量相似类的开销，从而提高系统资源的利用率。</p>
+<p>享元模式的主要优点是：相同对象只要保存一份，这降低了系统中对象的数量，从而降低了系统中细粒度对象给内存带来的压力。</p>
+<p>其主要缺点是：</p>
+<ul>
+<li>为了使对象可以共享，需要将一些不能共享的状态外部化，这将增加程序的复杂性。</li>
+<li>读取享元模式的外部状态会使得运行时间稍微变长。</li>
+</ul>
+<p>享元模式中存在以下两种状态：</p>
+<ul>
+<li>内部状态，即不会随着环境的改变而改变的可共享部分；</li>
+<li>外部状态，指随环境改变而改变的不可以共享的部分。</li>
+</ul>
+<p>享元模式的实现要领就是区分应用中的这两种状态，并将外部状态外部化。下面来分析其基本结构和实现方法。</p>
+<p>享元模式的主要角色有如下：</p>
+<ol>
+<li>抽象享元角色（Flyweight）:是所有的具体享元类的基类，为具体享元规范需要实现的公共接口，非享元的外部状态以参数的形式通过方法传入。</li>
+<li>具体享元（Concrete Flyweight）角色：实现抽象享元角色中所规定的接口。</li>
+<li>非享元（Unsharable Flyweight)角色：是不可以共享的外部状态，它以参数的形式注入具体享元的相关方法中。</li>
+<li>享元工厂（Flyweight Factory）角色：负责创建和管理享元角色。当客户对象请求一个享元对象时，享元工厂检査系统中是否存在符合要求的享元对象，如果存在则提供给客户；如果不存在的话，则创建一个新的享元对象。</li>
+</ol>
+<pre><code>package flyweight;
+import java.util.HashMap;
+public class FlyweightPattern
+{
+    public static void main(String[] args)
+    {
+        FlyweightFactory factory=new FlyweightFactory();
+        Flyweight f01=factory.getFlyweight(&quot;a&quot;);
+        Flyweight f02=factory.getFlyweight(&quot;a&quot;);
+        Flyweight f03=factory.getFlyweight(&quot;a&quot;);
+        Flyweight f11=factory.getFlyweight(&quot;b&quot;);
+        Flyweight f12=factory.getFlyweight(&quot;b&quot;);       
+        f01.operation(new UnsharedConcreteFlyweight(&quot;第1次调用a。&quot;));       
+        f02.operation(new UnsharedConcreteFlyweight(&quot;第2次调用a。&quot;));       
+        f03.operation(new UnsharedConcreteFlyweight(&quot;第3次调用a。&quot;));       
+        f11.operation(new UnsharedConcreteFlyweight(&quot;第1次调用b。&quot;));       
+        f12.operation(new UnsharedConcreteFlyweight(&quot;第2次调用b。&quot;));
+    }
+}
+//非享元角色
+class UnsharedConcreteFlyweight
+{
+    private String info;
+    UnsharedConcreteFlyweight(String info)
+    {
+        this.info=info;
+    }
+    public String getInfo()
+    {
+        return info;
+    }
+    public void setInfo(String info)
+    {
+        this.info=info;
+    }
+}
+//抽象享元角色
+interface Flyweight
+{
+    public void operation(UnsharedConcreteFlyweight state);
+}
+//具体享元角色
+class ConcreteFlyweight implements Flyweight
+{
+    private String key;
+    ConcreteFlyweight(String key)
+    {
+        this.key=key;
+        System.out.println(&quot;具体享元&quot;+key+&quot;被创建！&quot;);
+    }
+    public void operation(UnsharedConcreteFlyweight outState)
+    {
+        System.out.print(&quot;具体享元&quot;+key+&quot;被调用，&quot;);
+        System.out.println(&quot;非享元信息是:&quot;+outState.getInfo());
+    }
+}
+//享元工厂角色
+class FlyweightFactory
+{
+    private HashMap&lt;String, Flyweight&gt; flyweights=new HashMap&lt;String, Flyweight&gt;();
+    public Flyweight getFlyweight(String key)
+    {
+        Flyweight flyweight=(Flyweight)flyweights.get(key);
+        if(flyweight!=null)
+        {
+            System.out.println(&quot;具体享元&quot;+key+&quot;已经存在，被成功获取！&quot;);
+        }
+        else
+        {
+            flyweight=new ConcreteFlyweight(key);
+            flyweights.put(key, flyweight);
+        }
+        return flyweight;
+    }
+}</code></pre><p>享元模式是通过减少内存中对象的数量来节省内存空间的，所以以下几种情形适合采用享元模式：</p>
+<ul>
+<li>系统中存在大量相同或相似的对象，这些对象耗费大量的内存资源。</li>
+<li>大部分的对象可以按照内部状态进行分组，且可将不同部分外部化，这样每一个组只需保存一个内部状态。</li>
+<li>由于享元模式需要额外维护一个保存享元的数据结构，所以应当在有足够多的享元实例时才值得使用享元模式。</li>
+</ul>
+<h1 id="7、组合（Composite）模式"><a href="#7、组合（Composite）模式" class="headerlink" title=" 7、组合（Composite）模式"></a><a id="Composite"> 7、组合（Composite）模式</a></h1><p>组合（Composite）模式的定义：有时又叫作部分-整体模式，它是一种<strong>将对象组合成树状的层次结构的模式，用来表示“部分-整体”的关系，使用户对单个对象和组合对象具有一致的访问性</strong>。</p>
+<p>组合模式的主要优点有：</p>
+<ul>
+<li>组合模式使得客户端代码可以一致地处理单个对象和组合对象，无须关心自己处理的是单个对象，还是组合对象，这简化了客户端代码；</li>
+<li>更容易在组合体内加入新的对象，客户端不会因为加入了新的对象而更改源代码，满足“开闭原则”；</li>
+</ul>
+<p>其主要缺点是：</p>
+<ul>
+<li>设计较复杂，客户端需要花更多时间理清类之间的层次关系；</li>
+<li>不容易限制容器中的构件；</li>
+<li>不容易用继承的方法来增加构件的新功能；</li>
+</ul>
+<p>组合模式包含以下主要角色：</p>
+<ol>
+<li>抽象构件（Component）角色：它的主要作用是为树叶构件和树枝构件声明公共接口，并实现它们的默认行为。在透明式的组合模式中抽象构件还声明访问和管理子类的接口；在安全式的组合模式中不声明访问和管理子类的接口，管理工作由树枝构件完成。</li>
+<li>树叶构件（Leaf）角色：是组合中的叶节点对象，它没有子节点，用于实现抽象构件角色中 声明的公共接口。</li>
+<li>树枝构件（Composite）角色：是组合中的分支节点对象，它有子节点。它实现了抽象构件角色中声明的接口，它的主要作用是存储和管理子部件，通常包含 Add()、Remove()、GetChild() 等方法。</li>
+</ol>
+<p>组合模式分为透明式的组合模式和安全式的组合模式。</p>
+<p>下面给出透明式的组合模式的实现代码，与安全式的组合模式的实现代码类似，只要对其做简单修改就可以了。</p>
+<pre><code>package composite;
+import java.util.ArrayList;
+public class CompositePattern
+{
+    public static void main(String[] args)
+    {
+        Component c0=new Composite(); 
+        Component c1=new Composite(); 
+        Component leaf1=new Leaf(&quot;1&quot;); 
+        Component leaf2=new Leaf(&quot;2&quot;); 
+        Component leaf3=new Leaf(&quot;3&quot;);          
+        c0.add(leaf1); 
+        c0.add(c1);
+        c1.add(leaf2); 
+        c1.add(leaf3);          
+        c0.operation(); 
+    }
+}
+//抽象构件
+interface Component
+{
+    public void add(Component c);
+    public void remove(Component c);
+    public Component getChild(int i);
+    public void operation();
+}
+//树叶构件
+class Leaf implements Component
+{
+    private String name;
+    public Leaf(String name)
+    {
+        this.name=name;
+    }
+    public void add(Component c){ }           
+    public void remove(Component c){ }   
+    public Component getChild(int i)
+    {
+        return null;
+    }   
+    public void operation()
+    {
+        System.out.println(&quot;树叶&quot;+name+&quot;：被访问！&quot;); 
+    }
+}
+//树枝构件
+class Composite implements Component
+{
+    private ArrayList&lt;Component&gt; children=new ArrayList&lt;Component&gt;();   
+    public void add(Component c)
+    {
+        children.add(c);
+    }   
+    public void remove(Component c)
+    {
+        children.remove(c);
+    }   
+    public Component getChild(int i)
+    {
+        return children.get(i);
+    }   
+    public void operation()
+    {
+        for(Object obj:children)
+        {
+            ((Component)obj).operation();
+        }
+    }    
+}</code></pre><p>应用场景：</p>
+<ul>
+<li>在需要表示一个对象整体与部分的层次结构的场合。</li>
+<li>要求对用户隐藏组合对象与单个对象的不同，用户可以用统一的接口使用组合结构中的所有对象的场合。</li>
+</ul>
+<hr>
+<p>推荐一个讲的很详细、易理解的网站：</p>
+<p><a href="http://c.biancheng.net/view/1361.html" target="_blank" rel="noopener">C语言中文网</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以邮件至 paion_go@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2020 Bruce</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#数组','#Hexo','#链表','#归并排序','#Ribbon','#RabbitMQ','#设计模式','#TCP','#计算机网络','#MongoDB','#MySQL','#INNODB','#MyISAM','#Java','#Volatile','#Synchronized','#并发','#多线程','#Object','#面向对象','#static','#接口','#抽象类','#ClassLoader','#双亲委派机制','#Lambda','#反射','#MyBatis','#Spring-Security','#Spring','#ArrayList',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
