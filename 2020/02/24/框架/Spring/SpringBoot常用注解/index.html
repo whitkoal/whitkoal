@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>java-反射 | Bruce</title>
-  <meta name="keywords" content=" 反射 ">
-  <meta name="description" content="java-反射 | Bruce">
+  <title>SpringBoot常用注解 | Bruce</title>
+  <meta name="keywords" content=" Spring , 注解 ">
+  <meta name="description" content="SpringBoot常用注解 | Bruce">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
 <meta name="keywords" content="设计模式">
@@ -804,9 +804,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Java/特性/java-反射" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-框架/Spring/SpringBoot常用注解" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">java-反射</h1>
+        <h1 class="article-title">SpringBoot常用注解</h1>
     
     <div class="article-meta">
         
@@ -814,23 +814,25 @@
         
         <span class="book">
             
-                <a  data-rel="Java">Java</a>/
+                <a  data-rel="框架">框架</a>/
             
-                <a  data-rel="特性">特性</a>
+                <a  data-rel="Spring">Spring</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a class="color3">反射</a>
+            <a class="color2">Spring</a>
+            
+            <a class="color3">注解</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-02-12 16:12:13'>2019-10-27 17:30</time>
+        创建时间:<time class="date" title='更新时间: 2020-02-24 18:00:11'>2020-02-24 17:58</time>
         
     </div>
     <div class="article-meta">
@@ -852,7 +854,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、定义"><span class="toc-text">一、定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、与反射相关的几个类"><span class="toc-text">二、与反射相关的几个类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、运用反射机制"><span class="toc-text">三、运用反射机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1、反射中常用API"><span class="toc-text">3.1、反射中常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Class"><span class="toc-text">Class</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Field类"><span class="toc-text">Field类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Method类"><span class="toc-text">Method类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2、小Demo"><span class="toc-text">3.2、小Demo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-text">参考文献</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -868,334 +870,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。</p>
-<h2 id="二、与反射相关的几个类"><a href="#二、与反射相关的几个类" class="headerlink" title="二、与反射相关的几个类"></a>二、与反射相关的几个类</h2><ol>
-<li><strong>Field类</strong>：提供有关类或接口的<strong>属性的信息</strong>，以及对它的动态访问权限。反射的字段可能是一个类（静态）属性或实例属性，简单的理解可以把它看成一个封装反射类的属性的类。</li>
-</ol>
-<ol start="2">
-<li><strong>Constructor类</strong>：提供关于类的<strong>单个构造方法的信息</strong>以及对它的访问权限。这个类和Field类不同，Field类封装了反射类的属性，而Constructor类则封装了反射类的构造方法。</li>
-</ol>
-<ol start="3">
-<li><strong>Method类</strong>：提供关于类或接口上单独某个<strong>方法的信息</strong>。所反映的方法可能是类方法或实例方法（包括抽象方法）。 这个类不难理解，它是用来封装反射类方法的一个类。</li>
-</ol>
-<ol start="4">
-<li><strong>Class类</strong>：Class 类的实例用来表示正在运行的 Java 应用程序中的<strong>类和接口</strong>。</li>
-</ol>
-<ol start="5">
-<li><strong>Object类</strong>：每个类都使用 Object 作为超类。所有对象（包括数组）都实现这个类的方法。</li>
-</ol>
-<h2 id="三、运用反射机制"><a href="#三、运用反射机制" class="headerlink" title="三、运用反射机制"></a>三、运用反射机制</h2><h3 id="3-1、反射中常用API"><a href="#3-1、反射中常用API" class="headerlink" title="3.1、反射中常用API"></a>3.1、反射中常用API</h3><h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p>Class 类的实例用来表示正在运行的 Java 应用程序中的<strong>类和接口</strong>。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>asSubclass(Class&lt; T &gt; clazz)</td>
-<td>把传递的类的对象转换成代表其子类的对象</td>
-</tr>
-<tr>
-<td>Cast</td>
-<td>把对象转换成代表类或是接口的对象</td>
-</tr>
-<tr>
-<td>getClassLoader()</td>
-<td>获得类的加载器</td>
-</tr>
-<tr>
-<td>getClasses()</td>
-<td>返回一个数组，数组中包含该类中所有公共类和接口类的对象</td>
-</tr>
-<tr>
-<td>getDeclaredClasses()</td>
-<td>返回一个数组，数组中包含该类中所有类和接口类的对象</td>
-</tr>
-<tr>
-<td>forName(String className)</td>
-<td>根据类名返回类的对象</td>
-</tr>
-<tr>
-<td>getName()</td>
-<td>获得类的完整路径名字</td>
-</tr>
-<tr>
-<td>newInstance()</td>
-<td>创建类的实例</td>
-</tr>
-<tr>
-<td>getPackage()</td>
-<td>获得类的包</td>
-</tr>
-<tr>
-<td>getSimpleName()</td>
-<td>获得类的名字</td>
-</tr>
-<tr>
-<td>getSuperclass()</td>
-<td>获得当前类继承的父类的名字</td>
-</tr>
-<tr>
-<td>getInterfaces()</td>
-<td>获得当前类实现的类或是接口</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>获得类中注解相关的方法</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getAnnotation(Class&lt; A &gt; annotationClass)</td>
-<td>返回该类中与参数类型匹配的公有注解对象</td>
-</tr>
-<tr>
-<td>getAnnotations()</td>
-<td>返回该类所有的公有注解对象</td>
-</tr>
-<tr>
-<td>getDeclaredAnnotation(Class&lt; A &gt; annotationClass)</td>
-<td>返回该类中与参数类型匹配的所有注解对象</td>
-</tr>
-<tr>
-<td>getDeclaredAnnotations()</td>
-<td>返回该类所有的注解对象</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>获得类中属性相关的方法</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getField(String name)</td>
-<td>获得某个公有的属性对象</td>
-</tr>
-<tr>
-<td>getFields()</td>
-<td>获得所有公有的属性对象</td>
-</tr>
-<tr>
-<td>getDeclaredField(String name)</td>
-<td>获得某个属性对象</td>
-</tr>
-<tr>
-<td>getDeclaredFields()</td>
-<td>获得所有属性对象</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>获得类中构造器相关的方法</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getConstructor(Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类中与参数类型匹配的公有构造方法</td>
-</tr>
-<tr>
-<td>getConstructors()</td>
-<td>获得该类的所有公有构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructor(Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类中与参数类型匹配的构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructors()</td>
-<td>获得该类所有构造方法</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>获得类中方法相关的方法</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类某个公有的方法</td>
-</tr>
-<tr>
-<td>getMethods()</td>
-<td>获得该类所有公有的方法</td>
-</tr>
-<tr>
-<td>getDeclaredMethod(String name, Class…&lt;?&gt; parameterTypes)</td>
-<td>获得该类某个方法</td>
-</tr>
-<tr>
-<td>getDeclaredMethods()</td>
-<td>获得该类所有方法</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>类中其他重要的方法</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>isAnnotation()</td>
-<td>如果是注解类型则返回true</td>
-</tr>
-<tr>
-<td>isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)</td>
-<td>如果是指定类型注解类型则返回true</td>
-</tr>
-<tr>
-<td>isAnonymousClass()</td>
-<td>如果是匿名类则返回true</td>
-</tr>
-<tr>
-<td>isArray()</td>
-<td>如果是一个数组类则返回true</td>
-</tr>
-<tr>
-<td>isEnum()</td>
-<td>如果是枚举类则返回true</td>
-</tr>
-<tr>
-<td>isInstance(Object obj)</td>
-<td>如果obj是该类的实例则返回true</td>
-</tr>
-<tr>
-<td>isInterface()</td>
-<td>如果是接口类则返回true</td>
-</tr>
-<tr>
-<td>isLocalClass()</td>
-<td>如果是局部类则返回true</td>
-</tr>
-<tr>
-<td>isMemberClass()</td>
-<td>如果是内部类则返回true</td>
-</tr>
-</tbody></table>
-<h4 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h4><p>Field代表类的成员变量（成员变量也称为类的属性）。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>equals(Object obj)</td>
-<td>属性与obj相等则返回true</td>
-</tr>
-<tr>
-<td>get(Object obj)</td>
-<td>获得obj中对应的属性值</td>
-</tr>
-<tr>
-<td>set(Object obj, Object value)</td>
-<td>设置obj中对应属性值</td>
-</tr>
-</tbody></table>
-<h4 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h4><p>Method代表类的方法。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>invoke(Object obj, Object… args)</td>
-<td>传递object对象及参数，调用该对象对应的方法</td>
-</tr>
-</tbody></table>
-<p><strong>带有Declared修饰的方法可以反射到私有的方法，没有Declared修饰的只能用来反射公有的方法</strong></p>
-<h3 id="3-2、小Demo"><a href="#3-2、小Demo" class="headerlink" title="3.2、小Demo"></a>3.2、小Demo</h3><p>定义一个类，类名为 TestA ，类中有公有、私有属性，无参构造方法，公有、私有方法。</p>
-<pre><code>package reflact;
+        <p><strong>@Configuration</strong> : 声明配置类；</p>
+<p><strong>@Bean</strong> : 方法注解，在容器中注册一个Bean；类型为返回值类型，<strong>Id</strong>默认为方法名； </p>
+<p><strong>@ComponentScan</strong> ：包扫描，通过<strong>value</strong>指定要扫描的包，可通过<strong>includeFilters</strong>和e<strong>xcludeFilters</strong>进行配置；</p>
+<pre><code>@ComponentScan(value = &quot;com.xxx&quot;, includeFilters = {
+    @Filter(type = FilterType.ANNOTATION.classes = {controller.class})
+})</code></pre><p><strong>@ComponetScans</strong> ：此注解中可放入多个@ComponentScan注解，完成多次扫描；</p>
+<p><strong>@Scope</strong> ：设置组件作用域，可选参数有：“<strong>Prototype</strong>”、“<strong>Singleton</strong>” 等…</p>
+<pre><code>Prototype: 多实例，IOC容器启动并不会去调用方法创建对象，每次获取对象的时候才会调用方法创建队象；
 
-public class TestA {
-
-    public String name;
-    private int age;
-
-    public TestA() {
-        System.out.println(&quot;构造方法执行了!&quot;);
-    }
-
-    public String PublicMethod() {
-        System.out.println(&quot;PublicMethod 方法执行了!&quot;);
-        System.out.println(&quot;name: &quot; + name + &quot;--- age: &quot; + age);
-        return &quot;这是公共方法的返回值&quot;;
-    }
-
-    private String PrivateMethod() {
-        System.out.println(&quot;PrivateMethod 方法执行了!&quot;);
-        System.out.println(&quot;name: &quot; + name + &quot;--- age: &quot; + age);
-        return &quot;这是私有方法的返回值&quot;;
-    }
-}
-</code></pre><p><strong>利用反射机制设置、获取TestA类的属性，执行TestA类的方法</strong>。</p>
-<pre><code>package reflact;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-public class TestReflact {
-
-    public static void main(String[] args) throws Exception {
-        Class clazzA = Class.forName(&quot;reflact.TestA&quot;);
-        System.out.println(&quot;类名为 ： &quot; + clazzA.getName());
-
-        // 构造 testA 实例
-        TestA testa = (TestA) clazzA.getDeclaredConstructor().newInstance();
-
-        // 设置、获取公有属性
-        Field name = clazzA.getField(&quot;name&quot;);
-        name.set(testa, &quot;小明&quot;);
-        System.out.println(name.get(testa));
-
-        // 对私有属性赋值、获取
-        Field age = clazzA.getDeclaredField(&quot;age&quot;);
-        age.setAccessible(true);
-        age.set(testa, 12);
-        System.out.println(age.get(testa));
-
-        // 执行公共方法
-        Method PublicMethod = clazzA.getMethod(&quot;PublicMethod&quot;);
-        Object invoke = PublicMethod.invoke(testa);
-        System.out.println(invoke);
-
-        // 执行私有方法
-        Method privateMethod = clazzA.getDeclaredMethod(&quot;PrivateMethod&quot;);
-        privateMethod.setAccessible(true);
-        Object invoke2 = privateMethod.invoke(testa);
-        System.out.println(invoke2);
-    }
-
-}
-</code></pre><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.jianshu.com/p/9be58ee20dee" target="_blank" rel="noopener">Java高级特性——反射</a></p>
-<p><a href="https://www.cnblogs.com/mengdd/archive/2013/01/26/2877972.html" target="_blank" rel="noopener">Java 反射机制</a></p>
+Singleton: 单实例（默认值），IOC容器启动会调用方法创建对象放到IOC容器中，以后每次获取都直接从容器中拿；</code></pre><p><strong>@Lazy</strong> ： 懒加载，在默认状态下IOC容器在启动时会创建所有单例Bean（饿汉式），<strong>@Lazy</strong>注解会使IOC容器加载Bean的策略变为懒汉式；</p>
+<p><strong>@Conditional</strong> ：按照一定条件进行判断，满足条件给容器中注册Bean</p>
+<pre><code>@Conditional中传入一个Condition接口的实现类的数组</code></pre><p><strong>@Import({Test.calss})</strong> ：导入组件，<strong>Id</strong>是组件的全类名；</p>
+<p><strong>@PostConstruct</strong> ：在Bean创建完成且属性赋值完成，执行初始化方法；在构造方法执行完成后执行<strong>@PostConstruct</strong>标注的方法；</p>
+<p><strong>@PreDestroy</strong> ： 在IOC容器销毁之前，调用@PreDestroy标注的方法；</p>
+<p><strong>@PropertySource</strong> ：读取外部配置文件中的键值对数据，保存到运行的环境变量中；</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以邮件至 paion_go@163.com </span>

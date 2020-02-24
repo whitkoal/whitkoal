@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://brucy.cn/"/>
-  <updated>2020-02-16T14:33:47.461Z</updated>
+  <updated>2020-02-24T10:00:11.492Z</updated>
   <id>http://brucy.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot常用注解</title>
+    <link href="http://brucy.cn/2020/02/24/%E6%A1%86%E6%9E%B6/Spring/SpringBoot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://brucy.cn/2020/02/24/框架/Spring/SpringBoot常用注解/</id>
+    <published>2020-02-24T09:58:04.000Z</published>
+    <updated>2020-02-24T10:00:11.492Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;@Configuration&lt;/strong&gt; : 声明配置类；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;@Bean&lt;/strong&gt; : 方法注解，在容器中注册一个Bean；类型为返回值类型，&lt;strong&gt;Id&lt;/strong&gt;默认为方法名；
+        
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Spring" scheme="http://brucy.cn/categories/%E6%A1%86%E6%9E%B6/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://brucy.cn/tags/Spring/"/>
+    
+      <category term="注解" scheme="http://brucy.cn/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式-行为型模式</title>
@@ -305,9 +336,9 @@
       <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
     
     
-      <category term="Java" scheme="http://brucy.cn/tags/Java/"/>
-    
       <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
+    
+      <category term="Java" scheme="http://brucy.cn/tags/Java/"/>
     
       <category term="Synchronized" scheme="http://brucy.cn/tags/Synchronized/"/>
     
@@ -536,34 +567,6 @@
     
     
       <category term="RabbitMQ" scheme="http://brucy.cn/tags/RabbitMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB常用语句(一)</title>
-    <link href="http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5(%E4%B8%80)/"/>
-    <id>http://brucy.cn/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/</id>
-    <published>2019-12-03T12:44:06.000Z</published>
-    <updated>2020-02-12T03:58:03.642Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;use-命令-创建-选择-数据库&quot;&gt;&lt;a href=&quot;#use-命令-创建-选择-数据库&quot; class=&quot;headerlink&quot; title=&quot;use 命令 创建/选择 数据库&quot;&gt;&lt;/a&gt;use 命令 创建/选择 数据库&lt;/h4&gt;&lt;p&gt;MongoDB使用
-        
-      
-    
-    </summary>
-    
-      <category term="DB" scheme="http://brucy.cn/categories/DB/"/>
-    
-      <category term="MongoDB" scheme="http://brucy.cn/categories/DB/MongoDB/"/>
-    
-    
-      <category term="MongoDB" scheme="http://brucy.cn/tags/MongoDB/"/>
     
   </entry>
   
