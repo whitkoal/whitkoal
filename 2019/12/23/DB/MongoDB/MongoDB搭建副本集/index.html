@@ -6,18 +6,18 @@
   <meta name="keywords" content=" MongoDB ">
   <meta name="description" content="MongoDB搭建副本集 | Bruce">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
+<meta name="keywords" content="Spring,注解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-结构型模式">
-<meta property="og:url" content="http://brucy.cn/2020/02/16/设计模式/设计模式-结构型模式/index.html">
+<meta property="og:title" content="SpringBoot常用注解">
+<meta property="og:url" content="http://brucy.cn/2020/02/24/框架/Spring/SpringBoot常用注解/index.html">
 <meta property="og:site_name" content="Bruce">
-<meta property="og:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta property="og:description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2020-02-16T14:36:03.193Z">
+<meta property="og:updated_time" content="2020-02-24T10:00:11.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式-结构型模式">
-<meta name="twitter:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta name="twitter:title" content="SpringBoot常用注解">
+<meta name="twitter:description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -136,23 +136,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(38)</small></div></li>
-    
-        
-            
-            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="Hexo">Hexo<small>(2)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
+    <li><div class="all active">全部文章<small>(39)</small></div></li>
     
         
             
@@ -165,6 +149,22 @@
                         </li>
                             
                         <li><div data-rel="负载均衡">负载均衡<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="Hexo">Hexo<small>(2)</small></div>
                             
                         </li>
                             
@@ -192,13 +192,13 @@
     
         
             
-            <li><div data-rel="设计模式">设计模式<small>(3)</small></div>
-                
-            </li>
-            
         
     
         
+            
+            <li><div data-rel="设计模式">设计模式<small>(3)</small></div>
+                
+            </li>
             
         
     
@@ -212,39 +212,11 @@
     
         
             
-            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
             <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(9)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="API">API<small>(3)</small></div>
+                        <li><div data-rel="特性">特性<small>(3)</small></div>
                             
                         </li>
                             
@@ -252,7 +224,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="特性">特性<small>(3)</small></div>
+                        <li><div data-rel="API">API<small>(3)</small></div>
                             
                         </li>
                             
@@ -264,15 +236,23 @@
     
         
             
-            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(6)</small></div>
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(7)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="Spring">Spring<small>(4)</small></div>
+                        <li><div data-rel="Spring">Spring<small>(5)</small></div>
                             
                         </li>
                             
@@ -280,6 +260,10 @@
                             
                         </li>
                             
+                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
+                            
+                        </li>
+                            
                     </ul>
                 
             </li>
@@ -299,6 +283,22 @@
         
     
         
+            
+            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
             
         
     
@@ -320,7 +320,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_posts_number" value="39">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -355,15 +355,15 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a class="color5">Hexo</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color4">RabbitMQ</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color2">Ribbon</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Hexo</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -391,39 +391,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color3">MongoDB</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">MySQL</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">INNODB</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">MyISAM</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">ClassLoader</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">双亲委派机制</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">Object</a>
+        <a class="color5">Java</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color4">Volatile</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Java</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -439,7 +411,23 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color2">Object</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">ClassLoader</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">双亲委派机制</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color2">Lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">反射</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -459,19 +447,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color3">MyBatis</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">反射</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color2">Spring</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Spring-Security</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -479,7 +455,35 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color1">Spring-Security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MongoDB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">INNODB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">MyISAM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color5">ArrayList</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Bean</a>
     </li>
     
     <div class="clearfix"></div>
@@ -487,22 +491,6 @@
 
     
     <nav id="title-list-nav">
-        
-        <a  class="其他 Hexo "
-           href="/2019/10/26/其他/hexo常用命令/"
-           data-tag="Hexo"
-           data-author="" >
-            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
-            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
-        </a>
-        
-        <a  class="其他 Hexo "
-           href="/2019/10/19/其他/hello-world/"
-           data-tag="Hexo"
-           data-author="" >
-            <span class="post-title" title="Hello World">Hello World</span>
-            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
-        </a>
         
         <a  class="中间件 MQ "
            href="/2019/12/07/中间件/RabbitMQ基本概念介绍/"
@@ -518,6 +506,22 @@
            data-author="" >
             <span class="post-title" title="Ribbon">Ribbon</span>
             <span class="post-date" title="2020-01-18 07:20:24">2020/01/18</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/26/其他/hexo常用命令/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
+            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/19/其他/hello-world/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
         </a>
         
         <a  class="中间件 MQ "
@@ -544,20 +548,20 @@
             <span class="post-date" title="2019-11-16 13:03:54">2019/11/16</span>
         </a>
         
-        <a  class=""
-           href="/2020/02/16/设计模式/设计模式-行为型模式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="设计模式-行为型模式">设计模式-行为型模式</span>
-            <span class="post-date" title="2020-02-16 22:33:47">2020/02/16</span>
-        </a>
-        
         <a  class="算法 "
            href="/2019/12/09/算法/基础数据结构-01、数组/"
            data-tag="数组"
            data-author="" >
             <span class="post-title" title="基础数据结构-01、数组">基础数据结构-01、数组</span>
             <span class="post-date" title="2019-12-09 18:29:47">2019/12/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/02/16/设计模式/设计模式-行为型模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式-行为型模式">设计模式-行为型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:47">2020/02/16</span>
         </a>
         
         <a  class="设计模式 "
@@ -584,68 +588,20 @@
             <span class="post-date" title="2019-11-06 09:38:47">2019/11/06</span>
         </a>
         
-        <a  class="DB MongoDB "
-           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
-           data-tag="MongoDB"
+        <a  class=""
+           href="/2020/02/13/Java/JVM/Java运行时数据区/"
+           data-tag=""
            data-author="" >
-            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
-            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+            <span class="post-title" title="Java运行时数据区">Java运行时数据区</span>
+            <span class="post-date" title="2020-02-13 16:29:02">2020/02/13</span>
         </a>
         
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
-           data-tag="MySQL"
+        <a  class="Java 并发 "
+           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
+           data-tag="Java,Volatile,Synchronized,并发,多线程"
            data-author="" >
-            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
-            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MongoDB "
-           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
-           data-tag="MongoDB"
-           data-author="" >
-            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
-            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
-           data-tag="MySQL,INNODB"
-           data-author="" >
-            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
-            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MongoDB "
-           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
-           data-tag="MongoDB"
-           data-author="" >
-            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
-            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
-           data-tag="MySQL"
-           data-author="" >
-            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
-            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
-           data-tag="MySQL,INNODB,MyISAM"
-           data-author="" >
-            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
-            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
-        </a>
-        
-        <a  class="Java API "
-           href="/2019/10/28/Java/API/ClassLoader/"
-           data-tag="ClassLoader,双亲委派机制"
-           data-author="" >
-            <span class="post-title" title="ClassLoader">ClassLoader</span>
-            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
+            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
+            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
         </a>
         
         <a  class="Java API "
@@ -656,36 +612,12 @@
             <span class="post-date" title="2019-10-31 20:08:51">2019/10/31</span>
         </a>
         
-        <a  class=""
-           href="/2020/02/13/Java/JVM/Java运行时数据区/"
-           data-tag=""
+        <a  class="Java API "
+           href="/2019/10/28/Java/API/ClassLoader/"
+           data-tag="ClassLoader,双亲委派机制"
            data-author="" >
-            <span class="post-title" title="Java运行时数据区">Java运行时数据区</span>
-            <span class="post-date" title="2020-02-13 16:29:02">2020/02/13</span>
-        </a>
-        
-        <a  class="设计模式 "
-           href="/2020/02/16/设计模式/设计模式-结构型模式/"
-           data-tag="设计模式"
-           data-author="" >
-            <span class="post-title" title="设计模式-结构型模式">设计模式-结构型模式</span>
-            <span class="post-date" title="2020-02-16 22:33:23">2020/02/16</span>
-        </a>
-        
-        <a  class="Java 并发 "
-           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
-           data-tag="Volatile"
-           data-author="" >
-            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
-            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
-        </a>
-        
-        <a  class="Java 并发 "
-           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
-           data-tag="Volatile,Java,Synchronized,并发,多线程"
-           data-author="" >
-            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
-            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
+            <span class="post-title" title="ClassLoader">ClassLoader</span>
+            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
         </a>
         
         <a  class="Java 特性 "
@@ -697,6 +629,14 @@
         </a>
         
         <a  class="Java 特性 "
+           href="/2019/10/27/Java/特性/java-反射/"
+           data-tag="反射"
+           data-author="" >
+            <span class="post-title" title="java-反射">java-反射</span>
+            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+        </a>
+        
+        <a  class="Java 特性 "
            href="/2020/02/14/Java/特性/面向对象/"
            data-tag="面向对象,static,接口,抽象类"
            data-author="" >
@@ -704,20 +644,12 @@
             <span class="post-date" title="2020-02-14 11:28:14">2020/02/14</span>
         </a>
         
-        <a  class="框架 MyBatis "
-           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
-           data-tag="MyBatis"
+        <a  class="Java 并发 "
+           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
+           data-tag="Volatile"
            data-author="" >
-            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
-            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
-        </a>
-        
-        <a  class="Java 特性 "
-           href="/2019/10/27/Java/特性/java-反射/"
-           data-tag="反射"
-           data-author="" >
-            <span class="post-title" title="java-反射">java-反射</span>
-            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
+            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
         </a>
         
         <a  class="框架 Spring "
@@ -729,11 +661,11 @@
         </a>
         
         <a  class="框架 Spring "
-           href="/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/"
-           data-tag="Spring"
+           href="/2020/02/24/框架/Spring/SpringBoot常用注解/"
+           data-tag="Spring,注解"
            data-author="" >
-            <span class="post-title" title="接口-SingletonBeanRegistry">接口-SingletonBeanRegistry</span>
-            <span class="post-date" title="2020-02-12 16:42:24">2020/02/12</span>
+            <span class="post-title" title="SpringBoot常用注解">SpringBoot常用注解</span>
+            <span class="post-date" title="2020-02-24 17:58:04">2020/02/24</span>
         </a>
         
         <a  class="框架 Security "
@@ -744,20 +676,52 @@
             <span class="post-date" title="2019-12-24 20:35:12">2019/12/24</span>
         </a>
         
-        <a  class="框架 Spring "
-           href="/2020/02/24/框架/Spring/SpringBoot常用注解/"
-           data-tag="Spring,注解"
+        <a  class="设计模式 "
+           href="/2020/02/16/设计模式/设计模式-结构型模式/"
+           data-tag="设计模式"
            data-author="" >
-            <span class="post-title" title="SpringBoot常用注解">SpringBoot常用注解</span>
-            <span class="post-date" title="2020-02-24 17:58:04">2020/02/24</span>
+            <span class="post-title" title="设计模式-结构型模式">设计模式-结构型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:23">2020/02/16</span>
+        </a>
+        
+        <a  class="框架 MyBatis "
+           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
+            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="接口-SingletonBeanRegistry">接口-SingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:42:24">2020/02/12</span>
         </a>
         
         <a  class="DB MongoDB "
-           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
+           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
            data-tag="MongoDB"
            data-author="" >
-            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
-            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
+            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
+            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
+            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
+            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
         </a>
         
         <a  class="Java 并发 "
@@ -776,12 +740,44 @@
             <span class="post-date" title="2020-02-12 16:38:10">2020/02/12</span>
         </a>
         
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
+           data-tag="MySQL,INNODB"
+           data-author="" >
+            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
+            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
+            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
+           data-tag="MySQL,INNODB,MyISAM"
+           data-author="" >
+            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
+            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
+        </a>
+        
         <a  class="DB MongoDB "
-           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
            data-tag="MongoDB"
            data-author="" >
-            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
-            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
+            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
         </a>
         
         <a  class="Java API "
@@ -790,6 +786,22 @@
            data-author="" >
             <span class="post-title" title="ArrayList源码详解">ArrayList源码详解</span>
             <span class="post-date" title="2019-10-21 21:15:37">2019/10/21</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
+            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2019/11/17/框架/Spring/注册Bean与Bean的生命周期相关操作/"
+           data-tag="Spring,Bean"
+           data-author="" >
+            <span class="post-title" title="Spring注解驱动编程">Spring注解驱动编程</span>
+            <span class="post-date" title="2019-11-17 10:41:25">2019/11/17</span>
         </a>
         
     </nav>
@@ -876,36 +888,23 @@
 <h4 id="2、运行环境"><a href="#2、运行环境" class="headerlink" title="2、运行环境"></a>2、运行环境</h4><p>分别为3台服务器安装MongoDB</p>
 <p>服务器均为： CentOS 6.10 64bit<br>mongoDB版本为： MongoDB v4.0.13</p>
 <h3 id="二、权限配置"><a href="#二、权限配置" class="headerlink" title="二、权限配置"></a>二、权限配置</h3><h4 id="1、生成key用于验证"><a href="#1、生成key用于验证" class="headerlink" title="1、生成key用于验证"></a>1、生成key用于验证</h4><p>openssl rand -base64 745 &gt; “key的生成路径”</p>
-<pre><code>openssl rand -base64 745 &gt; /data/mongo_set/usercenter/30010/mongodb-keyfile
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 745 &gt; /data/mongo_set/usercenter/30010/mongodb-keyfile</span><br><span class="line"></span><br><span class="line">chmod 600 /data/mongo_set/usercenter/30010/mon-keyfile</span><br></pre></td></tr></table></figure>
 
-chmod 600 /data/mongo_set/usercenter/30010/mon-keyfile</code></pre><p>该key的权限必须是<strong>400</strong>，否则会导致认证失败</p>
+<p>该key的权限必须是<strong>400</strong>，否则会导致认证失败</p>
 <p>将生成的key分别拷贝到其他两台服务器上。</p>
 <h4 id="2、-配置文件"><a href="#2、-配置文件" class="headerlink" title="2、 配置文件"></a>2、 配置文件</h4><p>security.keyFile：写刚才生成的key的路径。</p>
-<pre><code>systemLog:
-    destination: file
-    path: /opt/soft/mongodb/data/rs1.log
-    logAppend: true
-processManagement:
-    fork: true
-net:
-    port: 27018
-    bindIp: 0.0.0.0
-storage:
-    dbPath: /opt/soft/mongodb/data/rs1
-replication:
-    oplogSizeMB: 100
-    replSetName: rs1
-security:
-    keyFile: /opt/soft/mongodb/key
-    authorization: enabled
-</code></pre><p>Arbiter节点的配置文件也与此相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">systemLog:</span><br><span class="line">    destination: file</span><br><span class="line">    path: /opt/soft/mongodb/data/rs1.log</span><br><span class="line">    logAppend: true</span><br><span class="line">processManagement:</span><br><span class="line">    fork: true</span><br><span class="line">net:</span><br><span class="line">    port: 27018</span><br><span class="line">    bindIp: 0.0.0.0</span><br><span class="line">storage:</span><br><span class="line">    dbPath: /opt/soft/mongodb/data/rs1</span><br><span class="line">replication:</span><br><span class="line">    oplogSizeMB: 100</span><br><span class="line">    replSetName: rs1</span><br><span class="line">security:</span><br><span class="line">    keyFile: /opt/soft/mongodb/key</span><br><span class="line">    authorization: enabled</span><br></pre></td></tr></table></figure>
+
+<p>Arbiter节点的配置文件也与此相同。</p>
 <h3 id="正式开始配置副本集"><a href="#正式开始配置副本集" class="headerlink" title="正式开始配置副本集"></a>正式开始配置副本集</h3><h4 id="1、分别启动3台服务器上的MongoDB服务"><a href="#1、分别启动3台服务器上的MongoDB服务" class="headerlink" title="1、分别启动3台服务器上的MongoDB服务"></a>1、分别启动3台服务器上的MongoDB服务</h4><p>命令如下：</p>
 <p>mongod -config  配置文件路径</p>
-<pre><code>mongod -config /usr/local/mongodb-4.0.2/mongodb.conf
-# 或者
-mongod -f /usr/local/mongodb-4.0.2/mongodb.conf</code></pre><p>3个MongoDB服务都启动后任意连接一个MongoDB服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongod -config /usr/local/mongodb-4.0.2/mongodb.conf</span><br><span class="line"># 或者</span><br><span class="line">mongod -f /usr/local/mongodb-4.0.2/mongodb.conf</span><br></pre></td></tr></table></figure>
+
+<p>3个MongoDB服务都启动后任意连接一个MongoDB服务</p>
 <p>–port 后加端口号，可在配置文件中进行配置，默认端口号为27017</p>
-<pre><code>mongo --port 27018</code></pre><h4 id="2、-复制集管理操作"><a href="#2、-复制集管理操作" class="headerlink" title="2、 复制集管理操作"></a>2、 复制集管理操作</h4><h5 id="2-1、查看复制集状态："><a href="#2-1、查看复制集状态：" class="headerlink" title="2.1、查看复制集状态："></a>2.1、查看复制集状态：</h5><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 27018</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、-复制集管理操作"><a href="#2、-复制集管理操作" class="headerlink" title="2、 复制集管理操作"></a>2、 复制集管理操作</h4><h5 id="2-1、查看复制集状态："><a href="#2-1、查看复制集状态：" class="headerlink" title="2.1、查看复制集状态："></a>2.1、查看复制集状态：</h5><blockquote>
 <p>rs.status();     # 查看整体复制集状态<br>rs.isMaster();   #  查看当前是否是主节点</p>
 </blockquote>
 <h5 id="2-2、添加删除节点"><a href="#2-2、添加删除节点" class="headerlink" title="2.2、添加删除节点"></a>2.2、添加删除节点</h5><blockquote>
@@ -919,287 +918,25 @@ mongod -f /usr/local/mongodb-4.0.2/mongodb.conf</code></pre><p>3个MongoDB服务
 </blockquote>
 <h4 id="3、初始化副本集"><a href="#3、初始化副本集" class="headerlink" title="3、初始化副本集"></a>3、初始化副本集</h4><p>切换到admin数据库中，用 <code>rs.initiate()</code> 命令进行初始化。</p>
 <p>初始化后稍等一会儿，当前节点会自动变成<strong>PRIMARY</strong>节点。</p>
-<pre><code>&gt; use admin
-switched to db admin
-&gt; rs.initiate()
-{
-    &quot;info2&quot; : &quot;no configuration specified. Using a default configuration for the set&quot;,
-    &quot;me&quot; : &quot;huawei:27018&quot;,
-    &quot;ok&quot; : 1
-}
-rs1:OTHER&gt; 
-</code></pre><h4 id="4、创建用户并完成认证"><a href="#4、创建用户并完成认证" class="headerlink" title="4、创建用户并完成认证"></a>4、创建用户并完成认证</h4><p>创建用户需在 <code>admin</code> 数据库中完成，可用 <code>use admin</code> 命令切换到 <code>admin</code> 数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; rs.initiate()</span><br><span class="line">&#123;</span><br><span class="line">	&quot;info2&quot; : &quot;no configuration specified. Using a default configuration for the set&quot;,</span><br><span class="line">	&quot;me&quot; : &quot;huawei:27018&quot;,</span><br><span class="line">	&quot;ok&quot; : 1</span><br><span class="line">&#125;</span><br><span class="line">rs1:OTHER&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、创建用户并完成认证"><a href="#4、创建用户并完成认证" class="headerlink" title="4、创建用户并完成认证"></a>4、创建用户并完成认证</h4><p>创建用户需在 <code>admin</code> 数据库中完成，可用 <code>use admin</code> 命令切换到 <code>admin</code> 数据库。</p>
 <p>本示例为了方便直接创建了有最高权限（root）的用户。</p>
-<pre><code>rs1:PRIMARY&gt; db.createUser({
-... user: &quot;root&quot;,
-... pwd: &quot;root&quot;,
-... roles: [{role: &quot;root&quot;, db:&quot;admin&quot;}]
-... })
-Successfully added user: {
-    &quot;user&quot; : &quot;root&quot;,
-    &quot;roles&quot; : [
-        {
-            &quot;role&quot; : &quot;root&quot;,
-            &quot;db&quot; : &quot;admin&quot;
-        }
-    ]
-}</code></pre><p>用 <code>db.auth(&quot;用户名&quot; , &quot;密码&quot;)</code> 命令来完成认证，返回值为 <strong>1</strong> 则认证成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rs1:PRIMARY&gt; db.createUser(&#123;</span><br><span class="line">... user: &quot;root&quot;,</span><br><span class="line">... pwd: &quot;root&quot;,</span><br><span class="line">... roles: [&#123;role: &quot;root&quot;, db:&quot;admin&quot;&#125;]</span><br><span class="line">... &#125;)</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">	&quot;user&quot; : &quot;root&quot;,</span><br><span class="line">	&quot;roles&quot; : [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;role&quot; : &quot;root&quot;,</span><br><span class="line">			&quot;db&quot; : &quot;admin&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>db.auth(&quot;用户名&quot; , &quot;密码&quot;)</code> 命令来完成认证，返回值为 <strong>1</strong> 则认证成功。</p>
 <p>如果遇到认证失败的情况，请检查配置文件中 <code>keyFile</code> 路径是否写对，或 <code>key</code> 的权限是否为400（仅root用户可读）。</p>
-<pre><code>rs1:PRIMARY&gt; db.auth(&quot;root&quot;, &quot;root&quot;)
-1</code></pre><h4 id="5、添加副本"><a href="#5、添加副本" class="headerlink" title="5、添加副本"></a>5、添加副本</h4><pre><code>
-rs1:PRIMARY&gt; rs.add(&quot;172.81.24x.xx1:27018&quot;)
-{
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1577068463, 1),
-    &quot;$clusterTime&quot; : {
-        &quot;clusterTime&quot; : Timestamp(1577068463, 1),
-        &quot;signature&quot; : {
-            &quot;hash&quot; : BinData(0,&quot;UzvrLpDSEAkoC6oOr9Yrh5047uI=&quot;),
-            &quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)
-        }
-    }
-}
-rs1:PRIMARY&gt; rs.status()
-{
-    &quot;set&quot; : &quot;rs1&quot;,
-    &quot;date&quot; : ISODate(&quot;2019-12-23T02:34:33.651Z&quot;),
-    &quot;myState&quot; : 1,
-    &quot;term&quot; : NumberLong(1),
-    &quot;syncingTo&quot; : &quot;&quot;,
-    &quot;syncSourceHost&quot; : &quot;&quot;,
-    &quot;syncSourceId&quot; : -1,
-    &quot;heartbeatIntervalMillis&quot; : NumberLong(2000),
-    &quot;optimes&quot; : {
-        &quot;lastCommittedOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068454, 1),
-            &quot;t&quot; : NumberLong(1)
-        },
-        &quot;appliedOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068463, 1),
-            &quot;t&quot; : NumberLong(1)
-        },
-        &quot;durableOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068463, 1),
-            &quot;t&quot; : NumberLong(1)
-        }
-    },
-    &quot;lastStableCheckpointTimestamp&quot; : Timestamp(1577068454, 1),
-    &quot;electionCandidateMetrics&quot; : {
-        &quot;lastElectionReason&quot; : &quot;electionTimeout&quot;,
-        &quot;lastElectionDate&quot; : ISODate(&quot;2019-12-23T02:31:23.678Z&quot;),
-        &quot;electionTerm&quot; : NumberLong(1),
-        &quot;lastCommittedOpTimeAtElection&quot; : {
-            &quot;ts&quot; : Timestamp(0, 0),
-            &quot;t&quot; : NumberLong(-1)
-        },
-        &quot;lastSeenOpTimeAtElection&quot; : {
-            &quot;ts&quot; : Timestamp(1577068283, 1),
-            &quot;t&quot; : NumberLong(-1)
-        },
-        &quot;numVotesNeeded&quot; : 1,
-        &quot;priorityAtElection&quot; : 1,
-        &quot;electionTimeoutMillis&quot; : NumberLong(10000),
-        &quot;newTermStartDate&quot; : ISODate(&quot;2019-12-23T02:31:24.689Z&quot;),
-        &quot;wMajorityWriteAvailabilityDate&quot; : ISODate(&quot;2019-12-23T02:31:24.706Z&quot;)
-    },
-    &quot;members&quot; : [
-        {
-            &quot;_id&quot; : 0,
-            &quot;name&quot; : &quot;huawei:27018&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 1,
-            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
-            &quot;uptime&quot; : 655,
-            &quot;optime&quot; : {
-                &quot;ts&quot; : Timestamp(1577068463, 1),
-                &quot;t&quot; : NumberLong(1)
-            },
-            &quot;optimeDate&quot; : ISODate(&quot;2019-12-23T02:34:23Z&quot;),
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;electionTime&quot; : Timestamp(1577068283, 2),
-            &quot;electionDate&quot; : ISODate(&quot;2019-12-23T02:31:23Z&quot;),
-            &quot;configVersion&quot; : 2,
-            &quot;self&quot; : true,
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;
-        },
-        {
-            &quot;_id&quot; : 1,
-            &quot;name&quot; : &quot;172.81.242.231:27018&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 0,
-            &quot;stateStr&quot; : &quot;STARTUP&quot;,
-            &quot;uptime&quot; : 9,
-            &quot;optime&quot; : {
-                &quot;ts&quot; : Timestamp(0, 0),
-                &quot;t&quot; : NumberLong(-1)
-            },
-            &quot;optimeDurable&quot; : {
-                &quot;ts&quot; : Timestamp(0, 0),
-                &quot;t&quot; : NumberLong(-1)
-            },
-            &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;optimeDurableDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:34:32.029Z&quot;),
-            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;pingMs&quot; : NumberLong(32),
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;,
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;configVersion&quot; : -2
-        }
-    ],
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1577068463, 1),
-    &quot;$clusterTime&quot; : {
-        &quot;clusterTime&quot; : Timestamp(1577068463, 1),
-        &quot;signature&quot; : {
-            &quot;hash&quot; : BinData(0,&quot;UzvrLpDSEAkoC6oOr9Yrh5047uI=&quot;),
-            &quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)
-        }
-    }
-}
-</code></pre><p>添加Arbiter节点</p>
-<pre><code>
-rs1:PRIMARY&gt; rs.addArb(&quot;172.81.242.231:27019&quot;)
-{
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1577068539, 1),
-    &quot;$clusterTime&quot; : {
-        &quot;clusterTime&quot; : Timestamp(1577068539, 1),
-        &quot;signature&quot; : {
-            &quot;hash&quot; : BinData(0,&quot;1p1aVui3drDMudUDcaO6JNP+LZA=&quot;),
-            &quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)
-        }
-    }
-}
-</code></pre><p>使用 <code>rs.status()</code> 命令查看当前副本集状态。</p>
-<pre><code>rs1:PRIMARY&gt; rs.status()
-{
-    &quot;set&quot; : &quot;rs1&quot;,
-    &quot;date&quot; : ISODate(&quot;2019-12-23T02:35:59.842Z&quot;),
-    &quot;myState&quot; : 1,
-    &quot;term&quot; : NumberLong(1),
-    &quot;syncingTo&quot; : &quot;&quot;,
-    &quot;syncSourceHost&quot; : &quot;&quot;,
-    &quot;syncSourceId&quot; : -1,
-    &quot;heartbeatIntervalMillis&quot; : NumberLong(2000),
-    &quot;optimes&quot; : {
-        &quot;lastCommittedOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068454, 1),
-            &quot;t&quot; : NumberLong(1)
-        },
-        &quot;appliedOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068554, 1),
-            &quot;t&quot; : NumberLong(1)
-        },
-        &quot;durableOpTime&quot; : {
-            &quot;ts&quot; : Timestamp(1577068554, 1),
-            &quot;t&quot; : NumberLong(1)
-        }
-    },
-    &quot;lastStableCheckpointTimestamp&quot; : Timestamp(1577068454, 1),
-    &quot;electionCandidateMetrics&quot; : {
-        &quot;lastElectionReason&quot; : &quot;electionTimeout&quot;,
-        &quot;lastElectionDate&quot; : ISODate(&quot;2019-12-23T02:31:23.678Z&quot;),
-        &quot;electionTerm&quot; : NumberLong(1),
-        &quot;lastCommittedOpTimeAtElection&quot; : {
-            &quot;ts&quot; : Timestamp(0, 0),
-            &quot;t&quot; : NumberLong(-1)
-        },
-        &quot;lastSeenOpTimeAtElection&quot; : {
-            &quot;ts&quot; : Timestamp(1577068283, 1),
-            &quot;t&quot; : NumberLong(-1)
-        },
-        &quot;numVotesNeeded&quot; : 1,
-        &quot;priorityAtElection&quot; : 1,
-        &quot;electionTimeoutMillis&quot; : NumberLong(10000),
-        &quot;newTermStartDate&quot; : ISODate(&quot;2019-12-23T02:31:24.689Z&quot;),
-        &quot;wMajorityWriteAvailabilityDate&quot; : ISODate(&quot;2019-12-23T02:31:24.706Z&quot;)
-    },
-    &quot;members&quot; : [
-        {
-            &quot;_id&quot; : 0,
-            &quot;name&quot; : &quot;huawei:27018&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 1,
-            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
-            &quot;uptime&quot; : 741,
-            &quot;optime&quot; : {
-                &quot;ts&quot; : Timestamp(1577068554, 1),
-                &quot;t&quot; : NumberLong(1)
-            },
-            &quot;optimeDate&quot; : ISODate(&quot;2019-12-23T02:35:54Z&quot;),
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;electionTime&quot; : Timestamp(1577068283, 2),
-            &quot;electionDate&quot; : ISODate(&quot;2019-12-23T02:31:23Z&quot;),
-            &quot;configVersion&quot; : 3,
-            &quot;self&quot; : true,
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;
-        },
-        {
-            &quot;_id&quot; : 1,
-            &quot;name&quot; : &quot;172.81.242.231:27018&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 0,
-            &quot;stateStr&quot; : &quot;STARTUP&quot;,
-            &quot;uptime&quot; : 95,
-            &quot;optime&quot; : {
-                &quot;ts&quot; : Timestamp(0, 0),
-                &quot;t&quot; : NumberLong(-1)
-            },
-            &quot;optimeDurable&quot; : {
-                &quot;ts&quot; : Timestamp(0, 0),
-                &quot;t&quot; : NumberLong(-1)
-            },
-            &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;optimeDurableDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:35:59.754Z&quot;),
-            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;pingMs&quot; : NumberLong(32),
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;,
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;configVersion&quot; : -2
-        },
-        {
-            &quot;_id&quot; : 2,
-            &quot;name&quot; : &quot;172.81.242.231:27019&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 0,
-            &quot;stateStr&quot; : &quot;STARTUP&quot;,
-            &quot;uptime&quot; : 20,
-            &quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:35:57.881Z&quot;),
-            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
-            &quot;pingMs&quot; : NumberLong(31),
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;,
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;configVersion&quot; : -2
-        }
-    ],
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1577068554, 1),
-    &quot;$clusterTime&quot; : {
-        &quot;clusterTime&quot; : Timestamp(1577068554, 1),
-        &quot;signature&quot; : {
-            &quot;hash&quot; : BinData(0,&quot;m5nsHVXYsiAD/B5MbFfE7KGZ+V0=&quot;),
-            &quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)
-        }
-    }
-}
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rs1:PRIMARY&gt; db.auth(&quot;root&quot;, &quot;root&quot;)</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、添加副本"><a href="#5、添加副本" class="headerlink" title="5、添加副本"></a>5、添加副本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rs1:PRIMARY&gt; rs.add(&quot;172.81.24x.xx1:27018&quot;)</span><br><span class="line">&#123;</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1577068463, 1),</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1577068463, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;UzvrLpDSEAkoC6oOr9Yrh5047uI=&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">rs1:PRIMARY&gt; rs.status()</span><br><span class="line">&#123;</span><br><span class="line">	&quot;set&quot; : &quot;rs1&quot;,</span><br><span class="line">	&quot;date&quot; : ISODate(&quot;2019-12-23T02:34:33.651Z&quot;),</span><br><span class="line">	&quot;myState&quot; : 1,</span><br><span class="line">	&quot;term&quot; : NumberLong(1),</span><br><span class="line">	&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">	&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">	&quot;syncSourceId&quot; : -1,</span><br><span class="line">	&quot;heartbeatIntervalMillis&quot; : NumberLong(2000),</span><br><span class="line">	&quot;optimes&quot; : &#123;</span><br><span class="line">		&quot;lastCommittedOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068454, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;appliedOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068463, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;durableOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068463, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;lastStableCheckpointTimestamp&quot; : Timestamp(1577068454, 1),</span><br><span class="line">	&quot;electionCandidateMetrics&quot; : &#123;</span><br><span class="line">		&quot;lastElectionReason&quot; : &quot;electionTimeout&quot;,</span><br><span class="line">		&quot;lastElectionDate&quot; : ISODate(&quot;2019-12-23T02:31:23.678Z&quot;),</span><br><span class="line">		&quot;electionTerm&quot; : NumberLong(1),</span><br><span class="line">		&quot;lastCommittedOpTimeAtElection&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">			&quot;t&quot; : NumberLong(-1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;lastSeenOpTimeAtElection&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068283, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(-1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;numVotesNeeded&quot; : 1,</span><br><span class="line">		&quot;priorityAtElection&quot; : 1,</span><br><span class="line">		&quot;electionTimeoutMillis&quot; : NumberLong(10000),</span><br><span class="line">		&quot;newTermStartDate&quot; : ISODate(&quot;2019-12-23T02:31:24.689Z&quot;),</span><br><span class="line">		&quot;wMajorityWriteAvailabilityDate&quot; : ISODate(&quot;2019-12-23T02:31:24.706Z&quot;)</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;members&quot; : [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;_id&quot; : 0,</span><br><span class="line">			&quot;name&quot; : &quot;huawei:27018&quot;,</span><br><span class="line">			&quot;health&quot; : 1,</span><br><span class="line">			&quot;state&quot; : 1,</span><br><span class="line">			&quot;stateStr&quot; : &quot;PRIMARY&quot;,</span><br><span class="line">			&quot;uptime&quot; : 655,</span><br><span class="line">			&quot;optime&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(1577068463, 1),</span><br><span class="line">				&quot;t&quot; : NumberLong(1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDate&quot; : ISODate(&quot;2019-12-23T02:34:23Z&quot;),</span><br><span class="line">			&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceId&quot; : -1,</span><br><span class="line">			&quot;infoMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;electionTime&quot; : Timestamp(1577068283, 2),</span><br><span class="line">			&quot;electionDate&quot; : ISODate(&quot;2019-12-23T02:31:23Z&quot;),</span><br><span class="line">			&quot;configVersion&quot; : 2,</span><br><span class="line">			&quot;self&quot; : true,</span><br><span class="line">			&quot;lastHeartbeatMessage&quot; : &quot;&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;_id&quot; : 1,</span><br><span class="line">			&quot;name&quot; : &quot;172.81.242.231:27018&quot;,</span><br><span class="line">			&quot;health&quot; : 1,</span><br><span class="line">			&quot;state&quot; : 0,</span><br><span class="line">			&quot;stateStr&quot; : &quot;STARTUP&quot;,</span><br><span class="line">			&quot;uptime&quot; : 9,</span><br><span class="line">			&quot;optime&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">				&quot;t&quot; : NumberLong(-1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDurable&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">				&quot;t&quot; : NumberLong(-1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;optimeDurableDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:34:32.029Z&quot;),</span><br><span class="line">			&quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;pingMs&quot; : NumberLong(32),</span><br><span class="line">			&quot;lastHeartbeatMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceId&quot; : -1,</span><br><span class="line">			&quot;infoMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;configVersion&quot; : -2</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1577068463, 1),</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1577068463, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;UzvrLpDSEAkoC6oOr9Yrh5047uI=&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加Arbiter节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rs1:PRIMARY&gt; rs.addArb(&quot;172.81.242.231:27019&quot;)</span><br><span class="line">&#123;</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1577068539, 1),</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1577068539, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;1p1aVui3drDMudUDcaO6JNP+LZA=&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>rs.status()</code> 命令查看当前副本集状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">rs1:PRIMARY&gt; rs.status()</span><br><span class="line">&#123;</span><br><span class="line">	&quot;set&quot; : &quot;rs1&quot;,</span><br><span class="line">	&quot;date&quot; : ISODate(&quot;2019-12-23T02:35:59.842Z&quot;),</span><br><span class="line">	&quot;myState&quot; : 1,</span><br><span class="line">	&quot;term&quot; : NumberLong(1),</span><br><span class="line">	&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">	&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">	&quot;syncSourceId&quot; : -1,</span><br><span class="line">	&quot;heartbeatIntervalMillis&quot; : NumberLong(2000),</span><br><span class="line">	&quot;optimes&quot; : &#123;</span><br><span class="line">		&quot;lastCommittedOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068454, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;appliedOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068554, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;durableOpTime&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068554, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(1)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;lastStableCheckpointTimestamp&quot; : Timestamp(1577068454, 1),</span><br><span class="line">	&quot;electionCandidateMetrics&quot; : &#123;</span><br><span class="line">		&quot;lastElectionReason&quot; : &quot;electionTimeout&quot;,</span><br><span class="line">		&quot;lastElectionDate&quot; : ISODate(&quot;2019-12-23T02:31:23.678Z&quot;),</span><br><span class="line">		&quot;electionTerm&quot; : NumberLong(1),</span><br><span class="line">		&quot;lastCommittedOpTimeAtElection&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">			&quot;t&quot; : NumberLong(-1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;lastSeenOpTimeAtElection&quot; : &#123;</span><br><span class="line">			&quot;ts&quot; : Timestamp(1577068283, 1),</span><br><span class="line">			&quot;t&quot; : NumberLong(-1)</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;numVotesNeeded&quot; : 1,</span><br><span class="line">		&quot;priorityAtElection&quot; : 1,</span><br><span class="line">		&quot;electionTimeoutMillis&quot; : NumberLong(10000),</span><br><span class="line">		&quot;newTermStartDate&quot; : ISODate(&quot;2019-12-23T02:31:24.689Z&quot;),</span><br><span class="line">		&quot;wMajorityWriteAvailabilityDate&quot; : ISODate(&quot;2019-12-23T02:31:24.706Z&quot;)</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;members&quot; : [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;_id&quot; : 0,</span><br><span class="line">			&quot;name&quot; : &quot;huawei:27018&quot;,</span><br><span class="line">			&quot;health&quot; : 1,</span><br><span class="line">			&quot;state&quot; : 1,</span><br><span class="line">			&quot;stateStr&quot; : &quot;PRIMARY&quot;,</span><br><span class="line">			&quot;uptime&quot; : 741,</span><br><span class="line">			&quot;optime&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(1577068554, 1),</span><br><span class="line">				&quot;t&quot; : NumberLong(1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDate&quot; : ISODate(&quot;2019-12-23T02:35:54Z&quot;),</span><br><span class="line">			&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceId&quot; : -1,</span><br><span class="line">			&quot;infoMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;electionTime&quot; : Timestamp(1577068283, 2),</span><br><span class="line">			&quot;electionDate&quot; : ISODate(&quot;2019-12-23T02:31:23Z&quot;),</span><br><span class="line">			&quot;configVersion&quot; : 3,</span><br><span class="line">			&quot;self&quot; : true,</span><br><span class="line">			&quot;lastHeartbeatMessage&quot; : &quot;&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;_id&quot; : 1,</span><br><span class="line">			&quot;name&quot; : &quot;172.81.242.231:27018&quot;,</span><br><span class="line">			&quot;health&quot; : 1,</span><br><span class="line">			&quot;state&quot; : 0,</span><br><span class="line">			&quot;stateStr&quot; : &quot;STARTUP&quot;,</span><br><span class="line">			&quot;uptime&quot; : 95,</span><br><span class="line">			&quot;optime&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">				&quot;t&quot; : NumberLong(-1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDurable&quot; : &#123;</span><br><span class="line">				&quot;ts&quot; : Timestamp(0, 0),</span><br><span class="line">				&quot;t&quot; : NumberLong(-1)</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;optimeDurableDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:35:59.754Z&quot;),</span><br><span class="line">			&quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;pingMs&quot; : NumberLong(32),</span><br><span class="line">			&quot;lastHeartbeatMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceId&quot; : -1,</span><br><span class="line">			&quot;infoMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;configVersion&quot; : -2</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;_id&quot; : 2,</span><br><span class="line">			&quot;name&quot; : &quot;172.81.242.231:27019&quot;,</span><br><span class="line">			&quot;health&quot; : 1,</span><br><span class="line">			&quot;state&quot; : 0,</span><br><span class="line">			&quot;stateStr&quot; : &quot;STARTUP&quot;,</span><br><span class="line">			&quot;uptime&quot; : 20,</span><br><span class="line">			&quot;lastHeartbeat&quot; : ISODate(&quot;2019-12-23T02:35:57.881Z&quot;),</span><br><span class="line">			&quot;lastHeartbeatRecv&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),</span><br><span class="line">			&quot;pingMs&quot; : NumberLong(31),</span><br><span class="line">			&quot;lastHeartbeatMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncingTo&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceHost&quot; : &quot;&quot;,</span><br><span class="line">			&quot;syncSourceId&quot; : -1,</span><br><span class="line">			&quot;infoMessage&quot; : &quot;&quot;,</span><br><span class="line">			&quot;configVersion&quot; : -2</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1577068554, 1),</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1577068554, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;m5nsHVXYsiAD/B5MbFfE7KGZ+V0=&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(&quot;6773456703338840066&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 欢迎指出任何有错误或不够清晰的表达。可以邮件至 paion_go@163.com </span>
     </div>
@@ -1245,7 +982,7 @@ rs1:PRIMARY&gt; rs.addArb(&quot;172.81.242.231:27019&quot;)
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#Hexo','#RabbitMQ','#Ribbon','#链表','#归并排序','#数组','#设计模式','#TCP','#计算机网络','#MongoDB','#MySQL','#INNODB','#MyISAM','#ClassLoader','#双亲委派机制','#Object','#Volatile','#Java','#Synchronized','#并发','#多线程','#Lambda','#面向对象','#static','#接口','#抽象类','#MyBatis','#反射','#Spring','#Spring-Security','#注解','#ArrayList',],
+            'data': ['#RabbitMQ','#Ribbon','#Hexo','#链表','#归并排序','#数组','#设计模式','#TCP','#计算机网络','#Java','#Volatile','#Synchronized','#并发','#多线程','#Object','#ClassLoader','#双亲委派机制','#Lambda','#反射','#面向对象','#static','#接口','#抽象类','#Spring','#注解','#Spring-Security','#MyBatis','#MongoDB','#MySQL','#INNODB','#MyISAM','#ArrayList','#Bean',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

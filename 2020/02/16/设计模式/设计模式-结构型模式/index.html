@@ -6,18 +6,18 @@
   <meta name="keywords" content=" 设计模式 ">
   <meta name="description" content="设计模式-结构型模式 | Bruce">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
+<meta name="keywords" content="Spring,注解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-结构型模式">
-<meta property="og:url" content="http://brucy.cn/2020/02/16/设计模式/设计模式-结构型模式/index.html">
+<meta property="og:title" content="SpringBoot常用注解">
+<meta property="og:url" content="http://brucy.cn/2020/02/24/框架/Spring/SpringBoot常用注解/index.html">
 <meta property="og:site_name" content="Bruce">
-<meta property="og:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta property="og:description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2020-02-16T14:36:03.193Z">
+<meta property="og:updated_time" content="2020-02-24T10:00:11.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式-结构型模式">
-<meta name="twitter:description" content="结构型模式作用：主要用于处理类和对象的组合，对类如何设计以形成更大的结构提供指南 它分为类结构型模式和对象结构型模式：  类结构型模式：采用继承机制来组织接口和类； 对象结构型模式：釆用组合或聚合来组合对象；  由于组合关系或聚合关系比继承关系耦合度低，满足“合成复用原则”，所以对象结构型模式比类结构型模式具有更大的灵活性。 结构型模式分为以下 7 种：  代理（Proxy）模式 适配器（Adap">
+<meta name="twitter:title" content="SpringBoot常用注解">
+<meta name="twitter:description" content="@Configuration : 声明配置类； @Bean : 方法注解，在容器中注册一个Bean；类型为返回值类型，Id默认为方法名；  @ComponentScan ：包扫描，通过value指定要扫描的包，可通过includeFilters和excludeFilters进行配置； 123@ComponentScan(value = &amp;quot;com.xxx&amp;quot;, includeFil">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -136,23 +136,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(38)</small></div></li>
-    
-        
-            
-            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="Hexo">Hexo<small>(2)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
+    <li><div class="all active">全部文章<small>(39)</small></div></li>
     
         
             
@@ -165,6 +149,22 @@
                         </li>
                             
                         <li><div data-rel="负载均衡">负载均衡<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="其他"><i class="fold iconfont icon-right"></i>其他<small>(2)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="Hexo">Hexo<small>(2)</small></div>
                             
                         </li>
                             
@@ -192,13 +192,13 @@
     
         
             
-            <li><div data-rel="设计模式">设计模式<small>(3)</small></div>
-                
-            </li>
-            
         
     
         
+            
+            <li><div data-rel="设计模式">设计模式<small>(3)</small></div>
+                
+            </li>
             
         
     
@@ -212,39 +212,11 @@
     
         
             
-            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
-                
-                    <ul class="sub hide">
-                        
-                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
-                            
-                        </li>
-                            
-                    </ul>
-                
-            </li>
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
-            
             <li><div data-rel="Java"><i class="fold iconfont icon-right"></i>Java<small>(9)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="API">API<small>(3)</small></div>
+                        <li><div data-rel="特性">特性<small>(3)</small></div>
                             
                         </li>
                             
@@ -252,7 +224,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="特性">特性<small>(3)</small></div>
+                        <li><div data-rel="API">API<small>(3)</small></div>
                             
                         </li>
                             
@@ -264,15 +236,23 @@
     
         
             
-            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(6)</small></div>
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="框架"><i class="fold iconfont icon-right"></i>框架<small>(7)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="Spring">Spring<small>(4)</small></div>
+                        <li><div data-rel="Spring">Spring<small>(5)</small></div>
                             
                         </li>
                             
@@ -280,6 +260,10 @@
                             
                         </li>
                             
+                        <li><div data-rel="MyBatis">MyBatis<small>(1)</small></div>
+                            
+                        </li>
+                            
                     </ul>
                 
             </li>
@@ -299,6 +283,22 @@
         
     
         
+            
+            <li><div data-rel="DB"><i class="fold iconfont icon-right"></i>DB<small>(9)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="MongoDB">MongoDB<small>(5)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="MySQL">MySQL<small>(4)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
             
         
     
@@ -320,7 +320,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="38">
+<input type="hidden" id="yelog_site_posts_number" value="39">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -355,15 +355,15 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a class="color5">Hexo</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color4">RabbitMQ</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color2">Ribbon</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Hexo</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -391,39 +391,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color3">MongoDB</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">MySQL</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">INNODB</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">MyISAM</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">ClassLoader</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">双亲委派机制</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">Object</a>
+        <a class="color5">Java</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color4">Volatile</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Java</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -439,7 +411,23 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color2">Object</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">ClassLoader</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">双亲委派机制</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color2">Lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">反射</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -459,19 +447,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color3">MyBatis</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">反射</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color2">Spring</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Spring-Security</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -479,7 +455,35 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color1">Spring-Security</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MyBatis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">MongoDB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">MySQL</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">INNODB</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">MyISAM</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color5">ArrayList</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Bean</a>
     </li>
     
     <div class="clearfix"></div>
@@ -487,22 +491,6 @@
 
     
     <nav id="title-list-nav">
-        
-        <a  class="其他 Hexo "
-           href="/2019/10/26/其他/hexo常用命令/"
-           data-tag="Hexo"
-           data-author="" >
-            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
-            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
-        </a>
-        
-        <a  class="其他 Hexo "
-           href="/2019/10/19/其他/hello-world/"
-           data-tag="Hexo"
-           data-author="" >
-            <span class="post-title" title="Hello World">Hello World</span>
-            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
-        </a>
         
         <a  class="中间件 MQ "
            href="/2019/12/07/中间件/RabbitMQ基本概念介绍/"
@@ -518,6 +506,22 @@
            data-author="" >
             <span class="post-title" title="Ribbon">Ribbon</span>
             <span class="post-date" title="2020-01-18 07:20:24">2020/01/18</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/26/其他/hexo常用命令/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
+            <span class="post-date" title="2019-10-26 10:57:22">2019/10/26</span>
+        </a>
+        
+        <a  class="其他 Hexo "
+           href="/2019/10/19/其他/hello-world/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-10-19 13:20:27">2019/10/19</span>
         </a>
         
         <a  class="中间件 MQ "
@@ -544,20 +548,20 @@
             <span class="post-date" title="2019-11-16 13:03:54">2019/11/16</span>
         </a>
         
-        <a  class=""
-           href="/2020/02/16/设计模式/设计模式-行为型模式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="设计模式-行为型模式">设计模式-行为型模式</span>
-            <span class="post-date" title="2020-02-16 22:33:47">2020/02/16</span>
-        </a>
-        
         <a  class="算法 "
            href="/2019/12/09/算法/基础数据结构-01、数组/"
            data-tag="数组"
            data-author="" >
             <span class="post-title" title="基础数据结构-01、数组">基础数据结构-01、数组</span>
             <span class="post-date" title="2019-12-09 18:29:47">2019/12/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/02/16/设计模式/设计模式-行为型模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式-行为型模式">设计模式-行为型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:47">2020/02/16</span>
         </a>
         
         <a  class="设计模式 "
@@ -584,68 +588,20 @@
             <span class="post-date" title="2019-11-06 09:38:47">2019/11/06</span>
         </a>
         
-        <a  class="DB MongoDB "
-           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
-           data-tag="MongoDB"
+        <a  class=""
+           href="/2020/02/13/Java/JVM/Java运行时数据区/"
+           data-tag=""
            data-author="" >
-            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
-            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+            <span class="post-title" title="Java运行时数据区">Java运行时数据区</span>
+            <span class="post-date" title="2020-02-13 16:29:02">2020/02/13</span>
         </a>
         
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
-           data-tag="MySQL"
+        <a  class="Java 并发 "
+           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
+           data-tag="Java,Volatile,Synchronized,并发,多线程"
            data-author="" >
-            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
-            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MongoDB "
-           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
-           data-tag="MongoDB"
-           data-author="" >
-            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
-            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
-           data-tag="MySQL,INNODB"
-           data-author="" >
-            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
-            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MongoDB "
-           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
-           data-tag="MongoDB"
-           data-author="" >
-            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
-            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
-           data-tag="MySQL"
-           data-author="" >
-            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
-            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
-        </a>
-        
-        <a  class="DB MySQL "
-           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
-           data-tag="MySQL,INNODB,MyISAM"
-           data-author="" >
-            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
-            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
-        </a>
-        
-        <a  class="Java API "
-           href="/2019/10/28/Java/API/ClassLoader/"
-           data-tag="ClassLoader,双亲委派机制"
-           data-author="" >
-            <span class="post-title" title="ClassLoader">ClassLoader</span>
-            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
+            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
+            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
         </a>
         
         <a  class="Java API "
@@ -656,36 +612,12 @@
             <span class="post-date" title="2019-10-31 20:08:51">2019/10/31</span>
         </a>
         
-        <a  class=""
-           href="/2020/02/13/Java/JVM/Java运行时数据区/"
-           data-tag=""
+        <a  class="Java API "
+           href="/2019/10/28/Java/API/ClassLoader/"
+           data-tag="ClassLoader,双亲委派机制"
            data-author="" >
-            <span class="post-title" title="Java运行时数据区">Java运行时数据区</span>
-            <span class="post-date" title="2020-02-13 16:29:02">2020/02/13</span>
-        </a>
-        
-        <a  class="设计模式 "
-           href="/2020/02/16/设计模式/设计模式-结构型模式/"
-           data-tag="设计模式"
-           data-author="" >
-            <span class="post-title" title="设计模式-结构型模式">设计模式-结构型模式</span>
-            <span class="post-date" title="2020-02-16 22:33:23">2020/02/16</span>
-        </a>
-        
-        <a  class="Java 并发 "
-           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
-           data-tag="Volatile"
-           data-author="" >
-            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
-            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
-        </a>
-        
-        <a  class="Java 并发 "
-           href="/2020/01/31/Java/并发/Java中的Volatile和Synchronized有何不同？/"
-           data-tag="Volatile,Java,Synchronized,并发,多线程"
-           data-author="" >
-            <span class="post-title" title="Java中的Volatile和Synchronized有何不同？">Java中的Volatile和Synchronized有何不同？</span>
-            <span class="post-date" title="2020-01-31 22:44:26">2020/01/31</span>
+            <span class="post-title" title="ClassLoader">ClassLoader</span>
+            <span class="post-date" title="2019-10-28 10:51:51">2019/10/28</span>
         </a>
         
         <a  class="Java 特性 "
@@ -697,6 +629,14 @@
         </a>
         
         <a  class="Java 特性 "
+           href="/2019/10/27/Java/特性/java-反射/"
+           data-tag="反射"
+           data-author="" >
+            <span class="post-title" title="java-反射">java-反射</span>
+            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+        </a>
+        
+        <a  class="Java 特性 "
            href="/2020/02/14/Java/特性/面向对象/"
            data-tag="面向对象,static,接口,抽象类"
            data-author="" >
@@ -704,20 +644,12 @@
             <span class="post-date" title="2020-02-14 11:28:14">2020/02/14</span>
         </a>
         
-        <a  class="框架 MyBatis "
-           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
-           data-tag="MyBatis"
+        <a  class="Java 并发 "
+           href="/2019/11/24/Java/并发/使用volatile修饰基本数据内存不能保证原子性/"
+           data-tag="Volatile"
            data-author="" >
-            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
-            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
-        </a>
-        
-        <a  class="Java 特性 "
-           href="/2019/10/27/Java/特性/java-反射/"
-           data-tag="反射"
-           data-author="" >
-            <span class="post-title" title="java-反射">java-反射</span>
-            <span class="post-date" title="2019-10-27 17:30:54">2019/10/27</span>
+            <span class="post-title" title="使用volatile修饰基本数据内存不能保证原子性">使用volatile修饰基本数据内存不能保证原子性</span>
+            <span class="post-date" title="2019-11-24 17:44:23">2019/11/24</span>
         </a>
         
         <a  class="框架 Spring "
@@ -729,11 +661,11 @@
         </a>
         
         <a  class="框架 Spring "
-           href="/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/"
-           data-tag="Spring"
+           href="/2020/02/24/框架/Spring/SpringBoot常用注解/"
+           data-tag="Spring,注解"
            data-author="" >
-            <span class="post-title" title="接口-SingletonBeanRegistry">接口-SingletonBeanRegistry</span>
-            <span class="post-date" title="2020-02-12 16:42:24">2020/02/12</span>
+            <span class="post-title" title="SpringBoot常用注解">SpringBoot常用注解</span>
+            <span class="post-date" title="2020-02-24 17:58:04">2020/02/24</span>
         </a>
         
         <a  class="框架 Security "
@@ -744,20 +676,52 @@
             <span class="post-date" title="2019-12-24 20:35:12">2019/12/24</span>
         </a>
         
-        <a  class="框架 Spring "
-           href="/2020/02/24/框架/Spring/SpringBoot常用注解/"
-           data-tag="Spring,注解"
+        <a  class="设计模式 "
+           href="/2020/02/16/设计模式/设计模式-结构型模式/"
+           data-tag="设计模式"
            data-author="" >
-            <span class="post-title" title="SpringBoot常用注解">SpringBoot常用注解</span>
-            <span class="post-date" title="2020-02-24 17:58:04">2020/02/24</span>
+            <span class="post-title" title="设计模式-结构型模式">设计模式-结构型模式</span>
+            <span class="post-date" title="2020-02-16 22:33:23">2020/02/16</span>
+        </a>
+        
+        <a  class="框架 MyBatis "
+           href="/2019/11/18/框架/MyBatis/MyBatis数据源与连接池/"
+           data-tag="MyBatis"
+           data-author="" >
+            <span class="post-title" title="MyBatis数据源与连接池">MyBatis数据源与连接池</span>
+            <span class="post-date" title="2019-11-18 20:52:56">2019/11/18</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2020/02/12/框架/Spring/接口-SingletonBeanRegistry/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="接口-SingletonBeanRegistry">接口-SingletonBeanRegistry</span>
+            <span class="post-date" title="2020-02-12 16:42:24">2020/02/12</span>
         </a>
         
         <a  class="DB MongoDB "
-           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
+           href="/2019/12/03/DB/MongoDB/MongoDB介绍/"
            data-tag="MongoDB"
            data-author="" >
-            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
-            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
+            <span class="post-title" title="MongoDB介绍">MongoDB介绍</span>
+            <span class="post-date" title="2019-12-03 20:42:51">2019/12/03</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/14/DB/MongoDB/MongoDB配置文件部分选项解释/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB配置文件部分选项解释">MongoDB配置文件部分选项解释</span>
+            <span class="post-date" title="2019-12-14 16:51:10">2019/12/14</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/12/DB/MongoDB/连接远程MongoDB数据库/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="连接远程MongoDB数据库">连接远程MongoDB数据库</span>
+            <span class="post-date" title="2019-12-12 10:53:28">2019/12/12</span>
         </a>
         
         <a  class="Java 并发 "
@@ -776,12 +740,44 @@
             <span class="post-date" title="2020-02-12 16:38:10">2020/02/12</span>
         </a>
         
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/INNODB是如何实现事务的？/"
+           data-tag="MySQL,INNODB"
+           data-author="" >
+            <span class="post-title" title="INNODB是如何实现事务的？">INNODB是如何实现事务的？</span>
+            <span class="post-date" title="2020-02-06 10:19:34">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL各版本对比/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL各版本对比">MySQL各版本对比</span>
+            <span class="post-date" title="2020-02-06 10:16:06">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL用户管理/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2020-02-06 10:17:30">2020/02/06</span>
+        </a>
+        
+        <a  class="DB MySQL "
+           href="/2020/02/06/DB/MySQL/MySQL常用的存储引擎/"
+           data-tag="MySQL,INNODB,MyISAM"
+           data-author="" >
+            <span class="post-title" title="MySQL常用的存储引擎">MySQL常用的存储引擎</span>
+            <span class="post-date" title="2020-02-06 10:18:39">2020/02/06</span>
+        </a>
+        
         <a  class="DB MongoDB "
-           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           href="/2019/12/23/DB/MongoDB/MongoDB搭建副本集/"
            data-tag="MongoDB"
            data-author="" >
-            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
-            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+            <span class="post-title" title="MongoDB搭建副本集">MongoDB搭建副本集</span>
+            <span class="post-date" title="2019-12-23 10:50:56">2019/12/23</span>
         </a>
         
         <a  class="Java API "
@@ -790,6 +786,22 @@
            data-author="" >
             <span class="post-title" title="ArrayList源码详解">ArrayList源码详解</span>
             <span class="post-date" title="2019-10-21 21:15:37">2019/10/21</span>
+        </a>
+        
+        <a  class="DB MongoDB "
+           href="/2019/12/03/DB/MongoDB/MongoDB常用语句(一)/"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB常用语句(一)">MongoDB常用语句(一)</span>
+            <span class="post-date" title="2019-12-03 20:44:06">2019/12/03</span>
+        </a>
+        
+        <a  class="框架 Spring "
+           href="/2019/11/17/框架/Spring/注册Bean与Bean的生命周期相关操作/"
+           data-tag="Spring,Bean"
+           data-author="" >
+            <span class="post-title" title="Spring注解驱动编程">Spring注解驱动编程</span>
+            <span class="post-date" title="2019-11-17 10:41:25">2019/11/17</span>
         </a>
         
     </nav>
@@ -892,51 +904,9 @@
 <li><strong>代理（Proxy）类</strong>：提供了与真实主题相同的接口，其内部含有对真实主题的引用，它可以访问、控制或扩展真实主题的功能。</li>
 </ul>
 <p>代理模式的实现代码如下：</p>
-<pre><code>package proxy;
-public class ProxyTest
-{
-    public static void main(String[] args)
-    {
-        Proxy proxy=new Proxy();
-        proxy.Request();
-    }
-}
-//抽象主题
-interface Subject
-{
-    void Request();
-}
-//真实主题
-class RealSubject implements Subject
-{
-    public void Request()
-    {
-        System.out.println(&quot;访问真实主题方法...&quot;);
-    }
-}
-//代理
-class Proxy implements Subject
-{
-    private RealSubject realSubject;
-    public void Request()
-    {
-        if (realSubject==null)
-        {
-            realSubject=new RealSubject();
-        }
-        preRequest();
-        realSubject.Request();
-        postRequest();
-    }
-    public void preRequest()
-    {
-        System.out.println(&quot;访问真实主题之前的预处理。&quot;);
-    }
-    public void postRequest()
-    {
-        System.out.println(&quot;访问真实主题之后的后续处理。&quot;);
-    }
-}</code></pre><p>代理模式的主要优点有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package proxy;</span><br><span class="line">public class ProxyTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Proxy proxy=new Proxy();</span><br><span class="line">        proxy.Request();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象主题</span><br><span class="line">interface Subject</span><br><span class="line">&#123;</span><br><span class="line">    void Request();</span><br><span class="line">&#125;</span><br><span class="line">//真实主题</span><br><span class="line">class RealSubject implements Subject</span><br><span class="line">&#123;</span><br><span class="line">    public void Request()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;访问真实主题方法...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//代理</span><br><span class="line">class Proxy implements Subject</span><br><span class="line">&#123;</span><br><span class="line">    private RealSubject realSubject;</span><br><span class="line">    public void Request()</span><br><span class="line">    &#123;</span><br><span class="line">        if (realSubject==null)</span><br><span class="line">        &#123;</span><br><span class="line">            realSubject=new RealSubject();</span><br><span class="line">        &#125;</span><br><span class="line">        preRequest();</span><br><span class="line">        realSubject.Request();</span><br><span class="line">        postRequest();</span><br><span class="line">    &#125;</span><br><span class="line">    public void preRequest()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;访问真实主题之前的预处理。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void postRequest()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;访问真实主题之后的后续处理。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代理模式的主要优点有：</p>
 <ul>
 <li>代理模式在客户端与目标对象之间起到一个中介作用和保护目标对象的作用；</li>
 <li>代理对象可以扩展目标对象的功能；</li>
@@ -955,63 +925,12 @@ class Proxy implements Subject
 <li><strong>适配者（Adaptee）类</strong>：它是被访问和适配的现存组件库中的组件接口。</li>
 <li><strong>适配器（Adapter）类</strong>：它是一个转换器，通过继承或引用适配者的对象，把适配者接口转换成目标接口，让客户按目标接口的格式访问适配者。</li>
 </ol>
-<pre><code>package adapter;
-//目标接口
-interface Target
-{
-    public void request();
-}
-//适配者接口
-class Adaptee
-{
-    public void specificRequest()
-    {       
-        System.out.println(&quot;适配者中的业务代码被调用！&quot;);
-    }
-}
-//类适配器类
-class ClassAdapter extends Adaptee implements Target
-{
-    public void request()
-    {
-        specificRequest();
-    }
-}
-//客户端代码
-public class ClassAdapterTest
-{
-    public static void main(String[] args)
-    {
-        System.out.println(&quot;类适配器模式测试：&quot;);
-        Target target = new ClassAdapter();
-        target.request();
-    }
-}</code></pre><p>对象适配器模式的代码如下：</p>
-<pre><code>package adapter;
-//对象适配器类
-class ObjectAdapter implements Target
-{
-    private Adaptee adaptee;
-    public ObjectAdapter(Adaptee adaptee)
-    {
-        this.adaptee=adaptee;
-    }
-    public void request()
-    {
-        adaptee.specificRequest();
-    }
-}
-//客户端代码
-public class ObjectAdapterTest
-{
-    public static void main(String[] args)
-    {
-        System.out.println(&quot;对象适配器模式测试：&quot;);
-        Adaptee adaptee = new Adaptee();
-        Target target = new ObjectAdapter(adaptee);
-        target.request();
-    }
-}</code></pre><p>该模式的主要优点如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package adapter;</span><br><span class="line">//目标接口</span><br><span class="line">interface Target</span><br><span class="line">&#123;</span><br><span class="line">    public void request();</span><br><span class="line">&#125;</span><br><span class="line">//适配者接口</span><br><span class="line">class Adaptee</span><br><span class="line">&#123;</span><br><span class="line">    public void specificRequest()</span><br><span class="line">    &#123;       </span><br><span class="line">        System.out.println(&quot;适配者中的业务代码被调用！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//类适配器类</span><br><span class="line">class ClassAdapter extends Adaptee implements Target</span><br><span class="line">&#123;</span><br><span class="line">    public void request()</span><br><span class="line">    &#123;</span><br><span class="line">        specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//客户端代码</span><br><span class="line">public class ClassAdapterTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;类适配器模式测试：&quot;);</span><br><span class="line">        Target target = new ClassAdapter();</span><br><span class="line">        target.request();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对象适配器模式的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package adapter;</span><br><span class="line">//对象适配器类</span><br><span class="line">class ObjectAdapter implements Target</span><br><span class="line">&#123;</span><br><span class="line">    private Adaptee adaptee;</span><br><span class="line">    public ObjectAdapter(Adaptee adaptee)</span><br><span class="line">    &#123;</span><br><span class="line">        this.adaptee=adaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    public void request()</span><br><span class="line">    &#123;</span><br><span class="line">        adaptee.specificRequest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//客户端代码</span><br><span class="line">public class ObjectAdapterTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;对象适配器模式测试：&quot;);</span><br><span class="line">        Adaptee adaptee = new Adaptee();</span><br><span class="line">        Target target = new ObjectAdapter(adaptee);</span><br><span class="line">        target.request();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该模式的主要优点如下：</p>
 <ul>
 <li>客户端通过适配器可以透明地调用目标接口。</li>
 <li>复用了现存的类，程序员不需要修改原有代码而重用现有的适配者类。</li>
@@ -1034,52 +953,9 @@ public class ObjectAdapterTest
 <li>具体实现化（Concrete Implementor）角色：给出实现化角色接口的具体实现。</li>
 </ol>
 <p>桥接模式的代码如下：</p>
-<pre><code>package bridge;
-public class BridgeTest
-{
-    public static void main(String[] args)
-    {
-        Implementor imple=new ConcreteImplementorA();
-        Abstraction abs=new RefinedAbstraction(imple);
-        abs.Operation();
-    }
-}
-//实现化角色
-interface Implementor
-{
-    public void OperationImpl();
-}
-//具体实现化角色
-class ConcreteImplementorA implements Implementor
-{
-    public void OperationImpl()
-    {
-        System.out.println(&quot;具体实现化(Concrete Implementor)角色被访问&quot; );
-    }
-}
-//抽象化角色
-abstract class Abstraction
-{
-   protected Implementor imple;
-   protected Abstraction(Implementor imple)
-   {
-       this.imple=imple;
-   }
-   public abstract void Operation();   
-}
-//扩展抽象化角色
-class RefinedAbstraction extends Abstraction
-{
-   protected RefinedAbstraction(Implementor imple)
-   {
-       super(imple);
-   }
-   public void Operation()
-   {
-       System.out.println(&quot;扩展抽象化(Refined Abstraction)角色被访问&quot; );
-       imple.OperationImpl();
-   }
-}</code></pre><p>桥接模式通常适用于以下场景:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package bridge;</span><br><span class="line">public class BridgeTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Implementor imple=new ConcreteImplementorA();</span><br><span class="line">        Abstraction abs=new RefinedAbstraction(imple);</span><br><span class="line">        abs.Operation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//实现化角色</span><br><span class="line">interface Implementor</span><br><span class="line">&#123;</span><br><span class="line">    public void OperationImpl();</span><br><span class="line">&#125;</span><br><span class="line">//具体实现化角色</span><br><span class="line">class ConcreteImplementorA implements Implementor</span><br><span class="line">&#123;</span><br><span class="line">    public void OperationImpl()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;具体实现化(Concrete Implementor)角色被访问&quot; );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象化角色</span><br><span class="line">abstract class Abstraction</span><br><span class="line">&#123;</span><br><span class="line">   protected Implementor imple;</span><br><span class="line">   protected Abstraction(Implementor imple)</span><br><span class="line">   &#123;</span><br><span class="line">       this.imple=imple;</span><br><span class="line">   &#125;</span><br><span class="line">   public abstract void Operation();   </span><br><span class="line">&#125;</span><br><span class="line">//扩展抽象化角色</span><br><span class="line">class RefinedAbstraction extends Abstraction</span><br><span class="line">&#123;</span><br><span class="line">   protected RefinedAbstraction(Implementor imple)</span><br><span class="line">   &#123;</span><br><span class="line">       super(imple);</span><br><span class="line">   &#125;</span><br><span class="line">   public void Operation()</span><br><span class="line">   &#123;</span><br><span class="line">       System.out.println(&quot;扩展抽象化(Refined Abstraction)角色被访问&quot; );</span><br><span class="line">       imple.OperationImpl();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>桥接模式通常适用于以下场景:</p>
 <ul>
 <li>当一个类存在两个独立变化的维度，且这两个维度都需要进行扩展时。</li>
 <li>当一个系统不希望使用继承或因为多层次继承导致系统类的个数急剧增加时。</li>
@@ -1101,65 +977,9 @@ class RefinedAbstraction extends Abstraction
 <li>具体装饰（ConcreteDecorator）角色：实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。</li>
 </ol>
 <p>装饰模式的实现代码如下：</p>
-<pre><code>package decorator;
-public class DecoratorPattern
-{
-    public static void main(String[] args)
-    {
-        Component p=new ConcreteComponent();
-        p.operation();
-        System.out.println(&quot;---------------------------------&quot;);
-        Component d=new ConcreteDecorator(p);
-        d.operation();
-    }
-}
-//抽象构件角色
-interface  Component
-{
-    public void operation();
-}
-//具体构件角色
-class ConcreteComponent implements Component
-{
-    public ConcreteComponent()
-    {
-        System.out.println(&quot;创建具体构件角色&quot;);       
-    }   
-    public void operation()
-    {
-        System.out.println(&quot;调用具体构件角色的方法operation()&quot;);           
-    }
-}
-//抽象装饰角色
-class Decorator implements Component
-{
-    private Component component;   
-    public Decorator(Component component)
-    {
-        this.component=component;
-    }   
-    public void operation()
-    {
-        component.operation();
-    }
-}
-//具体装饰角色
-class ConcreteDecorator extends Decorator
-{
-    public ConcreteDecorator(Component component)
-    {
-        super(component);
-    }   
-    public void operation()
-    {
-        super.operation();
-        addedFunction();
-    }
-    public void addedFunction()
-    {
-        System.out.println(&quot;为具体构件角色增加额外的功能addedFunction()&quot;);           
-    }
-}</code></pre><p>前面讲解了关于装饰模式的结构与特点，下面介绍其适用的应用场景，装饰模式通常在以下几种情况使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package decorator;</span><br><span class="line">public class DecoratorPattern</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Component p=new ConcreteComponent();</span><br><span class="line">        p.operation();</span><br><span class="line">        System.out.println(&quot;---------------------------------&quot;);</span><br><span class="line">        Component d=new ConcreteDecorator(p);</span><br><span class="line">        d.operation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象构件角色</span><br><span class="line">interface  Component</span><br><span class="line">&#123;</span><br><span class="line">    public void operation();</span><br><span class="line">&#125;</span><br><span class="line">//具体构件角色</span><br><span class="line">class ConcreteComponent implements Component</span><br><span class="line">&#123;</span><br><span class="line">    public ConcreteComponent()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;创建具体构件角色&quot;);       </span><br><span class="line">    &#125;   </span><br><span class="line">    public void operation()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;调用具体构件角色的方法operation()&quot;);           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象装饰角色</span><br><span class="line">class Decorator implements Component</span><br><span class="line">&#123;</span><br><span class="line">    private Component component;   </span><br><span class="line">    public Decorator(Component component)</span><br><span class="line">    &#123;</span><br><span class="line">        this.component=component;</span><br><span class="line">    &#125;   </span><br><span class="line">    public void operation()</span><br><span class="line">    &#123;</span><br><span class="line">        component.operation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//具体装饰角色</span><br><span class="line">class ConcreteDecorator extends Decorator</span><br><span class="line">&#123;</span><br><span class="line">    public ConcreteDecorator(Component component)</span><br><span class="line">    &#123;</span><br><span class="line">        super(component);</span><br><span class="line">    &#125;   </span><br><span class="line">    public void operation()</span><br><span class="line">    &#123;</span><br><span class="line">        super.operation();</span><br><span class="line">        addedFunction();</span><br><span class="line">    &#125;</span><br><span class="line">    public void addedFunction()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;为具体构件角色增加额外的功能addedFunction()&quot;);           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前面讲解了关于装饰模式的结构与特点，下面介绍其适用的应用场景，装饰模式通常在以下几种情况使用。</p>
 <ul>
 <li>当需要给一个现有类<strong>添加附加职责</strong>，而又不能采用生成子类的方法进行扩充时。例如，该类被隐藏或者该类是终极类或者采用继承方式会产生大量的子类。</li>
 <li>当需要通过对现有的一组基本功能进行排列组合而产生非常多的功能时，采用继承关系很难实现，而采用装饰模式却很好实现。</li>
@@ -1167,8 +987,9 @@ class ConcreteDecorator extends Decorator
 </ul>
 <p>装饰模式在 Java 语言中的最著名的应用莫过于 <code>Java I/O</code>  标准库的设计了。例如，InputStream 的子类 FilterInputStream，OutputStream 的子类 FilterOutputStream，Reader 的子类 BufferedReader 以及 FilterReader，还有 Writer 的子类 BufferedWriter、FilterWriter 以及 PrintWriter 等，它们都是抽象装饰类。</p>
 <p>下面代码是为 FileReader 增加缓冲区而采用的装饰类 BufferedReader 的例子：</p>
-<pre><code>BufferedReader in=new BufferedReader(new FileReader(&quot;filename.txtn));
-String s=in.readLine();</code></pre><h1 id="5、外观（Facade）模式"><a href="#5、外观（Facade）模式" class="headerlink" title="5、外观（Facade）模式"></a><a id="Facade">5、外观（Facade）模式</a></h1><p>外观（Facade）模式的定义：是一种<strong>通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式</strong>。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedReader in=new BufferedReader(new FileReader(&quot;filename.txtn));</span><br><span class="line">String s=in.readLine();</span><br></pre></td></tr></table></figure>
+
+<h1 id="5、外观（Facade）模式"><a href="#5、外观（Facade）模式" class="headerlink" title="5、外观（Facade）模式"></a><a id="Facade">5、外观（Facade）模式</a></h1><p>外观（Facade）模式的定义：是一种<strong>通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式</strong>。该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</p>
 <p>外观（Facade）模式是“迪米特法则”的典型应用，它有以下主要优点:</p>
 <ul>
 <li>降低了子系统与客户端之间的耦合度，使得子系统的变化不会影响调用它的客户类。</li>
@@ -1188,52 +1009,9 @@ String s=in.readLine();</code></pre><h1 id="5、外观（Facade）模式"><a hre
 <li>客户（Client）角色：通过一个外观角色访问各个子系统的功能。</li>
 </ol>
 <p>外观模式的实现代码如下：</p>
-<pre><code>package facade;
-public class FacadePattern
-{
-    public static void main(String[] args)
-    {
-        Facade f=new Facade();
-        f.method();
-    }
-}
-//外观角色
-class Facade
-{
-    private SubSystem01 obj1=new SubSystem01();
-    private SubSystem02 obj2=new SubSystem02();
-    private SubSystem03 obj3=new SubSystem03();
-    public void method()
-    {
-        obj1.method1();
-        obj2.method2();
-        obj3.method3();
-    }
-}
-//子系统角色
-class SubSystem01
-{
-    public  void method1()
-    {
-        System.out.println(&quot;子系统01的method1()被调用！&quot;);
-    }   
-}
-//子系统角色
-class SubSystem02
-{
-    public  void method2()
-    {
-        System.out.println(&quot;子系统02的method2()被调用！&quot;);
-    }   
-}
-//子系统角色
-class SubSystem03
-{
-    public  void method3()
-    {
-        System.out.println(&quot;子系统03的method3()被调用！&quot;);
-    }   
-}</code></pre><p>通常在以下情况下可以考虑使用外观模式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package facade;</span><br><span class="line">public class FacadePattern</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Facade f=new Facade();</span><br><span class="line">        f.method();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//外观角色</span><br><span class="line">class Facade</span><br><span class="line">&#123;</span><br><span class="line">    private SubSystem01 obj1=new SubSystem01();</span><br><span class="line">    private SubSystem02 obj2=new SubSystem02();</span><br><span class="line">    private SubSystem03 obj3=new SubSystem03();</span><br><span class="line">    public void method()</span><br><span class="line">    &#123;</span><br><span class="line">        obj1.method1();</span><br><span class="line">        obj2.method2();</span><br><span class="line">        obj3.method3();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//子系统角色</span><br><span class="line">class SubSystem01</span><br><span class="line">&#123;</span><br><span class="line">    public  void method1()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;子系统01的method1()被调用！&quot;);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line">//子系统角色</span><br><span class="line">class SubSystem02</span><br><span class="line">&#123;</span><br><span class="line">    public  void method2()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;子系统02的method2()被调用！&quot;);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line">//子系统角色</span><br><span class="line">class SubSystem03</span><br><span class="line">&#123;</span><br><span class="line">    public  void method3()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;子系统03的method3()被调用！&quot;);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常在以下情况下可以考虑使用外观模式:</p>
 <ul>
 <li>对分层结构系统构建时，使用外观模式定义子系统中每层的入口点可以简化子系统之间的依赖关系。</li>
 <li>当一个复杂系统的子系统很多时，外观模式可以为系统设计一个简单的接口供外界访问。</li>
@@ -1259,81 +1037,9 @@ class SubSystem03
 <li>非享元（Unsharable Flyweight)角色：是不可以共享的外部状态，它以参数的形式注入具体享元的相关方法中。</li>
 <li>享元工厂（Flyweight Factory）角色：负责创建和管理享元角色。当客户对象请求一个享元对象时，享元工厂检査系统中是否存在符合要求的享元对象，如果存在则提供给客户；如果不存在的话，则创建一个新的享元对象。</li>
 </ol>
-<pre><code>package flyweight;
-import java.util.HashMap;
-public class FlyweightPattern
-{
-    public static void main(String[] args)
-    {
-        FlyweightFactory factory=new FlyweightFactory();
-        Flyweight f01=factory.getFlyweight(&quot;a&quot;);
-        Flyweight f02=factory.getFlyweight(&quot;a&quot;);
-        Flyweight f03=factory.getFlyweight(&quot;a&quot;);
-        Flyweight f11=factory.getFlyweight(&quot;b&quot;);
-        Flyweight f12=factory.getFlyweight(&quot;b&quot;);       
-        f01.operation(new UnsharedConcreteFlyweight(&quot;第1次调用a。&quot;));       
-        f02.operation(new UnsharedConcreteFlyweight(&quot;第2次调用a。&quot;));       
-        f03.operation(new UnsharedConcreteFlyweight(&quot;第3次调用a。&quot;));       
-        f11.operation(new UnsharedConcreteFlyweight(&quot;第1次调用b。&quot;));       
-        f12.operation(new UnsharedConcreteFlyweight(&quot;第2次调用b。&quot;));
-    }
-}
-//非享元角色
-class UnsharedConcreteFlyweight
-{
-    private String info;
-    UnsharedConcreteFlyweight(String info)
-    {
-        this.info=info;
-    }
-    public String getInfo()
-    {
-        return info;
-    }
-    public void setInfo(String info)
-    {
-        this.info=info;
-    }
-}
-//抽象享元角色
-interface Flyweight
-{
-    public void operation(UnsharedConcreteFlyweight state);
-}
-//具体享元角色
-class ConcreteFlyweight implements Flyweight
-{
-    private String key;
-    ConcreteFlyweight(String key)
-    {
-        this.key=key;
-        System.out.println(&quot;具体享元&quot;+key+&quot;被创建！&quot;);
-    }
-    public void operation(UnsharedConcreteFlyweight outState)
-    {
-        System.out.print(&quot;具体享元&quot;+key+&quot;被调用，&quot;);
-        System.out.println(&quot;非享元信息是:&quot;+outState.getInfo());
-    }
-}
-//享元工厂角色
-class FlyweightFactory
-{
-    private HashMap&lt;String, Flyweight&gt; flyweights=new HashMap&lt;String, Flyweight&gt;();
-    public Flyweight getFlyweight(String key)
-    {
-        Flyweight flyweight=(Flyweight)flyweights.get(key);
-        if(flyweight!=null)
-        {
-            System.out.println(&quot;具体享元&quot;+key+&quot;已经存在，被成功获取！&quot;);
-        }
-        else
-        {
-            flyweight=new ConcreteFlyweight(key);
-            flyweights.put(key, flyweight);
-        }
-        return flyweight;
-    }
-}</code></pre><p>享元模式是通过减少内存中对象的数量来节省内存空间的，所以以下几种情形适合采用享元模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package flyweight;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">public class FlyweightPattern</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        FlyweightFactory factory=new FlyweightFactory();</span><br><span class="line">        Flyweight f01=factory.getFlyweight(&quot;a&quot;);</span><br><span class="line">        Flyweight f02=factory.getFlyweight(&quot;a&quot;);</span><br><span class="line">        Flyweight f03=factory.getFlyweight(&quot;a&quot;);</span><br><span class="line">        Flyweight f11=factory.getFlyweight(&quot;b&quot;);</span><br><span class="line">        Flyweight f12=factory.getFlyweight(&quot;b&quot;);       </span><br><span class="line">        f01.operation(new UnsharedConcreteFlyweight(&quot;第1次调用a。&quot;));       </span><br><span class="line">        f02.operation(new UnsharedConcreteFlyweight(&quot;第2次调用a。&quot;));       </span><br><span class="line">        f03.operation(new UnsharedConcreteFlyweight(&quot;第3次调用a。&quot;));       </span><br><span class="line">        f11.operation(new UnsharedConcreteFlyweight(&quot;第1次调用b。&quot;));       </span><br><span class="line">        f12.operation(new UnsharedConcreteFlyweight(&quot;第2次调用b。&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//非享元角色</span><br><span class="line">class UnsharedConcreteFlyweight</span><br><span class="line">&#123;</span><br><span class="line">    private String info;</span><br><span class="line">    UnsharedConcreteFlyweight(String info)</span><br><span class="line">    &#123;</span><br><span class="line">        this.info=info;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getInfo()</span><br><span class="line">    &#123;</span><br><span class="line">        return info;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setInfo(String info)</span><br><span class="line">    &#123;</span><br><span class="line">        this.info=info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象享元角色</span><br><span class="line">interface Flyweight</span><br><span class="line">&#123;</span><br><span class="line">    public void operation(UnsharedConcreteFlyweight state);</span><br><span class="line">&#125;</span><br><span class="line">//具体享元角色</span><br><span class="line">class ConcreteFlyweight implements Flyweight</span><br><span class="line">&#123;</span><br><span class="line">    private String key;</span><br><span class="line">    ConcreteFlyweight(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        this.key=key;</span><br><span class="line">        System.out.println(&quot;具体享元&quot;+key+&quot;被创建！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public void operation(UnsharedConcreteFlyweight outState)</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(&quot;具体享元&quot;+key+&quot;被调用，&quot;);</span><br><span class="line">        System.out.println(&quot;非享元信息是:&quot;+outState.getInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//享元工厂角色</span><br><span class="line">class FlyweightFactory</span><br><span class="line">&#123;</span><br><span class="line">    private HashMap&lt;String, Flyweight&gt; flyweights=new HashMap&lt;String, Flyweight&gt;();</span><br><span class="line">    public Flyweight getFlyweight(String key)</span><br><span class="line">    &#123;</span><br><span class="line">        Flyweight flyweight=(Flyweight)flyweights.get(key);</span><br><span class="line">        if(flyweight!=null)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;具体享元&quot;+key+&quot;已经存在，被成功获取！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            flyweight=new ConcreteFlyweight(key);</span><br><span class="line">            flyweights.put(key, flyweight);</span><br><span class="line">        &#125;</span><br><span class="line">        return flyweight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>享元模式是通过减少内存中对象的数量来节省内存空间的，所以以下几种情形适合采用享元模式：</p>
 <ul>
 <li>系统中存在大量相同或相似的对象，这些对象耗费大量的内存资源。</li>
 <li>大部分的对象可以按照内部状态进行分组，且可将不同部分外部化，这样每一个组只需保存一个内部状态。</li>
@@ -1359,75 +1065,9 @@ class FlyweightFactory
 </ol>
 <p>组合模式分为透明式的组合模式和安全式的组合模式。</p>
 <p>下面给出透明式的组合模式的实现代码，与安全式的组合模式的实现代码类似，只要对其做简单修改就可以了。</p>
-<pre><code>package composite;
-import java.util.ArrayList;
-public class CompositePattern
-{
-    public static void main(String[] args)
-    {
-        Component c0=new Composite(); 
-        Component c1=new Composite(); 
-        Component leaf1=new Leaf(&quot;1&quot;); 
-        Component leaf2=new Leaf(&quot;2&quot;); 
-        Component leaf3=new Leaf(&quot;3&quot;);          
-        c0.add(leaf1); 
-        c0.add(c1);
-        c1.add(leaf2); 
-        c1.add(leaf3);          
-        c0.operation(); 
-    }
-}
-//抽象构件
-interface Component
-{
-    public void add(Component c);
-    public void remove(Component c);
-    public Component getChild(int i);
-    public void operation();
-}
-//树叶构件
-class Leaf implements Component
-{
-    private String name;
-    public Leaf(String name)
-    {
-        this.name=name;
-    }
-    public void add(Component c){ }           
-    public void remove(Component c){ }   
-    public Component getChild(int i)
-    {
-        return null;
-    }   
-    public void operation()
-    {
-        System.out.println(&quot;树叶&quot;+name+&quot;：被访问！&quot;); 
-    }
-}
-//树枝构件
-class Composite implements Component
-{
-    private ArrayList&lt;Component&gt; children=new ArrayList&lt;Component&gt;();   
-    public void add(Component c)
-    {
-        children.add(c);
-    }   
-    public void remove(Component c)
-    {
-        children.remove(c);
-    }   
-    public Component getChild(int i)
-    {
-        return children.get(i);
-    }   
-    public void operation()
-    {
-        for(Object obj:children)
-        {
-            ((Component)obj).operation();
-        }
-    }    
-}</code></pre><p>应用场景：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">package composite;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">public class CompositePattern</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Component c0=new Composite(); </span><br><span class="line">        Component c1=new Composite(); </span><br><span class="line">        Component leaf1=new Leaf(&quot;1&quot;); </span><br><span class="line">        Component leaf2=new Leaf(&quot;2&quot;); </span><br><span class="line">        Component leaf3=new Leaf(&quot;3&quot;);          </span><br><span class="line">        c0.add(leaf1); </span><br><span class="line">        c0.add(c1);</span><br><span class="line">        c1.add(leaf2); </span><br><span class="line">        c1.add(leaf3);          </span><br><span class="line">        c0.operation(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//抽象构件</span><br><span class="line">interface Component</span><br><span class="line">&#123;</span><br><span class="line">    public void add(Component c);</span><br><span class="line">    public void remove(Component c);</span><br><span class="line">    public Component getChild(int i);</span><br><span class="line">    public void operation();</span><br><span class="line">&#125;</span><br><span class="line">//树叶构件</span><br><span class="line">class Leaf implements Component</span><br><span class="line">&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    public Leaf(String name)</span><br><span class="line">    &#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void add(Component c)&#123; &#125;           </span><br><span class="line">    public void remove(Component c)&#123; &#125;   </span><br><span class="line">    public Component getChild(int i)</span><br><span class="line">    &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;   </span><br><span class="line">    public void operation()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;树叶&quot;+name+&quot;：被访问！&quot;); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//树枝构件</span><br><span class="line">class Composite implements Component</span><br><span class="line">&#123;</span><br><span class="line">    private ArrayList&lt;Component&gt; children=new ArrayList&lt;Component&gt;();   </span><br><span class="line">    public void add(Component c)</span><br><span class="line">    &#123;</span><br><span class="line">        children.add(c);</span><br><span class="line">    &#125;   </span><br><span class="line">    public void remove(Component c)</span><br><span class="line">    &#123;</span><br><span class="line">        children.remove(c);</span><br><span class="line">    &#125;   </span><br><span class="line">    public Component getChild(int i)</span><br><span class="line">    &#123;</span><br><span class="line">        return children.get(i);</span><br><span class="line">    &#125;   </span><br><span class="line">    public void operation()</span><br><span class="line">    &#123;</span><br><span class="line">        for(Object obj:children)</span><br><span class="line">        &#123;</span><br><span class="line">            ((Component)obj).operation();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>应用场景：</p>
 <ul>
 <li>在需要表示一个对象整体与部分的层次结构的场合。</li>
 <li>要求对用户隐藏组合对象与单个对象的不同，用户可以用统一的接口使用组合结构中的所有对象的场合。</li>
@@ -1481,7 +1121,7 @@ class Composite implements Component
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#Hexo','#RabbitMQ','#Ribbon','#链表','#归并排序','#数组','#设计模式','#TCP','#计算机网络','#MongoDB','#MySQL','#INNODB','#MyISAM','#ClassLoader','#双亲委派机制','#Object','#Volatile','#Java','#Synchronized','#并发','#多线程','#Lambda','#面向对象','#static','#接口','#抽象类','#MyBatis','#反射','#Spring','#Spring-Security','#注解','#ArrayList',],
+            'data': ['#RabbitMQ','#Ribbon','#Hexo','#链表','#归并排序','#数组','#设计模式','#TCP','#计算机网络','#Java','#Volatile','#Synchronized','#并发','#多线程','#Object','#ClassLoader','#双亲委派机制','#Lambda','#反射','#面向对象','#static','#接口','#抽象类','#Spring','#注解','#Spring-Security','#MyBatis','#MongoDB','#MySQL','#INNODB','#MyISAM','#ArrayList','#Bean',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

@@ -336,9 +336,9 @@
       <category term="并发" scheme="http://brucy.cn/categories/Java/%E5%B9%B6%E5%8F%91/"/>
     
     
-      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
-    
       <category term="Java" scheme="http://brucy.cn/tags/Java/"/>
+    
+      <category term="Volatile" scheme="http://brucy.cn/tags/Volatile/"/>
     
       <category term="Synchronized" scheme="http://brucy.cn/tags/Synchronized/"/>
     
@@ -445,9 +445,7 @@
       
         
         
-          &lt;pre&gt;&lt;code&gt;systemLog:
-   verbosity: &amp;lt;int&amp;gt; 组件的默认日志消息详细级别。详细级别决定了MongoDB输出的信息和调试消息的数量。
-                   
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
         
       
     
